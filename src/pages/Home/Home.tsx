@@ -1,121 +1,19 @@
-import "./Home.css";
+import Presale from "../../components/Presale/Presale";
 
 function Home() {
   return (
     <>
-      <section className="relative flex flex-col text-white w-full bg-black">
-        <div className="z-[10000] fixed bg-black w-full hidden md:flex md:flex-row justify-around items-center text-2xl py-4">
-          <img
-            src="./assets/images/header.png"
-            className="cursor-pointer"
-            alt=""
-          />
-          <a href="#staking">
-            <p>Home</p>
-          </a>
-          <a href="#about">
-            <p>About</p>
-          </a>
-          <a href="#moonomics">
-            <p>Moonomics</p>
-          </a>
-          <a href="#roadmap">
-            <p>Roadmap</p>
-          </a>
-          <a href="#buy">
-            <p>Buy</p>
-          </a>
-          <button
-            className="border px-6 py-4 rounded-2xl"
-            id="desktopConnectButton"
-          >
-            Connect Wallet
-          </button>
-          <div className="flex gap-5 items-center">
-            <img
-              src="./assets/icons/Telegram App.svg"
-              className="w-8 h-8 cursor-pointer"
-              alt=""
-            />
-            <img
-              src="./assets/icons/Twitter-X-Icon.svg"
-              className="w-14 h-14 cursor-pointer"
-              alt=""
-            />
-          </div>
-        </div>
-        <div className="z-[10000] fixed bg-black w-full flex md:hidden md:flex-row justify-between items-center text-2xl px-2 py-4">
-          <div className="flex">
-            <img
-              src="./assets/icons/hamburger.svg"
-              id="navToggleIcon"
-              onClick={() => showNav()}
-              className="w-10 h-10 mr-5"
-              alt=""
-            />
-            <img
-              src="./assets/images/header.png"
-              className="w-[40px] h-[40px]"
-              alt=""
-            />
-          </div>
-          <button
-            className="text-sm border px-3 py-2 rounded-lg"
-            id="mobileConnectButton"
-          >
-            Connect Wallet
-          </button>
-        </div>
-
-        <div
-          id="navBar"
-          className="z-[10001] flex items-center w-full justify-center duration-300 flex-col gap-[30px] fixed top-0 -left-full bg-Ivory h-screen bg-black md:hidden"
-        >
-          <img
-            src="./assets/icons/menu-cross.svg"
-            id="navToggleIcon"
-            onClick={() => showNav()}
-            className="w-10 h-10 absolute top-4 right-4"
-            alt=""
-          />
-          <a href="#staking">
-            <p onClick="showNav()">Home</p>
-          </a>
-          <a href="#about">
-            <p onClick="showNav()">About</p>
-          </a>
-          <a href="#moonomics">
-            <p onClick={() => showNav()"}>Moonomics</p>
-          </a>
-          <a href="#roadmap">
-            <p onClick={() => showNav()}>Roadmap</p>
-          </a>
-          <a href="#buy">
-            <p onClick={() => showNav()}>Buy</p>
-          </a>
-
-          <div className="flex gap-5 items-center">
-            <img
-              src="./assets/icons/Telegram App.svg"
-              className="w-8 h-8 cursor-pointer"
-              onClick={() => showNav()}
-              alt=""
-            />
-            <img
-              src="./assets/icons/Twitter-X-Icon.svg"
-              className="w-14 h-14 cursor-pointer"
-              onClick={() => showNav()}
-              alt=""
-            />
-          </div>
-        </div>
-
+      <div className="relative">
         <img
           src="./assets/images/home.png"
-          className="w-auto md:h-[calc(100vh-84px)] mt-[60px] md:mt-[84px]"
+          className="w-auto md:h-[calc(100vh-84px)] mt-[-12px] md:mt-[-40px]"
           alt=""
         />
-      </section>
+
+        <div className="flex justify-center mt-10 md:absolute md:top-[100px] md:right-[100px]">
+          <Presale />
+        </div>
+      </div>
 
       <div className="flex flex-col items-center justify-center mx-2 lg:mx-0">
         <div className="flex flex-col items-center justify-center max-w-[1040px] text-white">
@@ -752,122 +650,6 @@ function Home() {
             </div>
           </section>
         </div>
-
-        <section className="flex flex-col items-center gap-10 w-full text-white pt-[72px] md:pt-[124px]">
-          <p
-            className="w-full md:w-auto text-4xl md:text-8xl text-center py-5 lg:py-10 lg:px-32"
-            style={{
-              background: "url('./assets/images/title-background.png')",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-            }}
-          >
-            TheMoonMemes
-          </p>
-          <div className="flex flex-col items-center gap-10 relative w-full">
-            <img
-              src="./assets/images/the-moon-memes-3.png"
-              className="absolute top-[0px] w-full"
-              alt=""
-            />
-
-            <div
-              style={{
-                backgroundImage: "url('./assets/images/the-moon-memes-4.png')",
-                backgroundSize: "cover",
-              }}
-              className="pt-[200px] md:pt-[600px] z-[10] px-2 md:px-20 flex flex-col items-center gap-5 md:gap-10 lg:min-h-[1070px] pb-20 w-full"
-            >
-              <div className="w-full flex flex-col gap-5 md:gap-10 md:flex-row justify-around">
-                <div>
-                  <img
-                    src="./assets/images/footer.png"
-                    className="mt-[-50px] md:mt-[-100px]"
-                    alt=""
-                  />
-                </div>
-                <div className="flex justify-around underline gap-5 md:gap-10">
-                  <div className="hidden md:block">
-                    <a href="#staking">
-                      <p>Home</p>
-                    </a>
-                    <a href="#about">
-                      <p>About</p>
-                    </a>
-                    <a href="#mission">
-                      <p>Mission & Vision</p>
-                    </a>
-                    <a href="#moonomics">
-                      <p>Moonomics</p>
-                    </a>
-                    <a href="#roadmap">
-                      <p>Roadmap</p>
-                    </a>
-                    <a href="#buy">
-                      <p>How to buy</p>
-                    </a>
-                  </div>
-                  <div className="hidden md:block">
-                    <a href="/privacy">
-                      <p>Privacy & Policy</p>
-                    </a>
-                    <a href="/terms">
-                      <p>Terms & Conditions</p>
-                    </a>
-                  </div>
-                  <div className="block md:hidden">
-                    <a href="#staking">
-                      <p>Home</p>
-                    </a>
-                    <a href="#about">
-                      <p>About</p>
-                    </a>
-                    <a href="#mission">
-                      <p>Mission & Vision</p>
-                    </a>
-                    <a href="#moonomics">
-                      <p>Moonomics</p>
-                    </a>
-                  </div>
-                  <div className="block md:hidden">
-                    <a href="#roadmap">
-                      <p>Roadmap</p>
-                    </a>
-                    <a href="#buy">
-                      <p>How to buy</p>
-                    </a>
-                    <a href="privacy.html">
-                      <p>Privacy & Policy</p>
-                    </a>
-                    <a href="terms.html">
-                      <p>Terms & Conditions</p>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full flex flex-col gap-5 md:gap-10 md:flex-row justify-around">
-                <p className="text-xs">
-                  Risk Warning: cryptocurrency may be unregulated in your
-                  jurisdiction.
-                  <br className="hidden md:block" />
-                  The value of cryptocurrency may go down as well as up. Profits
-                  may be
-                  <br className="hidden md:block" />
-                  subject to capital gains or other taxes applicable in your
-                  jurisdiction.
-                </p>
-                <p className="text-center md:text-inherit">
-                  Contact Us: theMoon@memes.com
-                </p>
-              </div>
-              <div className="absolute bottom-5 mt-5 md:mt-10 flex justify-center">
-                <p className="text-xs">
-                  Copyrights 2024. ThMoonMemes Token. All rights reserved.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </>
   );
