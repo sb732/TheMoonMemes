@@ -8,14 +8,13 @@ const Staking = () => {
             <br className="hidden md:block" /> STAKING
           </p>
           <p>
-            The distribution of $GBTC token rewards will occur at a rate of 1.6
+            The distribution of $TMM token rewards will occur at a rate of 6600
             $TMM tokens per Ethereum (ETH) block. These rewards will be
-            disbursed over 5 months, after which, Gamified Green Bitcoin Staking
-            will be launched.
+            disbursed over 5 months.
           </p>
         </div>
-        <div className="flex flex-col md:flex-row gap-6">
-          <div className="flex gap-6">
+        <div className="flex flex-col md:flex-row gap-6 justify-between">
+          <div className="flex gap-6 justify-between w-full md:w-2/5">
             <div className="border-white border-[1px] rounded-lg flex flex-col items-center justify-center w-full gap-1 py-2">
               <p>STAKED BALANCE</p>
               <p>
@@ -37,7 +36,7 @@ const Staking = () => {
               </p>
             </div>
           </div>
-          <div className="flex gap-6">
+          <div className="flex gap-6 justify-between w-full md:w-2/5">
             <div className="border-white border-[1px] rounded-lg flex flex-col items-center justify-center w-full gap-5 py-2">
               <p>ESTIMATED REWARDS</p>
               <p>
@@ -56,14 +55,16 @@ const Staking = () => {
               </p>
             </div>
           </div>
-          <div className="border-white border-[1px] rounded-lg flex flex-col items-center justify-center w-full gap-5 py-2">
-            <p>TOTAL REWARDS</p>
-            <p>
-              0 <sup className="text-[8px]">$TMM</sup>
-            </p>
-            <button className="border-white border-[1px] rounded-lg py-1 px-5">
-              Claim Rewards
-            </button>
+          <div className="flex gap-6 justify-between w-full md:w-1/5">
+            <div className="border-white border-[1px] rounded-lg flex flex-col items-center justify-center w-full gap-5 py-2">
+              <p>TOTAL REWARDS</p>
+              <p>
+                0 <sup className="text-[8px]">$TMM</sup>
+              </p>
+              <button className="border-white border-[1px] rounded-lg py-1 px-5">
+                Claim Rewards
+              </button>
+            </div>
           </div>
         </div>
       </div>

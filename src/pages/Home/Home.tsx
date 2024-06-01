@@ -6,11 +6,11 @@ function Home() {
       <div className="relative">
         <img
           src="./assets/images/home.png"
-          className="w-auto md:h-[calc(100vh-84px)] mt-[-12px] md:mt-[-40px]"
+          className="w-auto lg:w-[calc(100vw-200px)] xl:w-[calc(100vw-100px)] lg:h-[calc(100vh-84px)] mt-[-12px] md:mt-[-40px]"
           alt=""
         />
 
-        <div className="flex justify-center mt-10 md:absolute md:top-[100px] md:right-[100px]">
+        <div className="flex justify-center mt-10 lg:absolute md:top-[100px] md:right-[100px]">
           <Presale />
         </div>
       </div>
@@ -41,9 +41,11 @@ function Home() {
                   Whitepaper
                 </p>
               </a>
-              <p className="text-center py-2 rounded-lg text-4xl mb-10 min-w-[250px] bg-[#FF4747] border border-white cursor-pointer">
-                Audit
-              </p>
+              <a href="/">
+                <p className="text-center py-2 rounded-lg text-4xl mb-10 min-w-[250px] bg-[#FF4747] border border-white cursor-pointer">
+                  Audit
+                </p>
+              </a>
             </div>
             <img src="./assets/images/the-moon-memes-1.png" alt="" />
           </section>
@@ -543,7 +545,10 @@ function Home() {
             </div>
           </section>
 
-          <section className="flex flex-col gap-10 pt-[72px] md:pt-[124px]">
+          <section
+            className="flex flex-col gap-10 pt-[72px] md:pt-[124px]"
+            id="FAQs"
+          >
             <p className="text-center text-4xl rounded-lg border-4 py-5">
               Frequently Asked Questions (FAQs)
             </p>

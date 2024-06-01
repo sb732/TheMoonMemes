@@ -1,7 +1,7 @@
 const Privacy = () => {
   return (
     <div className="font-['Poppins'] text-white flex flex-col items-center gap-10 md:gap-20 pb-5 md:pb-10">
-      <img src="./assets/images/footer.png" />
+      <img src="./assets/images/footer.png" alt="" />
 
       <p className="text-6xl md:text-8xl text-center font-black">
         Privacy Policy

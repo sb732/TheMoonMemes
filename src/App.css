@@ -1,11 +1,16 @@
-#mobileGTranslate > #gt_float_wrapper {
-  left: 40px !important;
-  bottom: 150px !important;
+.gt_float_switcher {
+  background-color: black !important;
+  color: white !important;
 }
-#mobileGTranslate .gt_float_switcher .gt-selected {
+
+.gt_float_switcher .gt-selected {
   background-color: black !important;
 }
 
-#mobileGTranslate .gt_float_switcher .gt-selected .gt-current-lang {
-  padding: 10px 0px !important;
+.gt_float_switcher .gt-selected .gt-current-lang {
+  color: white !important;
+}
+
+.gt_float_switcher .gt_options a {
+  color: white !important;
 }

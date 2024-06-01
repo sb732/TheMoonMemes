@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
@@ -42,11 +41,11 @@ function App() {
         "tr",
         "vi",
       ],
-      wrapper_selector: ".gtranslate_wrapper",
+      wrapper_selector: ".gtranslate_wrapper_desktop",
+      switcher_horizontal_position: "inline",
+      float_switcher_open_direction: "bottom",
     };
   }, []);
-
-  const matchUpMd = useMediaQuery({ query: "(min-width: 768px)" });
 
   const [showNav, setShowNav] = useState(false);
 
@@ -67,25 +66,12 @@ function App() {
         </BrowserRouter>
       </div>
 
-      {matchUpMd && (
-        <div className="gtranslate_wrapper" id="desktopGTranslate"></div>
-      )}
-      {!matchUpMd && (
-        <div
-          className="gtranslate_wrapper"
-          style={
-            showNav
-              ? { opacity: "100" }
-              : { opacity: "0", pointerEvents: "none" }
-          }
-          id="mobileGTranslate"
-        ></div>
-      )}
       <Helmet>
         <script
           src="https://cdn.gtranslate.net/widgets/latest/float.js"
           defer
         ></script>
+
         <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/collapse.js"></script>
       </Helmet>
     </>
