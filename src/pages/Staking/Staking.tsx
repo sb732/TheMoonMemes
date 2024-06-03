@@ -1,6 +1,6 @@
 const Staking = () => {
   return (
-    <div className="flex justify-center mx-5">
+    <div className="flex justify-center mx-5 pt-5">
       <div className="text-white max-w-[1040px] flex flex-col gap-12">
         <div className="w-full md:w-2/3">
           <p className="text-5xl leading-[75px]">
@@ -24,7 +24,7 @@ const Staking = () => {
               <p>
                 0 <sup className="text-[8px]">$TMM</sup>
               </p>
-              <button className="border-white border-[1px] rounded-lg py-1 px-5">
+              <button className="border-[#FFC700] border-[1px] rounded-lg py-1 px-5">
                 Buy and Stake
               </button>
             </div>
@@ -61,7 +61,7 @@ const Staking = () => {
               <p>
                 0 <sup className="text-[8px]">$TMM</sup>
               </p>
-              <button className="border-white border-[1px] rounded-lg py-1 px-5">
+              <button className="border-[#FFC700] border-[1px] rounded-lg py-1 px-5">
                 Claim Rewards
               </button>
             </div>

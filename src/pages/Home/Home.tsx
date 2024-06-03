@@ -6,7 +6,7 @@ function Home() {
       <div className="relative">
         <img
           src="./assets/images/home.png"
-          className="w-auto lg:w-[calc(100vw-200px)] xl:w-[calc(100vw-100px)] lg:h-[calc(100vh-84px)] mt-[-12px] md:mt-[-40px]"
+          className="w-auto lg:w-[calc(100vw-200px)] xl:w-[calc(100vw-100px)] lg:h-[calc(100vh-103px)] mt-[-12px] lg:mt-[-40px]"
           alt=""
         />
 

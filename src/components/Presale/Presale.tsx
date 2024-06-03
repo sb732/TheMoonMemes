@@ -53,10 +53,7 @@ const Presale = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full justify-between">
-          <button className="bg-white rounded-md text-black text-sm min-w-[120px] h-[35px]">
-            Connect Wallet
-          </button>
+        <div className="flex w-full justify-center">
           <button className="bg-[#52BF85] rounded-md text-black text-sm min-w-[120px] h-[35px]">
             Buy Crypto
           </button>

@@ -3,10 +3,13 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import Layout from "./components/Layout/Layout";
+
 import Home from "./pages/Home/Home";
 import Staking from "./pages/Staking/Staking";
 import Privacy from "./pages/Privacy/Privacy";
 import Terms from "./pages/Terms/Terms";
+
+import { Web3ModalProvider } from "./provider/WalletProvider";
 
 import "./App.css";
 
@@ -50,7 +53,7 @@ function App() {
   const [showNav, setShowNav] = useState(false);
 
   return (
-    <>
+    <Web3ModalProvider>
       <div className="App">
         <BrowserRouter>
           <Routes>
@@ -74,7 +77,7 @@ function App() {
 
         <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/collapse.js"></script>
       </Helmet>
-    </>
+    </Web3ModalProvider>
   );
 }
 
