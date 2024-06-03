@@ -16,14 +16,14 @@ const Presale = () => {
         STAGE 1
       </h1>
       <div className="flex flex-col gap-4 items-center">
-        <p>PRESALE</p>
+        <p>Presale coming Soon</p>
         <p>STAGE 1 ENDS IN</p>
         <TimeLeftPanel />
         <p className="bg-white rounded-lg text-black text-xs px-6 py-1">
           0 $TMM / 100,000,000,000 $TMM
         </p>
         <p className="text-xs">Buy before price increases</p>
-        <p className="text-[10px]">LISTING PRICE $0.00185</p>
+        <p className="text-[10px]">LISTING PRICE $0.000</p>
         <div className="flex gap-1">
           <CoinButtons coin="ETH" />
           <CoinButtons coin="BNB" />

@@ -23,7 +23,8 @@ function Home() {
           >
             <p className="text-4xl text-center uppercase">
               Memes on the Rise,
-              <br className="block md:hidden" /> to the Moon We Fly
+              <br />
+              to the Moon We Fly
             </p>
             <img src="./assets/images/the-moon-memes-title.png" alt="" />
             <p className="text-2xl text-center uppercase">

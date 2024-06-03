@@ -5,10 +5,10 @@ const TimeLeftPanel = () => {
       <div className="mr-2">
         <div className="flex mb-1">
           <p className="bg-white mr-[2px] w-[18px] h-[27px] rounded-md text-xl text-black">
-            1
+            0
           </p>
           <p className="bg-white w-[18px] h-[27px] rounded-md text-xl text-black">
-            5
+            0
           </p>
         </div>
         <p className="text-[7px]">DAY</p>
@@ -16,7 +16,7 @@ const TimeLeftPanel = () => {
       <div className="mr-2">
         <div className="flex mb-1">
           <p className="bg-white mr-[2px] w-[18px] h-[27px] rounded-md text-xl text-black">
-            1
+            0
           </p>
           <p className="bg-white w-[18px] h-[27px] rounded-md text-xl text-black">
             0
@@ -27,10 +27,10 @@ const TimeLeftPanel = () => {
       <div className="mr-2">
         <div className="flex mb-1">
           <p className="bg-white mr-[2px] w-[18px] h-[27px] rounded-md text-xl text-black">
-            4
+            0
           </p>
           <p className="bg-white w-[18px] h-[27px] rounded-md text-xl text-black">
-            2
+            0
           </p>
         </div>
         <p className="text-[7px]">MINUTES</p>
