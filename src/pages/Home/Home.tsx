@@ -18,7 +18,7 @@ function Home() {
       <div className="flex flex-col items-center justify-center mx-2 lg:mx-0">
         <div className="flex flex-col items-center justify-center max-w-[1040px] text-white">
           <section
-            className="flex flex-col gap-5 items-center justify-center max-w-[732px] pt-[72px] md:pt-[124px]"
+            className="flex flex-col gap-5 items-center justify-center max-w-[732px] pt-[98px] md:pt-[150px]"
             id="home"
           >
             <p className="text-4xl text-center uppercase">
@@ -51,7 +51,7 @@ function Home() {
           </section>
 
           <section
-            className="flex flex-col items-center gap-5 pt-[72px] md:pt-[124px]"
+            className="flex flex-col items-center gap-5 pt-[98px] md:pt-[150px]"
             id="about"
           >
             <p
@@ -98,7 +98,7 @@ function Home() {
             </div>
           </section>
 
-          <section className="flex flex-col items-center gap-5 mt-[-56px] pt-[72px] md:pt-[124px]">
+          <section className="flex flex-col items-center gap-5 mt-[-56px] pt-[98px] md:pt-[150px]">
             <p
               className="text-4xl md:text-6xl text-center py-5 md:py-10 md:px-20"
               style={{
@@ -146,7 +146,7 @@ function Home() {
           </section>
 
           <section
-            className="flex flex-col items-center gap-5 pt-[72px] md:pt-[124px]"
+            className="flex flex-col items-center gap-5 pt-[98px] md:pt-[150px]"
             id="mission"
           >
             <p
@@ -255,7 +255,7 @@ function Home() {
             </div>
           </section>
 
-          <section className="pt-[72px] md:pt-[124px]" id="staking">
+          <section className="pt-[98px] md:pt-[150px]" id="staking">
             <div className="border-[3px] border-white rounded-2xl px-2 md:px-10 py-1 md:py-5 flex flex-col items-center gap-5 md:gap-10">
               <p className="uppercase text-3xl md:text-6xl">
                 Staking and Rewards
@@ -303,7 +303,7 @@ function Home() {
 
           <section
             id="moonomics"
-            className="flex flex-col gap-2 md:gap-5 items-center justify-center pt-[72px] md:pt-[124px]"
+            className="flex flex-col gap-2 md:gap-5 items-center justify-center pt-[98px] md:pt-[150px]"
           >
             <p
               className="w-full md:w-auto uppercase text-4xl md:text-6xl text-center mb-5 py-2 md:py-5 md:px-20"
@@ -369,7 +369,7 @@ function Home() {
           </section>
 
           <section
-            className="text-xl w-full flex items-stretch pt-[72px] md:pt-[124px]"
+            className="text-xl w-full flex items-stretch pt-[98px] md:pt-[150px]"
             id="roadmap"
           >
             <div
@@ -489,7 +489,7 @@ function Home() {
           </section>
 
           <section
-            className="flex flex-col items-center gap-5 md:gap-10 pt-[72px] md:pt-[124px]"
+            className="flex flex-col items-center gap-5 md:gap-10 pt-[98px] md:pt-[150px]"
             id="buy"
           >
             <p
@@ -546,7 +546,7 @@ function Home() {
           </section>
 
           <section
-            className="flex flex-col gap-10 pt-[72px] md:pt-[124px]"
+            className="flex flex-col gap-10 pt-[98px] md:pt-[150px]"
             id="FAQs"
           >
             <p className="text-center text-4xl rounded-lg border-4 py-5">

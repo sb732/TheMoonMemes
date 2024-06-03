@@ -14,7 +14,7 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
 
   return (
     <section className="relative flex flex-col text-white w-full bg-black">
-      <div className="z-[10000] fixed bg-black w-full text-2xl">
+      <div className="z-[10000] fixed bg-black w-full text-2xl top-0">
         <MediaQuery minWidth={1024}>
           <div className="hidden lg:flex justify-between items-center py-4 px-10">
             <div className="w-full flex justify-between items-center">

@@ -108,7 +108,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="absolute bottom-5 mt-5 md:mt-10 flex justify-center">
-            <p className="text-xs">
+            <p className="text-xs text-center">
               Copyrights 2024. ThMoonMemes Token. All rights reserved.
             </p>
           </div>
