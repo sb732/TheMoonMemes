@@ -16,7 +16,7 @@ const Presale = () => {
         STAGE 1
       </h1>
       <div className="flex flex-col gap-4 items-center">
-        <p>Presale coming Soon</p>
+        <p className="text-2xl animate-blinker">Presale coming Soon</p>
         <p>STAGE 1 ENDS IN</p>
         <TimeLeftPanel />
         <p className="bg-white rounded-lg text-black text-xs px-6 py-1">
@@ -55,12 +55,12 @@ const Presale = () => {
         </div>
         <div className="flex w-full justify-center">
           <button className="bg-[#52BF85] rounded-md text-black text-sm min-w-[120px] h-[35px]">
-            Buy Crypto
+            Buy Now
           </button>
         </div>
         <div className="flex w-full items-center mt-10">
           <div className="min-w-[90px] border-[1px] border-white h-0 ml-[-15px]"></div>
-          <p className="w-full text-xs text-center">3386768 $TTM sold</p>
+          <p className="w-full text-xs text-center">0 $TTM sold</p>
           <div className="min-w-[90px] border-[1px] border-white h-0 mr-[-15px]"></div>
         </div>
       </div>
