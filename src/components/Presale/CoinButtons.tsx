@@ -1,32 +1,29 @@
+import { CoinData } from "@/utils/type";
+
 interface coinButtonsPropsType {
-  coin: string;
+  coin: CoinData;
+  selectedCoin: CoinData;
+  setSelectedCoin: (coin: CoinData) => void;
 }
 
-const CoinButtons = ({ coin }: coinButtonsPropsType) => {
+const CoinButtons = ({
+  coin,
+  selectedCoin,
+  setSelectedCoin,
+}: coinButtonsPropsType) => {
   return (
-    <p className="border-[1px] border-white rounded-md flex py-2 px-4 text-xs">
-      {coin === "ETH" && (
-        <img
-          src="/assets/images/coins/ethereum.png"
-          className="w-4 h-4 mr-1"
-          alt=""
-        />
-      )}
-      {coin === "BNB" && (
-        <img
-          src="/assets/images/coins/bnb 2.png"
-          className="w-4 h-4 mr-1"
-          alt=""
-        />
-      )}
-      {coin === "USDT" && (
-        <img
-          src="/assets/images/coins/usdt.png"
-          className="w-4 h-4 mr-1"
-          alt=""
-        />
-      )}
-      {coin}
+    <p
+      className={`border-[1px] rounded-md flex py-2 px-4 text-xs cursor-pointer border-white ${
+        coin === selectedCoin ? "bg-green-600" : ""
+      }`}
+      onClick={() => setSelectedCoin(coin)}
+    >
+      <img
+        src={`/assets/images/coins/${coin.symbol}`}
+        className="w-4 h-4 mr-1"
+        alt=""
+      />
+      {coin.name}
     </p>
   );
 };

@@ -16,7 +16,7 @@ const projectId = "c12e0b5dc354ac1b746cec01d47b5b6a";
 const metadata = {
   name: "Themememoon",
   description: "The meme moon space",
-  url: "http://localhost:3001", // origin must match your domain & subdomain
+  url: "http://localhost:5173", // origin must match your domain & subdomain
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 

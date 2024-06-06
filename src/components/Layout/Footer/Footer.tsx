@@ -94,7 +94,7 @@ const Footer = () => {
           </div>
           <div className="w-full flex flex-col gap-5 md:gap-10 md:flex-row justify-around">
             <p className="text-xs">
-              Risk Warning: cryptocurrency may be unregulated in your
+              DISCLAIMER: cryptocurrency may be unregulated in your
               jurisdiction.
               <br className="hidden md:block" />
               The value of cryptocurrency may go down as well as up. Profits may
@@ -103,13 +103,16 @@ const Footer = () => {
               subject to capital gains or other taxes applicable in your
               jurisdiction.
             </p>
-            <p className="text-center md:text-inherit">
-              Contact Us: theMoon@memes.com
-            </p>
+            <a
+              href="mailto:cs@themoonmemes.space"
+              className="text-center md:text-inherit"
+            >
+              Contact Us: cs@themoonmemes.space
+            </a>
           </div>
           <div className="absolute bottom-5 mt-5 md:mt-10 flex justify-center">
             <p className="text-xs text-center">
-              Copyrights 2024. ThMoonMemes Token. All rights reserved.
+              Copyrights 2024. The Moon Memes Token. All rights reserved.
             </p>
           </div>
         </div>

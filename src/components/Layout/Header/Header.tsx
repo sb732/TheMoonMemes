@@ -110,7 +110,7 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
                 src="./assets/icons/hamburger.svg"
                 id="navToggleIcon"
                 onClick={() => handleShowNav()}
-                className="w-10 h-10 mr-5"
+                className="w-10 h-10 mr-5 cursor-pointer"
                 alt=""
               />
               <a href="/">
