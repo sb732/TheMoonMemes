@@ -165,18 +165,6 @@ const abi = [
         type: "uint256",
       },
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "bonusTokens",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "totalTokens",
-        type: "uint256",
-      },
-      {
         indexed: true,
         internalType: "address",
         name: "purchaseToken",
@@ -252,16 +240,6 @@ const abi = [
     type: "function",
   },
   {
-    inputs: [
-      { internalType: "uint256", name: "", type: "uint256" },
-      { internalType: "uint256", name: "", type: "uint256" },
-    ],
-    name: "bonuses",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [{ internalType: "uint256", name: "amount", type: "uint256" }],
     name: "buyWithEth",
     outputs: [{ internalType: "bool", name: "", type: "bool" }],
@@ -276,16 +254,6 @@ const abi = [
     type: "function",
   },
   {
-    inputs: [
-      { internalType: "uint256", name: "_amount", type: "uint256" },
-      { internalType: "uint256", name: "_usdAmount", type: "uint256" },
-    ],
-    name: "calculateBonus",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [{ internalType: "uint256", name: "_amount", type: "uint256" }],
     name: "calculatePrice",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
@@ -295,15 +263,6 @@ const abi = [
   {
     inputs: [{ internalType: "address", name: "_address", type: "address" }],
     name: "changeAggregatorInterface",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "uint256[][2]", name: "_bonuses", type: "uint256[][2]" },
-    ],
-    name: "changeBonuses",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -391,13 +350,6 @@ const abi = [
     inputs: [],
     name: "endTime",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getBonuses",
-    outputs: [{ internalType: "uint256[][2]", name: "", type: "uint256[][2]" }],
     stateMutability: "view",
     type: "function",
   },
@@ -525,13 +477,6 @@ const abi = [
   },
   {
     inputs: [],
-    name: "totalTokensSoldWithBonus",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "totalUsdRaised",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
@@ -554,13 +499,6 @@ const abi = [
   {
     inputs: [{ internalType: "address", name: "", type: "address" }],
     name: "userDeposits",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
-    name: "userStage",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",

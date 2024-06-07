@@ -1,14 +1,18 @@
-import { readContract } from "@wagmi/core";
+import {
+  readContract,
+  simulateContract,
+  writeContract,
+} from "@wagmi/core";
 import { sepolia, bscTestnet } from "wagmi/chains";
-// import { Address } from "viem";
+import { parseUnits } from "viem";
 
-import { config } from "./config";
+import { config } from "@/provider/config";
 
 import ETHPresaleABI from "../abis/ETHPresale";
 import BSCPresaleABI from "../abis/BSCPresale";
 
 const ETHPresaleContract = "0x129185387548Fa43344BA70B353CeC3485b5Ca34";
-const BSCPresaleContract = "0x588c6eF92983dD38a30ceD7aA0De31E320e1A365";
+const BSCPresaleContract = "0xab90D9D8Fd41876086B2D317Fd42D5E1C81cb750";
 
 export const getPresaleData = async () => {
   const currentStage = await readContract(config, {
@@ -90,13 +94,6 @@ export const getCalcBoardData = async () => {
     chainId: bscTestnet.id,
   });
 
-  const bonusData = await readContract(config, {
-    address: BSCPresaleContract,
-    abi: BSCPresaleABI,
-    functionName: "getBonuses",
-    chainId: bscTestnet.id,
-  });
-
   const minAmt = await readContract(config, {
     address: BSCPresaleContract,
     abi: BSCPresaleABI,
@@ -115,8 +112,87 @@ export const getCalcBoardData = async () => {
     ethPrice: ethPrice as number,
     bnbPrice: bnbPrice as number,
     currentPrice: currentPrice as number,
-    bonusData: bonusData as object,
     // balance: usdtBalance as number,
     minAmt: minAmt as number,
   };
 };
+
+export const buyWithETH = async (eth: string, amount: number) => {
+  try {
+    const { request } = await simulateContract(config, {
+      address: ETHPresaleContract,
+      abi: ETHPresaleABI,
+      functionName: "buyWithEth",
+      args: [amount],
+      value: parseUnits(eth, 18),
+    });
+
+    const hash = await writeContract(config, request);
+    console.log(hash);
+  } catch (error) {
+    console.log("Error: >>>>>>>>>>>>>>>", error);
+    return false;
+  }
+};
+
+export const buyWithBNB = async (eth: string, amount: number, connector: any) => {
+  try {
+    const { request } = await simulateContract(config, {
+      address: BSCPresaleContract,
+      abi: BSCPresaleABI,
+      functionName: "buyWithEth",
+      args: [amount],
+      value: parseUnits(eth, 18),
+      chainId: bscTestnet.id,
+      connector,
+    });
+    console.log(request);
+
+    const hash = await writeContract(config, request);
+    console.log(hash);
+  } catch (error) {
+    console.log("Error: >>>>>>>>>>>>>>>", error);
+    return false;
+  }
+};
+
+// export const buyWithUSDT = async (
+//   usdt: string,
+//   amount: number,
+//   address: Address,
+//   price: number
+// ) => {
+//   try {
+//     const allowance = await readContract({
+//       address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+//       abi: UsdtABI,
+//       functionName: "allowance",
+//       args: [address, presaleContract],
+//     });
+
+//     if (Number(allowance) / 10 ** 6 < Number(usdt)) {
+//       const approveConfig = await prepareWriteContract({
+//         address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+//         abi: UsdtABI,
+//         functionName: "approve",
+//         args: [presaleContract, parseUnits("1000000", 6)],
+//       });
+
+//       await writeContract(approveConfig);
+
+//       await new Promise((r) => setTimeout(r, 2000));
+//     }
+
+//     const config = await prepareWriteContract({
+//       address: presaleContract,
+//       abi: PresaleABI,
+//       functionName: "buyWithUSDT",
+//       args: [amount],
+//     });
+
+//     const { hash } = await writeContract(config);
+//     console.log(hash);
+//   } catch (error) {
+//     console.log("Error: >>>>>>>>>>>>>>>", error);
+//   }
+// };

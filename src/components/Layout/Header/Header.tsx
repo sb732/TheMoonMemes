@@ -1,6 +1,9 @@
 import MediaQuery from "react-responsive";
 
-import ConnectButton from "../../../provider/ConnectButton";
+import { useAccount } from "wagmi";
+
+import { useWeb3Modal } from "@web3modal/wagmi/react";
+import ConnectButton from "@/provider/ConnectButton";
 
 interface HeaderProps {
   showNav: boolean;
@@ -8,6 +11,9 @@ interface HeaderProps {
 }
 
 const Header = ({ showNav, setShowNav }: HeaderProps) => {
+  const { open } = useWeb3Modal();
+  const { address } = useAccount();
+
   const handleShowNav = () => {
     setShowNav(!showNav);
   };
@@ -76,22 +82,37 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
                 <p className="hover:text-[#528F85]">HOW TO BUY</p>
               </a>
 
-              <ConnectButton />
+              {!address ? (
+                <a href="/#buynow">
+                  <button
+                    className="border-[1px] border-[#FFC700] min-w-[200px] min-h-[60px] rounded-2xl"
+                    onClick={() => open()}
+                  >
+                    BUY NOW
+                  </button>
+                </a>
+              ) : (
+                <ConnectButton />
+              )}
 
               <div className="w-[120px]"></div>
             </div>
 
             <div className="flex gap-5 items-center ml-[50px]">
-              <img
-                src="./assets/icons/Telegram App.svg"
-                className="w-14 h-14 p-2 cursor-pointer border-[1px] rounded-full border-[#FFC700]"
-                alt=""
-              />
-              <img
-                src="./assets/icons/Twitter-X-Icon.png"
-                className="w-14 h-14 cursor-pointer border-[1px] rounded-full border-[#FFC700]"
-                alt=""
-              />
+              <a href="https://t.me/TheMoonMemesPortal" target="_blank">
+                <img
+                  src="./assets/icons/Telegram App.svg"
+                  className="min-w-14 h-14 p-2 border-[1px] rounded-full border-[#FFC700]"
+                  alt=""
+                />
+              </a>
+              <a href="https://x.com/The_Moon_Memes" target="_blank">
+                <img
+                  src="./assets/icons/Twitter-X-Icon.png"
+                  className="min-w-14 h-14 border-[1px] rounded-full border-[#FFC700]"
+                  alt=""
+                />
+              </a>
             </div>
 
             <div className="absolute top-10 right-[200px]">
@@ -121,11 +142,20 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
                 />
               </a>
             </div>
-            <ConnectButton />
+            <a href="/#buynow">
+              <button
+                className="border-[1px] border-[#FFC700] min-w-[160px] min-h-[40px] rounded-2xl"
+                onClick={() => {
+                  open();
+                }}
+              >
+                BUY NOW
+              </button>
+            </a>
           </div>
         </MediaQuery>
 
-        <p className="bg-[#FFC700] text-center w-full text-xs text-black">
+        <p className="bg-[#FFC700] text-center w-full text-base text-black">
           Buy & Stake $TMM for 48% Annual Rewards!
         </p>
       </div>
@@ -217,18 +247,20 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
         </div>
 
         <div className="flex gap-5 items-center">
-          <img
-            src="./assets/icons/Telegram App.svg"
-            className="w-14 h-14 p-2 cursor-pointer border-[1px] rounded-full border-[#FFC700]"
-            onClick={() => handleShowNav()}
-            alt=""
-          />
-          <img
-            src="./assets/icons/Twitter-X-Icon.png"
-            className="w-14 h-14 p-2 cursor-pointer border-[1px] rounded-full border-[#FFC700]"
-            onClick={() => handleShowNav()}
-            alt=""
-          />
+          <a href="https://t.me/TheMoonMemesPortal" target="_blank">
+            <img
+              src="./assets/icons/Telegram App.svg"
+              className="w-14 h-14 p-2 border-[1px] rounded-full border-[#FFC700]"
+              alt=""
+            />
+          </a>
+          <a href="https://x.com/The_Moon_Memes" target="_blank">
+            <img
+              src="./assets/icons/Twitter-X-Icon.png"
+              className="w-14 h-14 p-2 border-[1px] rounded-full border-[#FFC700]"
+              alt=""
+            />
+          </a>
         </div>
       </div>
     </section>

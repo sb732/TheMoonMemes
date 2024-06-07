@@ -4,7 +4,7 @@ import { useWeb3ModalEvents } from "@web3modal/wagmi/react";
 export default function ConnectButton() {
   const events = useWeb3ModalEvents();
 
-  useEffect(() => {
+  const updateStyle = () => {
     const button = document
       .querySelector("w3m-button")
       ?.shadowRoot?.querySelector("w3m-connect-button")
@@ -67,6 +67,19 @@ export default function ConnectButton() {
         }
       }
     }
+  };
+
+  useEffect(() => {
+    updateStyle();
+    setTimeout(() => {
+      updateStyle();
+    }, 100);
+    setTimeout(() => {
+      updateStyle();
+    }, 500);
+    setTimeout(() => {
+      updateStyle();
+    }, 1000);
   }, [events]);
 
   return <w3m-button />;

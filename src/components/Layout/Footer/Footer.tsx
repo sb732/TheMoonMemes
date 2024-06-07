@@ -23,7 +23,7 @@ const Footer = () => {
             backgroundImage: "url('./assets/images/the-moon-memes-4.png')",
             backgroundSize: "cover",
           }}
-          className="pt-[200px] md:pt-[600px] z-[10] px-2 md:px-20 flex flex-col items-center gap-5 md:gap-10 lg:min-h-[1070px] pb-20 w-full"
+          className="pt-[200px] md:pt-[600px] z-[10] px-2 md:px-20 flex flex-col items-center gap-5 md:gap-10 lg:min-h-[1070px] w-full"
         >
           <div className="w-full flex flex-col gap-5 md:gap-10 md:flex-row justify-around">
             <div>
@@ -34,35 +34,7 @@ const Footer = () => {
               />
             </div>
             <div className="flex justify-around underline gap-5 md:gap-10">
-              <div className="hidden md:block">
-                <a href="/#staking">
-                  <p>Home</p>
-                </a>
-                <a href="/#about">
-                  <p>About</p>
-                </a>
-                <a href="/#mission">
-                  <p>Mission & Vision</p>
-                </a>
-                <a href="/#moonomics">
-                  <p>Moonomics</p>
-                </a>
-                <a href="/#roadmap">
-                  <p>Roadmap</p>
-                </a>
-                <a href="/#buy">
-                  <p>How to buy</p>
-                </a>
-              </div>
-              <div className="hidden md:block">
-                <a href="/privacy">
-                  <p>Privacy & Policy</p>
-                </a>
-                <a href="/terms">
-                  <p>Terms & Conditions</p>
-                </a>
-              </div>
-              <div className="block md:hidden">
+              <div>
                 <a href="/#staking">
                   <p>Home</p>
                 </a>
@@ -76,7 +48,7 @@ const Footer = () => {
                   <p>Moonomics</p>
                 </a>
               </div>
-              <div className="block md:hidden">
+              <div>
                 <a href="/#roadmap">
                   <p>Roadmap</p>
                 </a>
@@ -92,8 +64,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="w-full flex flex-col gap-5 md:gap-10 md:flex-row justify-around">
-            <p className="text-xs">
+          <div className="w-full flex flex-col gap-5 md:gap-10 md:flex-row justify-around px-2">
+            <p className="hidden md:block text-xs">
               DISCLAIMER: cryptocurrency may be unregulated in your
               jurisdiction.
               <br className="hidden md:block" />
@@ -103,16 +75,30 @@ const Footer = () => {
               subject to capital gains or other taxes applicable in your
               jurisdiction.
             </p>
-            <a
-              href="mailto:cs@themoonmemes.space"
-              className="text-center md:text-inherit"
-            >
-              Contact Us: cs@themoonmemes.space
-            </a>
+            <p className="text-xs">
+              The Moon Memes Office <br />
+              Tower Financial Center, Cl, Calle 50 Y <br />
+              Panamá, Provincia de Panamá, Panama <br />
+              <a href="mailto:cs@themoonmemes.space" className="underline">
+                CS@themoonmemes.space
+              </a>
+            </p>
           </div>
-          <div className="absolute bottom-5 mt-5 md:mt-10 flex justify-center">
-            <p className="text-xs text-center">
+          <div className="w-full md:w-auto px-2">
+            <p className="text-xs md:my-10">
               Copyrights 2024. The Moon Memes Token. All rights reserved.
+            </p>
+          </div>
+          <div className="block md:hidden w-full mb-5 px-2">
+            <p className="text-xs">
+              DISCLAIMER: cryptocurrency may be unregulated in your
+              jurisdiction.
+              <br className="hidden md:block" />
+              The value of cryptocurrency may go down as well as up. Profits may
+              be
+              <br className="hidden md:block" />
+              subject to capital gains or other taxes applicable in your
+              jurisdiction.
             </p>
           </div>
         </div>

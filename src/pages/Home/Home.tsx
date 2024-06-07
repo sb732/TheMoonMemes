@@ -6,11 +6,14 @@ function Home() {
       <div className="relative">
         <img
           src="./assets/images/home.png"
-          className="w-auto lg:w-[calc(100vw-200px)] xl:w-[calc(100vw-100px)] lg:h-[calc(100vh-103px)] mt-[-12px] lg:mt-[-40px]"
+          className="w-full lg:h-[calc(100vh-111px)] mt-[-12px] lg:mt-[-40px]"
           alt=""
         />
 
-        <div className="flex justify-center mt-10 lg:absolute md:top-[100px] md:right-[100px]">
+        <div
+          className="flex justify-center pt-[116px] lg:pt-[168px] lg:absolute top-[-70px] md:right-[30px]"
+          id="buynow"
+        >
           <Presale />
         </div>
       </div>
@@ -18,7 +21,7 @@ function Home() {
       <div className="flex flex-col items-center justify-center mx-2 lg:mx-0">
         <div className="flex flex-col items-center justify-center max-w-[1040px] text-white">
           <section
-            className="flex flex-col gap-5 items-center justify-center max-w-[732px] pt-[98px] md:pt-[150px]"
+            className="flex flex-col gap-5 items-center justify-center max-w-[732px] pt-[106px] md:pt-[158px]"
             id="home"
           >
             <p className="text-4xl text-center uppercase">
@@ -52,7 +55,7 @@ function Home() {
           </section>
 
           <section
-            className="flex flex-col items-center gap-5 pt-[98px] md:pt-[150px]"
+            className="flex flex-col items-center gap-5 pt-[106px] md:pt-[158px]"
             id="about"
           >
             <p
@@ -99,7 +102,7 @@ function Home() {
             </div>
           </section>
 
-          <section className="flex flex-col items-center gap-5 mt-[-56px] pt-[98px] md:pt-[150px]">
+          <section className="flex flex-col items-center gap-5 mt-[-56px] pt-[106px] md:pt-[158px]">
             <p
               className="text-4xl md:text-6xl text-center py-5 md:py-10 md:px-20"
               style={{
@@ -147,7 +150,7 @@ function Home() {
           </section>
 
           <section
-            className="flex flex-col items-center gap-5 pt-[98px] md:pt-[150px]"
+            className="flex flex-col items-center gap-5 pt-[106px] md:pt-[158px]"
             id="mission"
           >
             <p
@@ -256,7 +259,7 @@ function Home() {
             </div>
           </section>
 
-          <section className="pt-[98px] md:pt-[150px]" id="staking">
+          <section className="pt-[106px] md:pt-[158px]" id="staking">
             <div className="border-[3px] border-white rounded-2xl px-2 md:px-10 py-1 md:py-5 flex flex-col items-center gap-5 md:gap-10">
               <p className="uppercase text-3xl md:text-6xl">
                 Staking and Rewards
@@ -304,7 +307,7 @@ function Home() {
 
           <section
             id="moonomics"
-            className="flex flex-col gap-2 md:gap-5 items-center justify-center pt-[98px] md:pt-[150px]"
+            className="flex flex-col gap-2 md:gap-5 items-center justify-center pt-[106px] md:pt-[158px]"
           >
             <p
               className="w-full md:w-auto uppercase text-4xl md:text-6xl text-center mb-5 py-2 md:py-5 md:px-20"
@@ -370,7 +373,7 @@ function Home() {
           </section>
 
           <section
-            className="text-xl w-full flex items-stretch pt-[98px] md:pt-[150px]"
+            className="text-xl w-full flex items-stretch pt-[106px] md:pt-[158px]"
             id="roadmap"
           >
             <div
@@ -490,7 +493,7 @@ function Home() {
           </section>
 
           <section
-            className="flex flex-col items-center gap-5 md:gap-10 pt-[98px] md:pt-[150px]"
+            className="flex flex-col items-center gap-5 md:gap-10 pt-[106px] md:pt-[158px]"
             id="buy"
           >
             <p
@@ -506,48 +509,62 @@ function Home() {
             <div className="flex flex-col gap-5 md:gap-10">
               <div className="flex flex-col md:flex-row items-center bg-white text-black rounded-lg px-5 py-1">
                 <p className="text-2xl md:text-3xl min-w-[300px]">
-                  1. Get a Wallet:
+                  1. Connect Wallet &<br className="hidden md:block" />
+                  &nbsp;<span className="hidden md:inline-block">&nbsp;&nbsp;</span>
+                  Select Network:
                 </p>
                 <p>
-                  Start by setting up a secure Ethereum (ETH) wallet, like
-                  MetaMask or Trust Wallet, and ensure it's funded with ETH.
+                  To purchase $TMM Tokens, you need to connect your wallet.
+                  Select one of the many supported wallets to connect to the
+                  $TTM purchase widget (at the top of this web page).
                 </p>
               </div>
               <div className="flex flex-col md:flex-row items-center bg-white text-black rounded-lg px-5 py-1">
                 <p className="text-2xl md:text-3xl min-w-[300px]">
-                  2. Visit a Exchange:​
+                  2. Buy $TMM
+                  <br className="hidden md:block" />
+                  &nbsp;<span className="hidden md:inline-block">&nbsp;&nbsp;</span>
+                  Tokens:
                 </p>
                 <p>
-                  On the exchange, Go to a reputable cryptocurrency exchange
-                  that lists TheMoonMemes token, such as Binance or
-                  Coinbase.locate TheMoonMemes token and place a buy order.
-                  Specify the amount of ETH you want to spend.  
+                  Enter the amount of ETH, BNB, or USDT to purchase $TMM tokens
+                  using your preferred cryptocurrency and confirm the
+                  transaction in your wallet.
                 </p>
               </div>
               <div className="flex flex-col md:flex-row items-center bg-white text-black rounded-lg px-5 py-1">
                 <p className="text-2xl md:text-3xl min-w-[300px]">
-                  3. Place an Order:​
+                  3. Claim $TMM
+                  <br className="hidden md:block" />
+                  &nbsp;<span className="hidden md:inline-block">&nbsp;&nbsp;</span>
+                  Tokens:
                 </p>
                 <p>
-                  On the exchange, locate TheMoonMemes token and place a buy
-                  order. Specify the amount of ETH you want to spend.
+                  You will be able to claim your $TTM tokens using the same
+                  wallet in the pre-sale widget (at the top of this web page)
+                  once the presale is complete.
                 </p>
               </div>
               <div className="flex flex-col md:flex-row items-center bg-white text-black rounded-lg px-5 py-1">
                 <p className="text-2xl md:text-3xl min-w-[300px]">
-                  4. Confirm :​
+                  4. Staking $TMM to
+                  <br className="hidden md:block" />
+                  &nbsp;<span className="hidden md:inline-block">&nbsp;&nbsp;</span>
+                  Earn Meme Coin:
                 </p>
                 <p>
-                  Once your order is filled, your TheMoonMemes tokens will be in
-                  your exchange wallet. For added security, consider
-                  transferring them to your private Ethereum wallet.
+                  Once you successfully purchased tokens, you can also use them
+                  early to delegate your $TMM Tokens to a staking pool. Click
+                  'Staking' in the menu and start your journey into the world of
+                  The Moon Memes staking with High APY for your investment
+                  goals.
                 </p>
               </div>
             </div>
           </section>
 
           <section
-            className="flex flex-col gap-10 pt-[98px] md:pt-[150px]"
+            className="flex flex-col gap-10 pt-[106px] md:pt-[158px]"
             id="FAQs"
           >
             <p className="text-center text-4xl rounded-lg border-4 py-5">
@@ -560,7 +577,7 @@ function Home() {
                     className="relative flex items-center justify-between w-full p-4 font-semibold text-left transition-all ease-in border-b border-solid cursor-pointer border-slate-100 rounded-t-1 group"
                     data-collapse-target="animated-collapse-1"
                   >
-                    <span>What is TheMoonMemes token?</span>
+                    <span>What is TheMoonMemes?</span>
                     <img
                       src="./assets/images/down-button.png"
                       className="group-open:rotate-180 transition-transform w-[30px] md:w-[60px]"
@@ -573,8 +590,11 @@ function Home() {
                   className="h-0 overflow-hidden transition-all duration-300 ease-in-out"
                 >
                   <div className="p-4 leading-normal text-blue-gray-500/80">
-                    TheMoonMemes token is a cryptocurrency built on the Ethereum
-                    network, often associated with meme culture.
+                    TheMoonMemes is an ERC-20 Token built on the Ethereum
+                    network, often associated with meme culture. TheMoonMemes
+                    ecosystem is designed to support and nurture a thriving
+                    community of meme creators, enthusiasts, and crypto
+                    aficionados.
                   </div>
                 </div>
               </div>
@@ -585,7 +605,7 @@ function Home() {
                     className="relative flex items-center justify-between w-full p-4 font-semibold text-left transition-all ease-in border-b border-solid cursor-pointer border-slate-100 rounded-t-1 group"
                     data-collapse-target="animated-collapse-2"
                   >
-                    <span>How can I buy TheMoonMemes token?</span>
+                    <span>When is the TheMoonMemes $TMM Pre-sale?</span>
                     <img
                       src="./assets/images/down-button.png"
                       className="group-open:rotate-180 transition-transform w-[30px] md:w-[60px]"
@@ -598,8 +618,12 @@ function Home() {
                   className="h-0 overflow-hidden transition-all duration-300 ease-in-out"
                 >
                   <div className="p-4 leading-normal text-blue-gray-500/80">
-                    Buy TheMoonMemes token by using Ethereum (ETH) on a
-                    supported cryptocurrency exchange.
+                    Coming soon. TheMoonMemes pre-sale will available in the
+                    $TTM purchase widget (at the top of this web page). The
+                    selling price increases with each pre-sale stage, so the
+                    best time to buy is now. Everyone will be able to purchase
+                    TheMoonMemes $TMM Token at a much cheaper price compared to
+                    the launch price.
                   </div>
                 </div>
               </div>
@@ -610,7 +634,7 @@ function Home() {
                     className="relative flex items-center justify-between w-full p-4 font-semibold text-left transition-all ease-in border-b border-solid cursor-pointer border-slate-100 rounded-t-1 group"
                     data-collapse-target="animated-collapse-3"
                   >
-                    <span>Is TheMoonMemes token a good investment?</span>
+                    <span>How does TheMoonMemes $TMM staking work?</span>
                     <img
                       src="./assets/images/down-button.png"
                       className="group-open:rotate-180 transition-transform w-[30px] md:w-[60px]"
@@ -623,8 +647,12 @@ function Home() {
                   className="h-0 overflow-hidden transition-all duration-300 ease-in-out"
                 >
                   <div className="p-4 leading-normal text-blue-gray-500/80">
-                    Cryptocurrency investments are risky; consider your
-                    financial goals and do thorough research before investing.
+                    During the presale, you can stake your $TMM tokens to earn
+                    huge rewards! Once the presale ends and the claim goes live,
+                    you can immediately claim your rewards and withdraw your
+                    tokens 7 days after the claim goes live. You can also extend
+                    the locking period to earn reward multipliers, thus
+                    extending your $TMM token withdrawal date.
                   </div>
                 </div>
               </div>
@@ -635,7 +663,7 @@ function Home() {
                     className="relative flex items-center justify-between w-full p-4 font-semibold text-left transition-all ease-in border-b border-solid cursor-pointer border-slate-100 rounded-t-1 group"
                     data-collapse-target="animated-collapse-4"
                   >
-                    <span>Where can I store TheMoonMemes tokens?</span>
+                    <span>Is TheMoonMemes $TMM staking a good strategy?</span>
                     <img
                       src="./assets/images/down-button.png"
                       className="group-open:rotate-180 transition-transform w-[30px] md:w-[60px]"
@@ -648,8 +676,39 @@ function Home() {
                   className="h-0 overflow-hidden transition-all duration-300 ease-in-out"
                 >
                   <div className="p-4 leading-normal text-blue-gray-500/80">
-                    Store your tokens in a secure Ethereum wallet like MetaMask
-                    or Trust Wallet for added safety.
+                    Assuredly, staking $TMM Tokens can be a rewarding way to
+                    earn huge passive income while contributing to the security
+                    and decentralization of the blockchain network. Once you
+                    stake it, you can sit back and relax as your $TMM Tokens
+                    work to validate transactions on the blockchain. Keep an eye
+                    on your staking rewards and adjust your strategy as needed.
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative mb-3">
+                <h6 className="mb-0">
+                  <button
+                    className="relative flex items-center justify-between w-full p-4 font-semibold text-left transition-all ease-in border-b border-solid cursor-pointer border-slate-100 rounded-t-1 group"
+                    data-collapse-target="animated-collapse-5"
+                  >
+                    <span>How do I Contact the TheMoonMemes Team?</span>
+                    <img
+                      src="./assets/images/down-button.png"
+                      className="group-open:rotate-180 transition-transform w-[30px] md:w-[60px]"
+                      alt=""
+                    />
+                  </button>
+                </h6>
+                <div
+                  data-collapse="animated-collapse-5"
+                  className="h-0 overflow-hidden transition-all duration-300 ease-in-out"
+                >
+                  <div className="p-4 leading-normal text-blue-gray-500/80">
+                    To contact our support team, please email us at
+                    cs@themoonmemes.space Or, you can contact the TheMoonMemes
+                    team by joining the Telegram group, where a one of our staff
+                    will be more than happy to assist you.
                   </div>
                 </div>
               </div>

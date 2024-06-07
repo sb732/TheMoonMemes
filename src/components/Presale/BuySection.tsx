@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react";
 
 import { useAccount } from "wagmi";
+import { switchChain } from "@wagmi/core";
+import { sepolia, bscTestnet } from "@wagmi/core/chains";
+
+import { config } from "@/provider/config";
+
+import ConnectButton from "@/provider/ConnectButton";
 
 import CoinButtons from "./CoinButtons";
 
 import { CoinData, IData } from "../../utils/type";
 
-import { getCalcBoardData } from "../../web3/hooks/useAPI";
+import {
+  getCalcBoardData,
+  buyWithETH,
+  buyWithBNB,
+  // buyWithUSDT,
+} from "../../web3/hooks/useAPI";
 
 const coins: CoinData[] = [
   {
@@ -14,53 +25,28 @@ const coins: CoinData[] = [
     symbol: "ethereum.png",
   },
   {
-    name: "USDT(ERC20)",
-    symbol: "usdt.png",
-  },
-  {
-    name: "USDC(ERC20)",
-    symbol: "usdc.png",
-  },
-  {
     name: "BNB",
     symbol: "bnb 2.png",
   },
   {
-    name: "USDT(BEP20)",
+    name: "USDT",
     symbol: "usdt.png",
   },
 ];
 
-const BuySection = () => {
-  const { chainId } = useAccount();
+const BuySection = ({ disabled }: { disabled: boolean }) => {
+  const { chainId, connector, address } = useAccount();
 
   const [selectedCoin, setSelectedCoin] = useState(coins[0]);
-  const [selectedBonus, setSelectedBonus] = useState<number>(0);
   const [data, setData] = useState<IData>();
-  const [bonusArr_, setBonusArray] = useState<any>();
   const [inputAmount, setInputAmt] = useState(0);
-  const [, setInputUSDAmount] = useState(0);
-  const [, setOutputAmt] = useState(0);
-  const [, setRealAmount] = useState(0);
-  const [, setBonusAmount] = useState(0);
+  const [inputUSDAmount, setInputUSDAmount] = useState(0);
+  const [outputAmount, setOutputAmt] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
       const _data: IData = await getCalcBoardData();
       setData(_data);
-
-      const _bonusArr = [];
-      if (_data?.bonusData) {
-        for (let i = 0; i < _data.bonusData[0].length; i++) {
-          const obj = {
-            amount: _data.bonusData[0][i],
-            rate: _data.bonusData[1][i],
-          };
-          _bonusArr.push(obj);
-        }
-      }
-
-      setBonusArray(_bonusArr);
 
       handleChange(inputAmount);
     };
@@ -69,40 +55,12 @@ const BuySection = () => {
   }, []);
 
   useEffect(() => {
-    if (chainId === 1) {
+    if (chainId === 11155111 && selectedCoin.name !== "USDT") {
       setSelectedCoin(coins[0]);
-    } else if (chainId === 56) {
-      setSelectedCoin(coins[3]);
+    } else if (chainId === 97 && selectedCoin.name !== "USDT") {
+      setSelectedCoin(coins[1]);
     }
   }, [chainId]);
-
-  const handleApplyBonus = (amt: number, rate: number) => {
-    const ethPrice = Number(data?.ethPrice) / 10 ** 18;
-    const bnbPrice = Number(data?.bnbPrice) / 10 ** 18;
-    const curPrice = Number(data?.currentPrice) / 10 ** 18;
-
-    let input = 0,
-      output = 0,
-      realAmt = 0,
-      bonusAmt = 0;
-    if (selectedCoin === coins[0]) {
-      input = Math.round((amt / ethPrice + Number.EPSILON) * 10000) / 10000;
-    } else if (selectedCoin === coins[3]) {
-      input = Math.round((amt / bnbPrice + Number.EPSILON) * 10000) / 10000;
-    } else {
-      input = amt;
-    }
-    realAmt = Math.floor(amt / curPrice);
-    bonusAmt = Math.floor((amt / curPrice) * (rate / 100));
-    output = realAmt + bonusAmt;
-
-    setInputAmt(input);
-    setInputUSDAmount(amt);
-    setOutputAmt(output);
-    setRealAmount(realAmt);
-    setBonusAmount(bonusAmt);
-    setSelectedBonus(rate);
-  };
 
   const handleChange = (value: any) => {
     setInputAmt(value);
@@ -112,171 +70,147 @@ const BuySection = () => {
     const bnbPrice = Number(data?.bnbPrice) / 10 ** 18;
     const curPrice = Number(data?.currentPrice) / 10 ** 18;
 
-    let bonusRate = 0;
-    let usdtAmt;
+    let usdtAmt = 0;
     if (selectedCoin === coins[0]) {
       usdtAmt = ethPrice * value;
-    } else if (selectedCoin === coins[3]) {
+    } else if (selectedCoin === coins[1]) {
       usdtAmt = bnbPrice * value;
     } else {
       usdtAmt = Number(value);
     }
+    usdtAmt = usdtAmt ? usdtAmt : 0;
 
-    if (bonusArr_) {
-      for (let i = 0; i < bonusArr_.length; i++) {
-        if (usdtAmt >= bonusArr_[i].amount)
-          bonusRate = Number(bonusArr_[i].rate);
-      }
-    }
-
-    let output = 0,
-      realAmt = 0,
-      bonusAmt = 0;
-    realAmt = Math.floor(Number(usdtAmt) / curPrice);
-    if (bonusRate !== 0)
-      bonusAmt = Math.floor((Number(usdtAmt) / curPrice) * (bonusRate / 100));
-    output = realAmt + bonusAmt;
+    let output = 0;
+    output = Math.floor(Number(usdtAmt) / curPrice);
 
     setInputUSDAmount(usdtAmt);
     setOutputAmt(output);
-    setRealAmount(realAmt);
-    setBonusAmount(bonusAmt);
-    setSelectedBonus(bonusRate);
   };
 
   useEffect(() => {
     handleChange(inputAmount);
   }, [selectedCoin]);
 
-  //   const buyTMM = async () => {
-  //     const curPrice = Number(data?.currentPrice) / 10 ** 18;
+  const changeNetwork = async () => {
+    if (chainId === 11155111) {
+      await switchChain(config, { chainId: bscTestnet.id });
+    } else if (chainId === 97) {
+      await switchChain(config, { chainId: sepolia.id });
+    }
+  };
 
-  //     if (show.with === "ETH") {
-  //       const res = await buyWithETH(
-  //         inputAmount,
-  //         Number((Number(realAmount) - Number(realAmount) * 0.05).toFixed(0)),
-  //         curPrice,
-  //         address as Address
-  //       );
-  //     } else {
-  //       const res = await buyWithUSDT(
-  //         inputAmount,
-  //         Number(realAmount),
-  //         address as Address,
-  //         curPrice
-  //       );
-  //     }
-  //   };
+  const buyTMM = async () => {
+    if (selectedCoin === coins[0]) {
+      const res = await buyWithETH(
+        inputAmount.toString(),
+        Number((Number(outputAmount) - Number(outputAmount) * 0.05).toFixed(0))
+      );
+      console.log(res);
+    } else if (selectedCoin === coins[1]) {
+      const res = await buyWithBNB(
+        inputAmount.toString(),
+        Number((Number(outputAmount) - Number(outputAmount) * 0.05).toFixed(0)),
+        connector
+      );
+      console.log(res);
+    } else {
+      // const res = await buyWithUSDT(inputAmount.toString(), Number(realAmount));
+      // console.log(res);
+    }
+  };
 
   return (
     <>
-      {chainId === 1 && (
-        <div className="flex gap-1">
+      <div className="flex gap-1 md:gap-2">
+        {chainId === 11155111 && (
           <CoinButtons
             coin={coins[0]}
             selectedCoin={selectedCoin}
             setSelectedCoin={setSelectedCoin}
           />
+        )}
+        {chainId === 97 && (
           <CoinButtons
             coin={coins[1]}
             selectedCoin={selectedCoin}
             setSelectedCoin={setSelectedCoin}
           />
-          <CoinButtons
-            coin={coins[2]}
-            selectedCoin={selectedCoin}
-            setSelectedCoin={setSelectedCoin}
-          />
-        </div>
-      )}
-      {chainId === 56 && (
-        <div className="flex gap-1">
-          <CoinButtons
-            coin={coins[3]}
-            selectedCoin={selectedCoin}
-            setSelectedCoin={setSelectedCoin}
-          />
-          <CoinButtons
-            coin={coins[4]}
-            selectedCoin={selectedCoin}
-            setSelectedCoin={setSelectedCoin}
-          />
-        </div>
-      )}
-
-      <div className="w-full flex items-center gap-2">
-        {bonusArr_ &&
-          bonusArr_.length > 0 &&
-          bonusArr_.map((ele: any, idx: any) => {
-            return (
-              <p
-                key={idx}
-                className={`text-white text-xs text-center py-1 px-1 rounded-md cursor-pointer border-white border-[1px] ${
-                  Number(ele.rate) == selectedBonus ? "bg-green-600" : ""
-                }`}
-                onClick={() =>
-                  handleApplyBonus(Number(ele.amount), Number(ele.rate))
-                }
-              >
-                ${Number(ele.amount)} +{Number(ele.rate)}%
-              </p>
-            );
-          })}
+        )}
+        <CoinButtons
+          coin={coins[2]}
+          selectedCoin={selectedCoin}
+          setSelectedCoin={setSelectedCoin}
+        />
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex flex-col md:flex-row gap-2">
         <div>
-          <p className="text-[8px] text-left">{selectedCoin.name} you pay</p>
+          <p className="text-xs text-left">{selectedCoin.name} you pay</p>
           <div className="flex items-center border-[1px] border-white rounded-lg">
             <input
               type="number"
-              className="bg-transparent w-[100px] p-1"
-            //   onChange={(e) => handleChange(e.target.value)}
-            //   value={inputAmount}
+              className="bg-transparent w-full md:w-[120px] p-2 focus:border-none focus:shadow-none focus:outline-none"
+              onChange={(e) => handleChange(e.target.value)}
+              value={inputAmount}
             />
             <img
               src={`/assets/images/coins/${selectedCoin.symbol}`}
-              className="w-6 h-6"
+              className="w-6 h-6 mr-2"
               alt="usdt"
             />
           </div>
         </div>
         <div>
-          <p className="text-[8px] text-left">$TMM you receive</p>
+          <p className="text-xs text-left">$TMM you receive</p>
           <div className="flex items-center border-[1px] border-white rounded-lg">
             <input
               type="number"
-              className="bg-transparent w-[100px] p-1"
-            //   value={outputAmount}
+              className="bg-transparent w-full md:w-[120px] p-2"
+              value={disabled ? "0" : outputAmount}
               disabled
             />
             <img
               src="/assets/images/coins/tmm.png"
-              className="w-6 h-6"
+              className="w-6 h-6 mr-2"
               alt="tmm token"
             />
           </div>
         </div>
       </div>
 
-      {/* <div className="text-[10px] flex gap-5">
-        {inputUSDAmount < Number(data?.minAmt) / 10 ** 18 ? (
-          <p>Minimum USD Amount: {Number(data?.minAmt) / 10 ** 18}</p>
-        ) : (
-          <>
-            <p>
-              {inputAmount} {selectedCoin.name} is {realAmount} $TMM
-            </p>
-            <p>
-              +{selectedBonus}% is {bonusAmount} $TMM
-            </p>
-          </>
+      <div className="text-[10px]">
+        <p className="text-center">
+          {inputAmount} {selectedCoin.name} &#8776; ${inputUSDAmount}
+        </p>
+        {!disabled && (
+          <div className="flex gap-3">
+            {inputUSDAmount < Number(data?.minAmt) / 10 ** 18 && (
+              <p>Minimum USD Amount: {Number(data?.minAmt) / 10 ** 18}</p>
+            )}
+          </div>
         )}
-      </div> */}
+      </div>
 
-      <div className="flex w-full justify-center">
-        <button className="bg-[#52BF85] rounded-md text-black text-sm min-w-[120px] h-[35px]">
-          Buy Now
+      <div className="flex w-full justify-center gap-2 items-center h-full">
+        {!address ? (
+          <ConnectButton />
+        ) : (
+          <button
+            className="bg-[#52BF85] rounded-md text-black text-sm min-w-[120px] h-[35px] disabled:bg-[#52BF8555] disabled:cursor-not-allowed uppercase"
+            onClick={() => buyTMM()}
+            disabled={disabled}
+          >
+            Buy Now
+          </button>
+        )}
+        <button
+          className={`rounded-md text-black text-sm min-w-[120px] h-[35px] disabled:bg-[#52BF8555] disabled:cursor-not-allowed uppercase ${
+            chainId === 11155111 ? "bg-[#F0C010]" : "bg-[#A9B9DB]"
+          }`}
+          onClick={() => changeNetwork()}
+          disabled={disabled}
+        >
+          {chainId === 11155111 ? "Buy With BNB" : "Buy With ETH"}
         </button>
       </div>
     </>

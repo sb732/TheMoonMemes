@@ -12,7 +12,7 @@ const Layout = ({ showNav, setShowNav }: LayoutProps) => {
   return (
     <>
       <Header showNav={showNav} setShowNav={setShowNav} />
-      <div className="mt-[88px] lg:mt-[140px]">
+      <div className="mt-[96px] lg:mt-[148px]">
         <Outlet />
       </div>
       <Footer />
