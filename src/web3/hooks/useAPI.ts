@@ -1,57 +1,74 @@
-import {
-  readContract,
-  simulateContract,
-  writeContract,
-} from "@wagmi/core";
-import { sepolia, bscTestnet } from "wagmi/chains";
-import { parseUnits } from "viem";
+import { readContract, simulateContract, writeContract } from "@wagmi/core";
+import { mainnet, sepolia, bscTestnet } from "wagmi/chains";
+import { Address, parseUnits } from "viem";
 
 import { config } from "@/provider/config";
 
 import ETHPresaleABI from "../abis/ETHPresale";
 import BSCPresaleABI from "../abis/BSCPresale";
+import ETHUSDTABI from "../abis/ETHUSDT";
+import BSCUSDTABI from "../abis/BSCUSDT";
 
 const ETHPresaleContract = "0x129185387548Fa43344BA70B353CeC3485b5Ca34";
-const BSCPresaleContract = "0xab90D9D8Fd41876086B2D317Fd42D5E1C81cb750";
+const BSCPresaleContract = "0x588c6eF92983dD38a30ceD7aA0De31E320e1A365";
+const ETHUSDTContract = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
+const BSCUSDTContract = "0x55d398326f99059fF775485246999027B3197955";
 
 export const getPresaleData = async () => {
+  const presaleContract = BSCPresaleContract;
+  const presaleABI = BSCPresaleABI;
+  const presaleChain = bscTestnet.id;
+
   const currentStage = await readContract(config, {
-    address: BSCPresaleContract,
-    abi: BSCPresaleABI,
+    address: presaleContract,
+    abi: presaleABI,
     functionName: "currentStage",
-    chainId: bscTestnet.id,
+    chainId: presaleChain,
   });
   const endTime = await readContract(config, {
-    address: BSCPresaleContract,
-    abi: BSCPresaleABI,
+    address: presaleContract,
+    abi: presaleABI,
     functionName: "stages",
     args: [2, currentStage],
-    chainId: bscTestnet.id,
+    chainId: presaleChain,
   });
   const startTime = await readContract(config, {
-    address: BSCPresaleContract,
-    abi: BSCPresaleABI,
+    address: presaleContract,
+    abi: presaleABI,
     functionName: "startTime",
-    chainId: bscTestnet.id,
+    chainId: presaleChain,
   });
   const currentPrice = await readContract(config, {
-    address: BSCPresaleContract,
-    abi: BSCPresaleABI,
+    address: presaleContract,
+    abi: presaleABI,
     functionName: "stages",
     args: [1, currentStage],
-    chainId: bscTestnet.id,
+    chainId: presaleChain,
   });
-  const totalUSDRaised = await readContract(config, {
-    address: BSCPresaleContract,
-    abi: BSCPresaleABI,
+  const ETHTotalUSDRaised = await readContract(config, {
+    address: ETHPresaleContract,
+    abi: ETHPresaleABI,
     functionName: "totalUsdRaised",
-    chainId: bscTestnet.id,
+    chainId: sepolia.id,
   });
-  const totalTokensSold = await readContract(config, {
-    address: BSCPresaleContract,
-    abi: BSCPresaleABI,
+
+  const BSCTotalUSDRaised = await readContract(config, {
+    address: presaleContract,
+    abi: presaleABI,
+    functionName: "totalUsdRaised",
+    chainId: presaleChain,
+  });
+  const ETHTotalTokensSold = await readContract(config, {
+    address: ETHPresaleContract,
+    abi: ETHPresaleABI,
     functionName: "totalTokensSold",
-    chainId: bscTestnet.id,
+    chainId: sepolia.id,
+  });
+  const BSCTotalTokensSold = await readContract(config, {
+    address: presaleContract,
+    abi: presaleABI,
+    functionName: "totalTokensSold",
+    chainId: presaleChain,
   });
 
   return {
@@ -59,12 +76,18 @@ export const getPresaleData = async () => {
     endTime: endTime as number,
     startTime: startTime as number,
     currentPrice: currentPrice as number,
-    totalTokensSold: totalTokensSold as number,
-    totalUSDRaised: totalUSDRaised as number,
+    totalTokensSold:
+      (ETHTotalTokensSold as number) + (BSCTotalTokensSold as number),
+    totalUSDRaised:
+      (ETHTotalUSDRaised as number) + (BSCTotalUSDRaised as number),
   };
 };
 
-export const getCalcBoardData = async () => {
+export const getCalcBoardData = async (address: Address) => {
+  const presaleContract = BSCPresaleContract;
+  const presaleABI = BSCPresaleABI;
+  const presaleChain = bscTestnet.id;
+
   const ethPrice = await readContract(config, {
     address: ETHPresaleContract,
     abi: ETHPresaleABI,
@@ -73,58 +96,78 @@ export const getCalcBoardData = async () => {
   });
 
   const bnbPrice = await readContract(config, {
-    address: BSCPresaleContract,
-    abi: BSCPresaleABI,
+    address: presaleContract,
+    abi: presaleABI,
     functionName: "getLatestPrice",
-    chainId: bscTestnet.id,
+    chainId: presaleChain,
   });
 
   const currentStage = await readContract(config, {
-    address: BSCPresaleContract,
-    abi: BSCPresaleABI,
+    address: presaleContract,
+    abi: presaleABI,
     functionName: "currentStage",
-    chainId: bscTestnet.id,
+    chainId: presaleChain,
   });
 
   const currentPrice = await readContract(config, {
-    address: BSCPresaleContract,
-    abi: BSCPresaleABI,
+    address: presaleContract,
+    abi: presaleABI,
     functionName: "stages",
     args: [1, currentStage],
-    chainId: bscTestnet.id,
+    chainId: presaleChain,
   });
 
   const minAmt = await readContract(config, {
-    address: BSCPresaleContract,
-    abi: BSCPresaleABI,
+    address: presaleContract,
+    abi: presaleABI,
     functionName: "minUsdAmountToBuy",
-    chainId: bscTestnet.id,
+    chainId: presaleChain,
   });
 
-  // const usdtBalance = await readContract(config, {
-  //   address: usdtContract as Address,
-  //   abi: UsdtABI,
-  //   functionName: "balanceOf",
-  //   args: [address],
-  // });
+  const ethUsdtBalance = address
+    ? await readContract(config, {
+        address: ETHUSDTContract,
+        abi: ETHUSDTABI,
+        functionName: "balanceOf",
+        args: [address],
+        chainId: mainnet.id,
+      })
+    : 0;
+
+  const bscUsdtBalance = address
+    ? await readContract(config, {
+        address: BSCUSDTContract,
+        abi: BSCUSDTABI,
+        functionName: "balanceOf",
+        args: [address],
+        chainId: bscTestnet.id,
+      })
+    : 0;
 
   return {
     ethPrice: ethPrice as number,
     bnbPrice: bnbPrice as number,
     currentPrice: currentPrice as number,
-    // balance: usdtBalance as number,
+    ethUsdtBalance: ethUsdtBalance as number,
+    bscUsdtBalance: bscUsdtBalance as number,
     minAmt: minAmt as number,
   };
 };
 
-export const buyWithETH = async (eth: string, amount: number) => {
+export const buyWithETH = async (
+  eth: string,
+  amount: number,
+  connector: any
+) => {
   try {
     const { request } = await simulateContract(config, {
       address: ETHPresaleContract,
       abi: ETHPresaleABI,
       functionName: "buyWithEth",
-      args: [amount],
+      args: [amount, 5],
       value: parseUnits(eth, 18),
+      chainId: sepolia.id,
+      connector,
     });
 
     const hash = await writeContract(config, request);
@@ -135,13 +178,17 @@ export const buyWithETH = async (eth: string, amount: number) => {
   }
 };
 
-export const buyWithBNB = async (eth: string, amount: number, connector: any) => {
+export const buyWithBNB = async (
+  eth: string,
+  amount: number,
+  connector: any
+) => {
   try {
     const { request } = await simulateContract(config, {
       address: BSCPresaleContract,
       abi: BSCPresaleABI,
       functionName: "buyWithEth",
-      args: [amount],
+      args: [amount, 5],
       value: parseUnits(eth, 18),
       chainId: bscTestnet.id,
       connector,
@@ -156,43 +203,56 @@ export const buyWithBNB = async (eth: string, amount: number, connector: any) =>
   }
 };
 
-// export const buyWithUSDT = async (
-//   usdt: string,
-//   amount: number,
-//   address: Address,
-//   price: number
-// ) => {
-//   try {
-//     const allowance = await readContract({
-//       address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-//       abi: UsdtABI,
-//       functionName: "allowance",
-//       args: [address, presaleContract],
-//     });
+export const buyWithUSDT = async (
+  usdt: string,
+  amount: number,
+  address: Address,
+  connector: any,
+  network: string
+) => {
+  try {
+    const presaleContract =
+      network === "ETH" ? ETHPresaleContract : BSCPresaleContract;
+    const presaleABI = network === "ETH" ? ETHPresaleABI : BSCPresaleABI;
+    const presaleChain = network === "ETH" ? sepolia.id : bscTestnet.id;
+    const usdtContract = network === "ETH" ? ETHUSDTContract : BSCUSDTContract;
+    const usdtABI = network === "ETH" ? ETHUSDTABI : BSCUSDTABI;
 
-//     if (Number(allowance) / 10 ** 6 < Number(usdt)) {
-//       const approveConfig = await prepareWriteContract({
-//         address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-//         abi: UsdtABI,
-//         functionName: "approve",
-//         args: [presaleContract, parseUnits("1000000", 6)],
-//       });
+    const allowance = await readContract(config, {
+      address: usdtContract,
+      abi: usdtABI,
+      functionName: "allowance",
+      args: [address, presaleContract],
+      chainId: presaleChain,
+    });
 
-//       await writeContract(approveConfig);
+    if (Number(allowance) / 10 ** 18 < Number(usdt)) {
+      const { request } = await simulateContract(config, {
+        address: usdtContract,
+        abi: usdtABI,
+        functionName: "approve",
+        args: [presaleContract, parseUnits(usdt, 18)],
+        chainId: presaleChain,
+        connector,
+      });
 
-//       await new Promise((r) => setTimeout(r, 2000));
-//     }
+      await writeContract(config, request);
 
-//     const config = await prepareWriteContract({
-//       address: presaleContract,
-//       abi: PresaleABI,
-//       functionName: "buyWithUSDT",
-//       args: [amount],
-//     });
+      await new Promise((r) => setTimeout(r, 2000));
+    }
 
-//     const { hash } = await writeContract(config);
-//     console.log(hash);
-//   } catch (error) {
-//     console.log("Error: >>>>>>>>>>>>>>>", error);
-//   }
-// };
+    const { request } = await simulateContract(config, {
+      address: presaleContract,
+      abi: presaleABI,
+      functionName: "buyWithUSDT",
+      args: [amount],
+      chainId: presaleChain,
+      connector,
+    });
+
+    const hash = await writeContract(config, request);
+    console.log(hash);
+  } catch (error) {
+    console.log("Error: >>>>>>>>>>>>>>>", error);
+  }
+};

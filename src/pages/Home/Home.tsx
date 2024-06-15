@@ -1,4 +1,5 @@
 import Presale from "../../components/Presale/Presale";
+import * as translation from "@/translation/en.json";
 
 function Home() {
   return (
@@ -6,7 +7,7 @@ function Home() {
       <div className="relative">
         <img
           src="./assets/images/home.png"
-          className="w-full lg:h-[calc(100vh-111px)] mt-[-12px] lg:mt-[-40px]"
+          className="w-full lg:h-[calc(100vh-111px)] mt-[-12px] lg:mt-[-40px] mb-[-50px] md:mb-0"
           alt=""
         />
 
@@ -25,15 +26,13 @@ function Home() {
             id="home"
           >
             <p className="text-4xl text-center uppercase">
-              Memes on the Rise,
+              {translation.home.home.title1}
               <br />
-              to the Moon We Fly
+              {translation.home.home.title2}
             </p>
             <img src="./assets/images/the-moon-memes-title.png" alt="" />
             <p className="text-2xl text-center uppercase">
-              Join the future of meme culture with TheMoonMemes token. Embrace
-              decentralized creativity and community. Explore our lunar-inspired
-              universe now!
+              {translation.home.home.content}
             </p>
             <div className="flex flex-col md:flex-row text-white w-full justify-between pt-10 px-5 uppercase">
               <a
@@ -42,12 +41,12 @@ function Home() {
                 rel="noreferrer"
               >
                 <p className="text-center py-2 rounded-lg text-4xl mb-10 min-w-[250px] bg-[#BD00FF] border border-white">
-                  Whitepaper
+                  {translation.home.home.whitepaper}
                 </p>
               </a>
               <a href="/">
                 <p className="text-center py-2 rounded-lg text-4xl mb-10 min-w-[250px] bg-[#FF4747] border border-white cursor-pointer">
-                  Audit
+                  {translation.home.home.audit}
                 </p>
               </a>
             </div>
@@ -66,34 +65,18 @@ function Home() {
                 backgroundSize: "cover",
               }}
             >
-              About
+              {translation.home.about.title}
             </p>
             <div className="flex flex-col gap-5 md:gap-14">
               <p className="text-xl md:text-3xl text-center">
-                At TheMoonMemes, we are more than just a token; we
-                <br className="hidden md:block" />
-                are a community-driven movement dedicated to
-                <br className="hidden md:block" />
-                revolutionizing the world of memes on the blockchain.
-                <br className="hidden md:block" />
-                Our journey began with a simple yet powerful idea: to
-                <br className="hidden md:block" />
-                bring humor and creativity to the decentralized
-                <br className="hidden md:block" />
-                universe.
+                {translation.home.about.content}
               </p>
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/2 flex flex-col gap-5">
                   <p className="text-3xl md:text-5xl text-center">
-                    Our Mission​
+                    {translation.home.about.mission.title}
                   </p>
-                  <p>
-                    Our mission is to empower meme creators, enthusiasts, and
-                    crypto aficionados alike by merging the world of memes with
-                    the limitless potential of blockchain technology. We believe
-                    that laughter and creativity should have no bounds, and
-                    that's why we're taking memes to the moon and beyond.
-                  </p>
+                  <p>{translation.home.about.mission.content}</p>
                 </div>
                 <div className="md:w-1/2">
                   <img src="./assets/images/our-mission.png" alt="" />
@@ -111,40 +94,24 @@ function Home() {
                 backgroundSize: "cover",
               }}
             >
-              Why TheMoonMemes?
+              {translation.home.why.title}
             </p>
             <div className="flex flex-col gap-5 md:gap-8">
               <div className="text-black bg-white rounded-lg py-2 pl-2 md:pl-5 pr-2 md:pr-52 flex items-center justify-between gap-5">
                 <div className="min-w-4 md:min-w-6 min-h-4 md:min-h-6 rounded-full bg-black"></div>
-                <p>
-                  Community-Centric: We are proud of our passionate community,
-                  where every member has a voice. Together, we shape the future
-                  of meme culture.
-                </p>
+                <p>{translation.home.why.content1}</p>
               </div>
               <div className="text-black bg-white rounded-lg py-2 pl-2 md:pl-5 pr-2 md:pr-52 flex items-center justify-between gap-5">
                 <div className="min-w-4 md:min-w-6 min-h-4 md:min-h-6 rounded-full bg-black"></div>
-                <p>
-                  Innovation: We're not just following trends; we're setting
-                  them. Our unique features and utility make us stand out in the
-                  crypto space.
-                </p>
+                <p>{translation.home.why.content2}</p>
               </div>
               <div className="text-black bg-white rounded-lg py-2 pl-2 md:pl-5 pr-2 md:pr-52 flex items-center justify-between gap-5">
                 <div className="min-w-4 md:min-w-6 min-h-4 md:min-h-6 rounded-full bg-black"></div>
-                <p>
-                  Transparency: Trust is the cornerstone of our project. We
-                  operate with complete transparency, ensuring you're always in
-                  the know.
-                </p>
+                <p>{translation.home.why.content3}</p>
               </div>
               <div className="text-black bg-white rounded-lg py-2 pl-2 md:pl-5 pr-2 md:pr-52 flex items-center justify-between gap-5">
                 <div className="min-w-4 md:min-w-6 min-h-4 md:min-h-6 rounded-full bg-black"></div>
-                <p>
-                  Lunar Inspiration: The moon has always been a symbol of
-                  exploration and discovery. We draw inspiration from its
-                  mystique to fuel our creativity.
-                </p>
+                <p>{translation.home.why.content4}</p>
               </div>
             </div>
           </section>
@@ -161,7 +128,7 @@ function Home() {
                 backgroundSize: "cover",
               }}
             >
-              Our Mission and Vision​
+              {translation.home.mission.title}
             </p>
             <div className="flex flex-col items-center gap-5 md:gap-16">
               <img src="./assets/images/our-mission-and-vision.png" alt="" />
@@ -180,13 +147,9 @@ function Home() {
                   />
                   <div className="md:w-2/5">
                     <p className="text-2xl md:text-3xl mb-5">
-                      Mission: Empowering Memes, Uniting Communities
+                      {translation.home.mission.subtitle1}
                     </p>
-                    <p>
-                      Our mission is to empower meme culture by creating a
-                      cryptocurrency that brings communities together through
-                      humor, creativity, and inclusivity.
-                    </p>
+                    <p>{translation.home.mission.subcontent1}</p>
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row items-center justify-around relative">
@@ -198,13 +161,9 @@ function Home() {
                   />
                   <div className="md:w-2/5">
                     <p className="text-2xl md:text-3xl mb-5">
-                      Vision: A Memeverse of Possibilities
+                      {translation.home.mission.subtitle2}
                     </p>
-                    <p>
-                      Our vision is to build a Memeverse—a digital universe
-                      where memes and crypto coexist harmoniously, fostering
-                      innovation, laughter, and positive change.
-                    </p>
+                    <p>{translation.home.mission.subcontent2}</p>
                   </div>
                   <img
                     src="./assets/images/our-mission-and-vision-2.png"
@@ -224,13 +183,9 @@ function Home() {
                   />
                   <div className="md:w-2/5">
                     <p className="text-2xl md:text-3xl mb-5">
-                      Mission: Decentralized Expression and Fun
+                      {translation.home.mission.subtitle3}
                     </p>
-                    <p>
-                      We are committed to enabling decentralized expression and
-                      fun, allowing everyone to participate in meme creation,
-                      sharing, and crypto adoption.
-                    </p>
+                    <p>{translation.home.mission.subcontent3}</p>
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row items-center justify-around relative">
@@ -242,13 +197,9 @@ function Home() {
                   />
                   <div className="md:w-2/5">
                     <p className="text-2xl md:text-3xl mb-5">
-                      Vision: Making Memes Matter
+                      {translation.home.mission.subtitle4}
                     </p>
-                    <p>
-                      Our vision is to make memes matter by promoting social
-                      impact initiatives, NFT art, and community-driven
-                      projects, creating a lasting legacy in the meme world.
-                    </p>
+                    <p>{translation.home.mission.subcontent4}</p>
                   </div>
                   <img
                     src="./assets/images/our-mission-and-vision-4.png"
@@ -262,44 +213,28 @@ function Home() {
           <section className="pt-[106px] md:pt-[158px]" id="staking">
             <div className="border-[3px] border-white rounded-2xl px-2 md:px-10 py-1 md:py-5 flex flex-col items-center gap-5 md:gap-10">
               <p className="uppercase text-3xl md:text-6xl">
-                Staking and Rewards
+                {translation.home.staking.title}
               </p>
               <p className="text-center">
-                Stake Your Tokens, Reap the Benefits:
+                {translation.home.staking.content1}
                 <br />
-                At TheMoonMemes, we offer a robust staking system that allows
-                our community members to earn rewards. By staking your tokens,
-                you can participate in securing the network and earn additional
-                tokens as a reward.
+                {translation.home.staking.content2}
               </p>
               <div className="w-full">
-                <p className="text-3xl mb-2">How It Works:</p>
-                <li>
-                  Stake Your Tokens: Simply deposit your TheMoonMemes tokens
-                  into our staking platform.
-                </li>
-                <li>
-                  Earn Rewards: As a staker, you will receive a share of the
-                  network’s transaction fees and newly minted tokens.
-                </li>
-                <li>
-                  Community Growth: Your participation helps grow and secure our
-                  community, making it stronger and more resilient.
-                </li>
+                <p className="text-3xl mb-2">
+                  {translation.home.staking.howwork.title}
+                </p>
+                <li>{translation.home.staking.howwork.list1}</li>
+                <li>{translation.home.staking.howwork.list2}</li>
+                <li>{translation.home.staking.howwork.list3}</li>
               </div>
               <div className="w-full">
-                <p className="text-3xl mb-2">Why Stake with TheMoonMemes?</p>
-                <li>
-                  Passive Income: Earn regular rewards by staking your tokens.
-                </li>
-                <li>
-                  Support the Network: Your staked tokens contribute to the
-                  stability and security of our network.
-                </li>
-                <li>
-                  Exclusive Benefits: Stakers get access to exclusive community
-                  events, NFT drops, and more.
-                </li>
+                <p className="text-3xl mb-2">
+                  {translation.home.staking.whystake.title}
+                </p>
+                <li>{translation.home.staking.whystake.list1}</li>
+                <li>{translation.home.staking.whystake.list2}</li>
+                <li>{translation.home.staking.whystake.list3}</li>
               </div>
               <img src="./assets/images/staking-and-rewards.png" alt="" />
             </div>
@@ -317,58 +252,73 @@ function Home() {
                 backgroundSize: "cover",
               }}
             >
-              Moonomics
+              {translation.home.moonomics.title}
             </p>
-            <div className="flex flex-col md:flex-row">
-              <div className="tet-xs md:text-2xl">
-                <p className="mb-5">
-                  Themoonmemes tokenomics include smart staking rewards, meaning
-                  you can earn right away.
-                </p>
-                <li>Presale: 15% (15,000,000,000 tokens)</li>
-                <li>Marketing: 10% (10,000,000,000 tokens)</li>
-                <li>Project Treasury: 25% (25,000,000,000 tokens)</li>
-                <li>Staking Rewards: 20% (20,000,000,000 tokens)</li>
-                <li>Exchange Liquidity: 15% (15,000,000,000 tokens)</li>
-                <li>Reserve/Future Use: 15% (15,000,000,000 tokens)</li>
-              </div>
-              <div className="min-w-[200px] grid grid-cols-2 md:grid-cols-1">
-                <li className="marker:text-[#9BB0FF] text-sm md:text-base">
-                  PRESALE <p className="text-2xl ml-5">15%</p>
-                </li>
-                <li className="marker:text-[#FDD64B] text-sm md:text-base">
-                  MARKETING <p className="text-2xl ml-5">10%</p>
-                </li>
-                <li className="marker:text-[#9E28FA] text-sm md:text-base">
-                  TREASURY <p className="text-2xl ml-5">25%</p>
-                </li>
-                <li className="marker:text-[#8FF929] text-sm md:text-base">
-                  STAKING <p className="text-2xl ml-5">20%</p>
-                </li>
-                <li className="marker:text-[#F8C9FF] text-sm md:text-base">
-                  LIQUIDITY <p className="text-2xl ml-5">15%</p>
-                </li>
-                <li className="marker:text-[#5E3967] text-sm md:text-base">
-                  RESERVE/FUTURE USE <p className="text-2xl ml-5">15%</p>
-                </li>
+            <div className="text-xs md:text-2xl flex flex-col items-center uppercase">
+              <p className="mb-5 text-center max-w-[300px] md:max-w-[600px]">{translation.home.moonomics.content}</p>
+              <li>{translation.home.moonomics.presale1}</li>
+              <li>{translation.home.moonomics.marketing1}</li>
+              <li>{translation.home.moonomics.treasury1}</li>
+              <li>{translation.home.moonomics.staking1}</li>
+              <li>{translation.home.moonomics.liquidity1}</li>
+              <li>{translation.home.moonomics.reserve1}</li>
+            </div>
+            <img src="./assets/images/moonomics.png" alt="" className="my-5 md:my-10" />
+            <div className="uppercase text-base md:text-2xl border-[1px] border-white rounded-xl px-10 py-2">
+              <p className="text-center">
+                {translation.home.moonomics.address}
+              </p>
+              <div className="flex items-center justify-center">
+                <a
+                  href="https://etherscan.io/token/0x11fBf29e443466dc714362DbDf95694b74727DC2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <p className="hidden md:block">
+                    0x11fBf29e443466dc714362DbDf95694b74727DC2
+                  </p>
+                  <p className="block md:hidden">0x11f.....27DC2</p>
+                </a>
+                <button>
+                  <img
+                    src="./assets/icons/Copy Address.svg"
+                    alt=""
+                    className="ml-2"
+                  />
+                </button>
               </div>
             </div>
-            <img src="./assets/images/moonomics.png" alt="" />
-            <p className="text-center">TheMoonMemes Token Address</p>
-            <div className="flex items-center justify-center">
-              <a
-                href="https://etherscan.io/token/0x11fBf29e443466dc714362DbDf95694b74727DC2"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <p className="hidden md:block">
-                  0x11fBf29e443466dc714362DbDf95694b74727DC2
-                </p>
-                <p className="block md:hidden">0x11f.....27DC2</p>
-              </a>
-              <button>
-                <img src="./assets/icons/Copy Address.svg" alt="" />
-              </button>
+            <div className="min-w-[200px] grid grid-cols-3 md:grid-cols-6 gap-5 bg-[#D9D9D9] px-14 py-2 text-black text-sm md:text-xl rounded-xl">
+              <li className="flex flex-col items-center">
+                <div className="w-5 h-5 rounded-md bg-[#9BB0FF]"></div>
+                {translation.home.moonomics.presale2}{" "}
+                <p>15%</p>
+              </li>
+              <li className="flex flex-col items-center">
+                <div className="w-5 h-5 rounded-md bg-[#FDD64B]"></div>
+                {translation.home.moonomics.marketing2}{" "}
+                <p>10%</p>
+              </li>
+              <li className="flex flex-col items-center">
+                <div className="w-5 h-5 rounded-md bg-[#9E28FA]"></div>
+                {translation.home.moonomics.treasury2}{" "}
+                <p>25%</p>
+              </li>
+              <li className="flex flex-col items-center">
+                <div className="w-5 h-5 rounded-md bg-[#8FF929]"></div>
+                {translation.home.moonomics.staking2}{" "}
+                <p>20%</p>
+              </li>
+              <li className="flex flex-col items-center">
+                <div className="w-5 h-5 rounded-md bg-[#F8C9FF]"></div>
+                {translation.home.moonomics.liquidity2}{" "}
+                <p>15%</p>
+              </li>
+              <li className="flex flex-col items-center">
+                <div className="w-5 h-5 rounded-md bg-[#5E3967]"></div>
+                {translation.home.moonomics.reserve2}{" "}
+                <p>15%</p>
+              </li>
             </div>
           </section>
 
@@ -393,82 +343,62 @@ function Home() {
                   backgroundSize: "cover",
                 }}
               >
-                Roadmap
+                {translation.home.roadmap.title}
               </p>
               <div className="flex flex-col gap-5">
-                <div>
+                <div className="md:max-w-[385px]">
                   <p className="text-center md:text-left">
-                    Phase 1: Conceptualization and Planning
+                    {translation.home.roadmap.phase1.title}
                   </p>
                   <div className="flex gap-2">
                     <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
-                    <p>
-                      Define Themoonmeme token's purpose
-                      <br className="hidden md:block" /> and utility.
-                    </p>
+                    <p>{translation.home.roadmap.phase1.content1}</p>
                   </div>
                   <div className="flex gap-2">
                     <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
-                    <p>
-                      Establish tokenomics and assemble
-                      <br className="hidden md:block" /> team.
-                    </p>
+                    <p>{translation.home.roadmap.phase1.content2}</p>
                   </div>
                 </div>
                 <div className="flex md:justify-end">
-                  <div>
+                  <div className="md:max-w-[385px]">
                     <p className="text-center md:text-left">
-                      Phase 2: Token Development
+                      {translation.home.roadmap.phase2.title}
                     </p>
                     <div className="flex gap-2">
                       <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
-                      <p>
-                        Create and audit Themoonmeme token
-                        <br className="hidden md:block" /> smart contract.
-                      </p>
+                      <p>{translation.home.roadmap.phase2.content1}</p>
                     </div>
                     <div className="flex gap-2">
                       <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
-                      <p>
-                        Develop user interface for token
-                        <br className="hidden md:block" /> transactions.
-                      </p>
+                      <p>{translation.home.roadmap.phase2.content2}</p>
                     </div>
                   </div>
                 </div>
-                <div>
+                <div className="md:max-w-[385px]">
                   <p className="text-center md:text-left">
-                    Phase 3: Community Building and Marketing
+                    {translation.home.roadmap.phase3.title}
                   </p>
                   <div className="flex gap-2">
                     <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
-                    <p>Launch website and social channels.</p>
+                    <p>{translation.home.roadmap.phase3.content1}</p>
                   </div>
                   <div className="flex gap-2">
                     <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
-                    <p>
-                      Conduct pre-sale, engage with community,
-                      <br className="hidden md:block" /> and execute marketing
-                      campaigns.
-                    </p>
+                    <p>{translation.home.roadmap.phase3.content2}</p>
                   </div>
                 </div>
                 <div className="flex md:justify-end">
-                  <div>
+                  <div className="md:max-w-[385px]">
                     <p className="text-center md:text-left">
-                      Phase 4: Exchange Listings and Continued
-                      <br className="hidden md:block" /> Development
+                      {translation.home.roadmap.phase4.title}
                     </p>
                     <div className="flex gap-2">
                       <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
-                      <p>List on exchanges for liquidity.</p>
+                      <p>{translation.home.roadmap.phase4.content1}</p>
                     </div>
                     <div className="flex gap-2">
                       <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
-                      <p>
-                        Gather feedback for improvements and
-                        <br className="hidden md:block" /> explore partnerships.
-                      </p>
+                      <p>{translation.home.roadmap.phase4.content2}</p>
                     </div>
                   </div>
                 </div>
@@ -504,61 +434,32 @@ function Home() {
                 backgroundSize: "cover",
               }}
             >
-              How to buy
+              {translation.home.howtobuy.title}
             </p>
             <div className="flex flex-col gap-5 md:gap-10">
               <div className="flex flex-col md:flex-row items-center bg-white text-black rounded-lg px-5 py-1">
                 <p className="text-2xl md:text-3xl min-w-[300px]">
-                  1. Connect Wallet &<br className="hidden md:block" />
-                  &nbsp;<span className="hidden md:inline-block">&nbsp;&nbsp;</span>
-                  Select Network:
+                  {translation.home.howtobuy.step1.title}
                 </p>
-                <p>
-                  To purchase $TMM Tokens, you need to connect your wallet.
-                  Select one of the many supported wallets to connect to the
-                  $TTM purchase widget (at the top of this web page).
-                </p>
+                <p>{translation.home.howtobuy.step1.content}</p>
               </div>
               <div className="flex flex-col md:flex-row items-center bg-white text-black rounded-lg px-5 py-1">
                 <p className="text-2xl md:text-3xl min-w-[300px]">
-                  2. Buy $TMM
-                  <br className="hidden md:block" />
-                  &nbsp;<span className="hidden md:inline-block">&nbsp;&nbsp;</span>
-                  Tokens:
+                  {translation.home.howtobuy.step2.title}
                 </p>
-                <p>
-                  Enter the amount of ETH, BNB, or USDT to purchase $TMM tokens
-                  using your preferred cryptocurrency and confirm the
-                  transaction in your wallet.
-                </p>
+                <p>{translation.home.howtobuy.step2.content}</p>
               </div>
               <div className="flex flex-col md:flex-row items-center bg-white text-black rounded-lg px-5 py-1">
                 <p className="text-2xl md:text-3xl min-w-[300px]">
-                  3. Claim $TMM
-                  <br className="hidden md:block" />
-                  &nbsp;<span className="hidden md:inline-block">&nbsp;&nbsp;</span>
-                  Tokens:
+                  {translation.home.howtobuy.step3.title}
                 </p>
-                <p>
-                  You will be able to claim your $TTM tokens using the same
-                  wallet in the pre-sale widget (at the top of this web page)
-                  once the presale is complete.
-                </p>
+                <p>{translation.home.howtobuy.step3.content}</p>
               </div>
               <div className="flex flex-col md:flex-row items-center bg-white text-black rounded-lg px-5 py-1">
                 <p className="text-2xl md:text-3xl min-w-[300px]">
-                  4. Staking $TMM to
-                  <br className="hidden md:block" />
-                  &nbsp;<span className="hidden md:inline-block">&nbsp;&nbsp;</span>
-                  Earn Meme Coin:
+                  {translation.home.howtobuy.step4.title}
                 </p>
-                <p>
-                  Once you successfully purchased tokens, you can also use them
-                  early to delegate your $TMM Tokens to a staking pool. Click
-                  'Staking' in the menu and start your journey into the world of
-                  The Moon Memes staking with High APY for your investment
-                  goals.
-                </p>
+                <p>{translation.home.howtobuy.step4.content}</p>
               </div>
             </div>
           </section>
@@ -568,7 +469,7 @@ function Home() {
             id="FAQs"
           >
             <p className="text-center text-4xl rounded-lg border-4 py-5">
-              Frequently Asked Questions (FAQs)
+              {translation.home.faqs.title}
             </p>
             <div className="md:text-4xl">
               <div className="relative mb-3">
@@ -577,7 +478,7 @@ function Home() {
                     className="relative flex items-center justify-between w-full p-4 font-semibold text-left transition-all ease-in border-b border-solid cursor-pointer border-slate-100 rounded-t-1 group"
                     data-collapse-target="animated-collapse-1"
                   >
-                    <span>What is TheMoonMemes?</span>
+                    <span>{translation.home.faqs.section1.title}</span>
                     <img
                       src="./assets/images/down-button.png"
                       className="group-open:rotate-180 transition-transform w-[30px] md:w-[60px]"
@@ -589,12 +490,8 @@ function Home() {
                   data-collapse="animated-collapse-1"
                   className="h-0 overflow-hidden transition-all duration-300 ease-in-out"
                 >
-                  <div className="p-4 leading-normal text-blue-gray-500/80">
-                    TheMoonMemes is an ERC-20 Token built on the Ethereum
-                    network, often associated with meme culture. TheMoonMemes
-                    ecosystem is designed to support and nurture a thriving
-                    community of meme creators, enthusiasts, and crypto
-                    aficionados.
+                  <div className="p-4 leading-normal">
+                    {translation.home.faqs.section1.content}
                   </div>
                 </div>
               </div>
@@ -605,7 +502,7 @@ function Home() {
                     className="relative flex items-center justify-between w-full p-4 font-semibold text-left transition-all ease-in border-b border-solid cursor-pointer border-slate-100 rounded-t-1 group"
                     data-collapse-target="animated-collapse-2"
                   >
-                    <span>When is the TheMoonMemes $TMM Pre-sale?</span>
+                    <span>{translation.home.faqs.section2.title}</span>
                     <img
                       src="./assets/images/down-button.png"
                       className="group-open:rotate-180 transition-transform w-[30px] md:w-[60px]"
@@ -617,13 +514,8 @@ function Home() {
                   data-collapse="animated-collapse-2"
                   className="h-0 overflow-hidden transition-all duration-300 ease-in-out"
                 >
-                  <div className="p-4 leading-normal text-blue-gray-500/80">
-                    Coming soon. TheMoonMemes pre-sale will available in the
-                    $TTM purchase widget (at the top of this web page). The
-                    selling price increases with each pre-sale stage, so the
-                    best time to buy is now. Everyone will be able to purchase
-                    TheMoonMemes $TMM Token at a much cheaper price compared to
-                    the launch price.
+                  <div className="p-4 leading-normal">
+                    {translation.home.faqs.section2.content}
                   </div>
                 </div>
               </div>
@@ -634,7 +526,7 @@ function Home() {
                     className="relative flex items-center justify-between w-full p-4 font-semibold text-left transition-all ease-in border-b border-solid cursor-pointer border-slate-100 rounded-t-1 group"
                     data-collapse-target="animated-collapse-3"
                   >
-                    <span>How does TheMoonMemes $TMM staking work?</span>
+                    <span>{translation.home.faqs.section3.title}</span>
                     <img
                       src="./assets/images/down-button.png"
                       className="group-open:rotate-180 transition-transform w-[30px] md:w-[60px]"
@@ -646,13 +538,8 @@ function Home() {
                   data-collapse="animated-collapse-3"
                   className="h-0 overflow-hidden transition-all duration-300 ease-in-out"
                 >
-                  <div className="p-4 leading-normal text-blue-gray-500/80">
-                    During the presale, you can stake your $TMM tokens to earn
-                    huge rewards! Once the presale ends and the claim goes live,
-                    you can immediately claim your rewards and withdraw your
-                    tokens 7 days after the claim goes live. You can also extend
-                    the locking period to earn reward multipliers, thus
-                    extending your $TMM token withdrawal date.
+                  <div className="p-4 leading-normal">
+                    {translation.home.faqs.section3.content}
                   </div>
                 </div>
               </div>
@@ -663,7 +550,7 @@ function Home() {
                     className="relative flex items-center justify-between w-full p-4 font-semibold text-left transition-all ease-in border-b border-solid cursor-pointer border-slate-100 rounded-t-1 group"
                     data-collapse-target="animated-collapse-4"
                   >
-                    <span>Is TheMoonMemes $TMM staking a good strategy?</span>
+                    <span>{translation.home.faqs.section4.title}</span>
                     <img
                       src="./assets/images/down-button.png"
                       className="group-open:rotate-180 transition-transform w-[30px] md:w-[60px]"
@@ -675,13 +562,8 @@ function Home() {
                   data-collapse="animated-collapse-4"
                   className="h-0 overflow-hidden transition-all duration-300 ease-in-out"
                 >
-                  <div className="p-4 leading-normal text-blue-gray-500/80">
-                    Assuredly, staking $TMM Tokens can be a rewarding way to
-                    earn huge passive income while contributing to the security
-                    and decentralization of the blockchain network. Once you
-                    stake it, you can sit back and relax as your $TMM Tokens
-                    work to validate transactions on the blockchain. Keep an eye
-                    on your staking rewards and adjust your strategy as needed.
+                  <div className="p-4 leading-normal">
+                    {translation.home.faqs.section4.content}
                   </div>
                 </div>
               </div>
@@ -692,7 +574,7 @@ function Home() {
                     className="relative flex items-center justify-between w-full p-4 font-semibold text-left transition-all ease-in border-b border-solid cursor-pointer border-slate-100 rounded-t-1 group"
                     data-collapse-target="animated-collapse-5"
                   >
-                    <span>How do I Contact the TheMoonMemes Team?</span>
+                    <span>{translation.home.faqs.section5.title}</span>
                     <img
                       src="./assets/images/down-button.png"
                       className="group-open:rotate-180 transition-transform w-[30px] md:w-[60px]"
@@ -704,11 +586,8 @@ function Home() {
                   data-collapse="animated-collapse-5"
                   className="h-0 overflow-hidden transition-all duration-300 ease-in-out"
                 >
-                  <div className="p-4 leading-normal text-blue-gray-500/80">
-                    To contact our support team, please email us at
-                    cs@themoonmemes.space Or, you can contact the TheMoonMemes
-                    team by joining the Telegram group, where a one of our staff
-                    will be more than happy to assist you.
+                  <div className="p-4 leading-normal">
+                    {translation.home.faqs.section5.content}
                   </div>
                 </div>
               </div>

@@ -1,0 +1,326 @@
+{
+  "navbar": {
+    "home": "HOME",
+
+    "staking": "STAKING",
+    "about": "ABOUT",
+    "moonomics": "MOONOMICS",
+    "roadmap": "ROADMAP",
+    "rewards": "REWARDS",
+    "faqs": "FAQs",
+    "whitepaper": "WHITEPAPER",
+    "audit": "AUDIT",
+    "howtobuy": "HOW TO BUY",
+    "buynow": "BUY NOW",
+    "alert": "Buy & Stake $TMM for 48% Annual Rewards!"
+  },
+  "home": {
+    "home": {
+      "title1": "Memes on the Rise,",
+      "title2": "to the Moon We Fly",
+      "content": "Join the future of meme culture with TheMoonMemes token. Embrace decentralized creativity and community. Explore our lunar-inspired universe now!",
+      "whitepaper": "Whitepaper",
+      "audit": "Audit"
+    },
+    "about": {
+      "title": "About",
+      "content": "At TheMoonMemes, we are more than just a token; we are a community-driven movement dedicated to revolutionizing the world of memes on the blockchain. Our journey began with a simple yet powerful idea: to bring humor and creativity to the decentralized universe.",
+      "mission": {
+        "title": "Our Mission",
+        "content": "Our mission is to empower meme creators, enthusiasts, and crypto aficionados alike by merging the world of memes with the limitless potential of blockchain technology. We believe that laughter and creativity should have no bounds, and that's why we're taking memes to the moon and beyond."
+      }
+    },
+    "why": {
+      "title": "Why TheMoonMemes?",
+      "content1": "Community-Centric: We are proud of our passionate community, where every member has a voice. Together, we shape the future of meme culture.",
+      "content2": "Innovation: We're not just following trends; we're setting them. Our unique features and utility make us stand out in the crypto space.",
+      "content3": "Transparency: Trust is the cornerstone of our project. We operate with complete transparency, ensuring you're always in the know.",
+      "content4": "Lunar Inspiration: The moon has always been a symbol of exploration and discovery. We draw inspiration from its mystique to fuel our creativity."
+    },
+    "mission": {
+      "title": "Our Mission and Vision",
+      "subtitle1": "Mission: Empowering Memes, Uniting Communities",
+      "subcontent1": "Our mission is to empower meme culture by creating a cryptocurrency that brings communities together through humor, creativity, and inclusivity.",
+      "subtitle2": "Vision: A Memeverse of Possibilities",
+      "subcontent2": "Our vision is to build a Memeverse—a digital universe where memes and crypto coexist harmoniously, fostering innovation, laughter, and positive change.",
+      "subtitle3": "Mission: Decentralized Expression and Fun",
+      "subcontent3": "We are committed to enabling decentralized expression and fun, allowing everyone to participate in meme creation, sharing, and crypto adoption.",
+      "subtitle4": "Vision: Making Memes Matter",
+      "subcontent4": "Our vision is to make memes matter by promoting social impact initiatives, NFT art, and community-driven projects, creating a lasting legacy in the meme world."
+    },
+    "staking": {
+      "title": "Staking and Rewards",
+      "content1": "Stake Your Tokens, Reap the Benefits:",
+      "content2": "At TheMoonMemes, we offer a robust staking system that allows our community members to earn rewards. By staking your tokens, you can participate in securing the network and earn additional tokens as a reward.",
+      "howwork": {
+        "title": "How It Works:",
+        "list1": "Stake Your Tokens: Simply deposit your TheMoonMemes tokens into our staking platform.",
+        "list2": "Earn Rewards: As a staker, you will receive a share of the network’s transaction fees and newly minted tokens.",
+        "list3": "Community Growth: Your participation helps grow and secure our community, making it stronger and more resilient."
+      },
+      "whystake": {
+        "title": "Why Stake with TheMoonMemes?",
+        "list1": "Passive Income: Earn regular rewards by staking your tokens.",
+        "list2": "Support the Network: Your staked tokens contribute to the stability and security of our network.",
+        "list3": "Exclusive Benefits: Stakers get access to exclusive community events, NFT drops, and more."
+      }
+    },
+    "moonomics": {
+      "title": "Moonomics",
+      "content": "TheMoonMemes has a total supply of 100,000,000,000 TOKENS. TheMoonMemes tokenomics includes smart staking rewards, meaning you can earn huge rewards right away.",
+      "presale1": "Presale: 15% (15,000,000,000)",
+      "marketing1": "Marketing: 10% (10,000,000,000)",
+      "treasury1": "Project Treasury: 25% (25,000,000,000)",
+      "staking1": "Staking Rewards: 20% (20,000,000,000)",
+      "liquidity1": "Exchange Liquidity: 15% (15,000,000,000)",
+      "reserve1": "Reserve/Future Use: 15% (15,000,000,000)",
+      "presale2": "PRESALE",
+      "marketing2": "MARKETING",
+      "treasury2": "TREASURY",
+      "staking2": "STAKING",
+      "liquidity2": "LIQUIDITY",
+      "reserve2": "RESERVE",
+      "address": "TheMoonMemes Token Address"
+    },
+    "roadmap": {
+      "title": "Roadmap",
+      "phase1": {
+        "title": "Phase 1: Conceptualization and Planning",
+        "content1": "Define Themoonmeme token's purpose and utility.",
+        "content2": "Establish tokenomics and assemble team"
+      },
+      "phase2": {
+        "title": "Phase 2: Token Development",
+        "content1": "Create and audit Themoonmeme token smart contract.",
+        "content2": "Develop user interface for token transactions."
+      },
+      "phase3": {
+        "title": "Phase 3: Community Building and Marketing",
+        "content1": "Launch website and social channels.",
+        "content2": "Conduct pre-sale, engage with community, and execute marketing campaigns."
+      },
+      "phase4": {
+        "title": "Phase 4: Exchange Listings and Continued Development",
+        "content1": "List on exchanges for liquidity.",
+        "content2": "Gather feedback for improvements and explore partnerships."
+      }
+    },
+    "howtobuy": {
+      "title": "How to buy",
+      "step1": {
+        "title": "1. Connect Wallet & Select Network:",
+        "content": "To purchase $TMM Tokens, you need to connect your wallet. Select one of the many supported wallets to connect to the $TTM purchase widget (at the top of this web page)."
+      },
+      "step2": {
+        "title": "2. Buy $TMM Tokens:",
+        "content": "Enter the amount of ETH, BNB, or USDT to purchase $TMM tokens using your preferred cryptocurrency and confirm the transaction in your wallet."
+      },
+      "step3": {
+        "title": "3. Claim $TMM Tokens:",
+        "content": "You will be able to claim your $TTM tokens using the same wallet in the pre-sale widget (at the top of this web page) once the presale is complete."
+      },
+      "step4": {
+        "title": "4. Staking $TMM to Earn Meme Coin:",
+        "content": "Once you successfully purchased tokens, you can also use them early to delegate your $TMM Tokens to a staking pool. Click 'Staking' in the menu and start your journey into the world of The Moon Memes staking with High APY for your investment goals."
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions (FAQs)",
+      "section1": {
+        "title": "What is TheMoonMemes?",
+        "content": "TheMoonMemes is an ERC-20 Token built on the Ethereum network, often associated with meme culture. TheMoonMemes ecosystem is designed to support and nurture a thriving community of meme creators, enthusiasts, and crypto aficionados."
+      },
+      "section2": {
+        "title": "When is the TheMoonMemes $TMM Pre-sale?",
+        "content": "Coming soon. TheMoonMemes pre-sale will available in the $TTM purchase widget (at the top of this web page). The selling price increases with each pre-sale stage, so the best time to buy is now. Everyone will be able to purchase TheMoonMemes $TMM Token at a much cheaper price compared to the launch price."
+      },
+      "section3": {
+        "title": "How does TheMoonMemes $TMM staking work?",
+        "content": "During the presale, you can stake your $TMM tokens to earn huge rewards! Once the presale ends and the claim goes live, you can immediately claim your rewards and withdraw your tokens 7 days after the claim goes live. You can also extend the locking period to earn reward multipliers, thus extending your $TMM token withdrawal date."
+      },
+      "section4": {
+        "title": "Is TheMoonMemes $TMM staking a good strategy?",
+        "content": "Assuredly, staking $TMM Tokens can be a rewarding way to earn huge passive income while contributing to the security and decentralization of the blockchain network. Once you stake it, you can sit back and relax as your $TMM Tokens work to validate transactions on the blockchain. Keep an eye on your staking rewards and adjust your strategy as needed."
+      },
+      "section5": {
+        "title": "How do I Contact the TheMoonMemes Team?",
+        "content": "To contact our support team, please email us at cs@themoonmemes.space Or, you can contact the TheMoonMemes team by joining the Telegram group, where a one of our staff will be more than happy to assist you."
+      }
+    }
+  },
+  "presale": {
+    "stage": "STAGE",
+    "comingsoon": "Presale coming Soon",
+    "startsin": "PRESALE STARTS IN",
+    "tmm": "$TMM",
+    "buybefore": "Buy before price increases",
+    "listingprice": "LISTING PRICE",
+    "presale": "PRESALE",
+    "endin": "ENDS IN",
+    "sold": "sold",
+    "endat": "PRESALE ENDED AT",
+    "usdtraised": "USDT RAISED:",
+    "purchased": "YOUR PURCHASED",
+    "stakeable": "YOUR STAKEABLE",
+    "countdown": {
+      "day": "DAY",
+      "hour": "HOURS",
+      "minute": "MINUTES",
+      "second": "SECONDS"
+    },
+    "buysection": {
+      "youpay": "you pay",
+      "youreceive": "you receive",
+      "enoughbalance": "You don't have enough balance",
+      "minamount": "Minimum USD Amount:",
+      "buynow": "Buy Now",
+      "eth": "ETH",
+      "bnb": "BNB",
+      "usdt": "USDT",
+      "buywitheth": "Buy With ETH",
+      "buywithbnb": "Buy With BNB"
+    },
+    "dialog": {
+      "purchased": "Your total purchased tokens are all tokens purchased using the connected wallet. This includes all staked and unstaked tokens.",
+      "stakeable": "Unclaimed $TMM that was bought using ETH or ERC-20 USDT can be staked now. Please note that all early staked tokens can be withdrawn 7 days after token claiming goes live, which will happen after the presale has concluded.",
+      "ok": "OK"
+    }
+  },
+  "staking": {
+    "title": "WELCOME TO $TMM STAKING",
+    "content": "The distribution of $TMM token rewards will occur at a rate of 6600 $TMM tokens per Ethereum (ETH) block. These rewards will be disbursed over 5 months.",
+    "tmm": "$TMM",
+    "stakedbalance": "STAKED BALANCE",
+    "yourbalance": "YOUR BALANCE",
+    "buy": "Buy and Stake",
+    "percent": "%",
+    "totalstaked": "TOTAL STAKED",
+    "estimatedrewards": "ESTIMATED REWARDS",
+    "pa": "p/a",
+    "des1": "Rewards rate is dynamic",
+    "des2": "Monthly = Rewards % / 12",
+    "des3": "Daily = Rewards % / 365",
+    "currentrewards": "CURRENT REWARDS",
+    "perethblock": "Per ETH Block",
+    "totalrewards": "TOTAL REWARDS",
+    "claimrewards": "Claim Rewards"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "introduction": {
+      "title": "Introduction",
+      "content": "At TheMoonMemes, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, disclose, and safeguard your data when you interact with our website, services, and products."
+    },
+    "informationwecollect": {
+      "title": "Information We Collect",
+      "content": "We may collect the following types of information:",
+      "list1": "Personal Information: Includes your name, email address, and any other information you provide when you register an account or contact us.",
+      "list2": "Usage Data: Information about how you use our website and services, including your IP address, browser type, access times, pages viewed, and the page you visited before navigating to our site",
+      "list3": "Cookies and Tracking Technologies: We use cookies and similar tracking technologies to track the activity on our service and hold certain information."
+    },
+    "howtouse": {
+      "title": "How We Use Your Information",
+      "content": "We use the information we collect in the following ways:",
+      "list1": "To Provide and Maintain Our Service: Ensuring that our website and services function correctly.",
+      "list2": "To Communicate With You: Responding to your inquiries, providing updates, and sending newsletters.",
+      "list3": "To Improve Our Services: Analyzing usage data to enhance the performance and user experience of our platform.",
+      "list4": "For Security: Monitoring and analyzing trends, usage, and activities to maintain the safety and security of our website and services."
+    },
+    "disclosure": {
+      "title": "Information Sharing and Disclosure",
+      "content": "We may share your information in the following situations:",
+      "list1": "With Service Providers: We may share your information with third-party service providers who perform services on our behalf, such as website hosting, data analysis, and payment processing.",
+      "list2": "For Legal Reasons: If required by law or in response to valid requests by public authorities.",
+      "list3": "With Your Consent: We may disclose your personal information for any other purpose with your consent."
+    },
+    "security": {
+      "title": "Security of Your Information",
+      "content": "We use administrative, technical, and physical security measures to protect your personal information. Despite these measures, no security system is impenetrable, and we cannot guarantee the absolute security of your data. Your Data Protection Rights Depending on your location, you may have the following rights regarding your personal information:",
+      "list1": "Access: You have the right to request a copy of the information we hold about you.",
+      "list2": "Correction: You have the right to request that we correct any information you believe is inaccurate.",
+      "list3": "Deletion: You have the right to request that we delete your personal information under certain conditions.",
+      "list4": "Restrict Processing: You have the right to request that we restrict the processing of your personal information under certain conditions.",
+      "list5": "Object to Processing: You have the right to object to our processing of your personal information under certain conditions.",
+      "list6": "Data Portability: You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.",
+      "changes": {
+        "title": "Changes to This Privacy Policy",
+        "content": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes."
+      },
+      "contactus": {
+        "title": "Contact Us",
+        "content": "If you have any questions about this Privacy Policy, please contact us at:",
+        "list1": "Email: privacy@themoonmemes.com"
+      }
+    }
+  },
+  "terms": {
+    "title": "Terms and Conditions",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Welcome to TheMoonMemes! These Terms and Conditions ('Terms') govern your use of our website, services, and products. By accessing or using TheMoonMemes, you agree to comply with and be bound by these Terms."
+    },
+    "useservice": {
+      "title": "Use of Our Services",
+      "list1": "Eligibility: You must be at least 18 years old to use our services.",
+      "list2": "Account Registration: You may need to create an account to access certain features of our services. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.",
+      "list3": {
+        "title": "Prohibited Activities: You agree not to engage in any of the following prohibited activities:",
+        "list1": "Using the service for any illegal purpose.",
+        "list2": "Violating any applicable laws or regulations.",
+        "list3": "Infringing upon or violating our intellectual property rights or the intellectual property rights of others.",
+        "list4": "Interfering with or disrupting the operation of our services."
+      }
+    },
+    "intellectual": {
+      "title": "Intellectual Property",
+      "content": "All content on TheMoonMemes, including text, graphics, logos, images, and software, is the property of TheMoonMemes or its content suppliers and is protected by intellectual property laws. You agree not to reproduce, distribute, or create derivative works based on our content without our prior written consent."
+    },
+    "limitation": {
+      "title": "Limitation of Liability",
+      "content": "To the maximum extent permitted by law, TheMoonMemes shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from:",
+      "list1": "Your use or inability to use our services.",
+      "list2": "Any unauthorized access to or use of our servers and/or any personal information stored therein.",
+      "list3": "Any interruption or cessation of transmission to or from our services.",
+      "list4": "Any bugs, viruses, trojan horses, or the like that may be transmitted to or through our services by any third party."
+    },
+    "indemnification": {
+      "title": "Indemnification",
+      "content": "You agree to indemnify and hold harmless TheMoonMemes, its affiliates, and their respective officers, directors, employees, and agents from any and all claims, liabilities, damages, losses, or expenses, including reasonable attorneys' fees and costs, arising out of or in any way connected with your access to or use of our services."
+    },
+    "governing": {
+      "title": "Governing Law",
+      "content": "These Terms and any disputes related to these Terms or our services will be governed by and construed in accordance with the laws of [Jurisdiction], without regard to its conflict of law principles."
+    },
+    "change": {
+      "title": "Changes to These Terms",
+      "content": "We may update these Terms from time to time. We will notify you of any changes by posting the new Terms on this page. Your continued use of our services after any changes to these Terms will constitute your acceptance of the new Terms."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "content": "If you have any questions about these Terms, please contact us at",
+      "email": "Email: support@themoonmemes.com"
+    }
+  },
+  "footer": {
+    "title": "TheMoonMemes",
+    "home": "Home",
+    "about": "About",
+    "mission_vision": "Mission & Vision",
+    "moonomics": "Moonomics",
+    "roadmap": "Roadmap",
+    "howtobuy": "How to buy",
+    "privacy_policy": "Privacy & Policy",
+    "terms_conditions": "Terms & Conditions",
+    "copyright": "Copyrights 2024. The Moon Memes Token. All rights reserved.",
+    "disclaimer": {
+      "section1": "DISCLAIMER: cryptocurrency may be unregulated in your jurisdiction.",
+      "section2": "The value of cryptocurrency may go down as well as up. Profits may be subject to capital gains or other taxes applicable in your jurisdiction."
+    },
+    "contact": {
+      "title": "The Moon Memes Office",
+      "street": "Tower Financial Center, Cl, Calle 50 Y",
+      "address": "Panamá, Provincia de Panamá, Panama",
+      "email": "CS@themoonmemes.space"
+    }
+  }
+}

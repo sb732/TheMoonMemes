@@ -1,3 +1,5 @@
+import * as translation from "@/translation/en.json";
+
 const TimeLeftPanel = () => {
   return (
     <div className="flex relative text-center">
@@ -11,7 +13,7 @@ const TimeLeftPanel = () => {
             0
           </p>
         </div>
-        <p className="text-xs">DAY</p>
+        <p className="text-xs">{translation.presale.countdown.day}</p>
       </div>
       <div className="mr-2 flex flex-col items-center">
         <div className="flex mb-1">
@@ -22,7 +24,7 @@ const TimeLeftPanel = () => {
             0
           </p>
         </div>
-        <p className="text-xs">HOURS</p>
+        <p className="text-xs">{translation.presale.countdown.hour}</p>
       </div>
       <div className="mr-2 flex flex-col items-center">
         <div className="flex mb-1">
@@ -33,7 +35,7 @@ const TimeLeftPanel = () => {
             0
           </p>
         </div>
-        <p className="text-xs">MINUTES</p>
+        <p className="text-xs">{translation.presale.countdown.minute}</p>
       </div>
       <div className="flex flex-col items-center">
         <div className="flex mb-1">
@@ -44,7 +46,7 @@ const TimeLeftPanel = () => {
             0
           </p>
         </div>
-        <p className="text-xs">SECONDS</p>
+        <p className="text-xs">{translation.presale.countdown.second}</p>
       </div>
     </div>
   );

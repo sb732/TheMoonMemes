@@ -11,6 +11,8 @@ export interface IData {
   ethPrice: number;
   bnbPrice: number;
   currentPrice: number;
+  ethUsdtBalance: any;
+  bscUsdtBalance: any;
   minAmt: number;
 }
 

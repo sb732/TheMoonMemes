@@ -3,6 +3,7 @@ import * as React from "react";
 // @ts-ignore
 import FlipCountdown from "@rumess/react-flip-countdown";
 
+import * as translation from "@/translation/en.json";
 import { ICountDown } from "@/utils/type";
 import { ConvertTimestampToStringDate } from "../../utils/helper";
 
@@ -15,10 +16,10 @@ const FlipClock: React.FC<ICountDown> = ({ endTime }) => {
     <FlipCountdown
       hideYear
       hideMonth
-      dayTitle="DAY"
-      hourTitle="HOURS"
-      minuteTitle="MINUTES"
-      secondTitle="SECONDS"
+      dayTitle={translation.presale.countdown.day}
+      hourTitle={translation.presale.countdown.hour}
+      minuteTitle={translation.presale.countdown.minute}
+      secondTitle={translation.presale.countdown.second}
       titlePosition="bottom"
       theme="light"
       size="small" // Options (Default: medium): large, medium, small, extra-small.

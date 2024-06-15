@@ -13,12 +13,14 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
-const chains = [sepolia, bscTestnet] as const;
+const chains = [mainnet, bsc, sepolia, bscTestnet] as const;
 export const config = defaultWagmiConfig({
   chains,
   projectId,
   metadata,
   transports: {
+    [mainnet.id]: http(),
+    [bsc.id]: http(),
     [sepolia.id]: http(),
     [bscTestnet.id]: http(),
   },

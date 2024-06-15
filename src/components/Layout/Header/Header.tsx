@@ -5,6 +5,8 @@ import { useAccount } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import ConnectButton from "@/provider/ConnectButton";
 
+import * as data from "@/translation/en.json";
+
 interface HeaderProps {
   showNav: boolean;
   setShowNav: (showNav: boolean) => void;
@@ -33,32 +35,49 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
               </a>
 
               <a href="/staking">
-                <p className="hover:text-[#528F85]">STAKING</p>
+                <p className="hover:text-[#528F85]">{data.navbar.staking}</p>
               </a>
 
               <div className="group relative">
-                <p className="cursor-pointer hover:text-[#528F85]">ABOUT</p>
+                <p className="cursor-pointer hover:text-[#528F85]">
+                  {data.navbar.about}
+                </p>
                 <div>
                   <div className="absolute hidden group-hover:block">
-                    <ul className="bg-black rounded-lg px-4 py-2 mt-12 flex flex-col justify-center gap-2">
+                    <ul className="bg-black rounded-lg px-4 py-2 mt-12 flex flex-col justify-center gap-2 min-w-[180px]">
                       <li>
                         <a href="/#moonomics">
-                          <p className="hover:text-[#528F85]">MOONOMICS</p>
+                          <p className="hover:text-[#528F85]">
+                            {data.navbar.moonomics}
+                          </p>
                         </a>
                       </li>
                       <li>
                         <a href="/#roadmap">
-                          <p className="hover:text-[#528F85]">ROADMAP</p>
+                          <p className="hover:text-[#528F85]">
+                            {data.navbar.roadmap}
+                          </p>
                         </a>
                       </li>
                       <li>
                         <a href="/#staking">
-                          <p className="hover:text-[#528F85]">REWARDS</p>
+                          <p className="hover:text-[#528F85]">
+                            {data.navbar.rewards}
+                          </p>
                         </a>
                       </li>
                       <li>
                         <a href="/#FAQs">
-                          <p className="hover:text-[#528F85]">FAQs</p>
+                          <p className="hover:text-[#528F85]">
+                            {data.navbar.faqs}
+                          </p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/">
+                          <p className="hover:text-[#528F85]">
+                            {data.navbar.howtobuy}
+                          </p>
                         </a>
                       </li>
                     </ul>
@@ -71,55 +90,48 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <p className="hover:text-[#528F85]">WHITEPAPER</p>
+                <p className="hover:text-[#528F85]">{data.navbar.whitepaper}</p>
               </a>
 
               <a href="/">
-                <p className="hover:text-[#528F85]">AUDIT</p>
-              </a>
-
-              <a href="/#buy">
-                <p className="hover:text-[#528F85]">HOW TO BUY</p>
+                <p className="hover:text-[#528F85]">{data.navbar.audit}</p>
               </a>
 
               {!address ? (
                 <a href="/#buynow">
                   <button
-                    className="border-[1px] border-[#FFC700] min-w-[200px] min-h-[60px] rounded-2xl"
+                    className="bg-[#FFC700] min-w-[170px] min-h-[45px] rounded-2xl"
                     onClick={() => open()}
                   >
-                    BUY NOW
+                    {data.navbar.buynow}
                   </button>
                 </a>
               ) : (
                 <ConnectButton />
               )}
 
+              <div className="flex gap-10 items-center">
+                {/* <a href="https://t.me/TheMoonMemesPortal" target="_blank"> */}
+                <img
+                  src="./assets/icons/Telegram App.svg"
+                  className="min-w-14 h-14 p-2 border-[1px] rounded-full border-[#FFC700] cursor-pointer"
+                  alt=""
+                />
+                {/* </a> */}
+                <a href="https://x.com/The_Moon_Memes" target="_blank">
+                  <img
+                    src="./assets/icons/Twitter-X-Icon.png"
+                    className="min-w-14 h-14 border-[1px] rounded-full border-[#FFC700]"
+                    alt=""
+                  />
+                </a>
+              </div>
+
               <div className="w-[120px]"></div>
             </div>
 
-            <div className="flex gap-5 items-center ml-[50px]">
-              <a href="https://t.me/TheMoonMemesPortal" target="_blank">
-                <img
-                  src="./assets/icons/Telegram App.svg"
-                  className="min-w-14 h-14 p-2 border-[1px] rounded-full border-[#FFC700]"
-                  alt=""
-                />
-              </a>
-              <a href="https://x.com/The_Moon_Memes" target="_blank">
-                <img
-                  src="./assets/icons/Twitter-X-Icon.png"
-                  className="min-w-14 h-14 border-[1px] rounded-full border-[#FFC700]"
-                  alt=""
-                />
-              </a>
-            </div>
-
-            <div className="absolute top-10 right-[200px]">
-              <div
-                className="gtranslate_wrapper_desktop"
-                id="desktopGTranslate"
-              ></div>
+            <div className="absolute top-10 left-[calc(100%-180px)]">
+              <div className="gtranslate_wrapper"></div>
             </div>
           </div>
         </MediaQuery>
@@ -142,21 +154,25 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
                 />
               </a>
             </div>
-            <a href="/#buynow">
-              <button
-                className="border-[1px] border-[#FFC700] min-w-[160px] min-h-[40px] rounded-2xl"
-                onClick={() => {
-                  open();
-                }}
-              >
-                BUY NOW
-              </button>
-            </a>
+            {!address ? (
+              <a href="/#buynow">
+                <button
+                  className="bg-[#FFC700] min-w-[160px] min-h-[40px] rounded-2xl"
+                  onClick={() => {
+                    open();
+                  }}
+                >
+                  {data.navbar.buynow}
+                </button>
+              </a>
+            ) : (
+              <ConnectButton />
+            )}
           </div>
         </MediaQuery>
 
         <p className="bg-[#FFC700] text-center w-full text-base text-black">
-          Buy & Stake $TMM for 48% Annual Rewards!
+          {data.navbar.alert}
         </p>
       </div>
 
@@ -178,18 +194,20 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
             onClick={() => handleShowNav()}
             className="border-b-[1px] border-white px-1 py-1"
           >
-            HOME
+            {data.navbar.home}
           </p>
         </a>
         <a href="/staking">
-          <p className="border-b-[1px] border-white px-1 py-1">STAKING</p>
+          <p className="border-b-[1px] border-white px-1 py-1">
+            {data.navbar.staking}
+          </p>
         </a>
         <a href="/#moonomics">
           <p
             onClick={() => handleShowNav()}
             className="border-b-[1px] border-white px-1 py-1"
           >
-            MOONOMICS
+            {data.navbar.moonomics}
           </p>
         </a>
         <a href="/#roadmap">
@@ -197,7 +215,7 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
             onClick={() => handleShowNav()}
             className="border-b-[1px] border-white px-1 py-1"
           >
-            ROADMAP
+            {data.navbar.roadmap}
           </p>
         </a>
         <a href="/#staking">
@@ -205,7 +223,7 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
             onClick={() => handleShowNav()}
             className="border-b-[1px] border-white px-1 py-1"
           >
-            REWARDS
+            {data.navbar.rewards}
           </p>
         </a>
         <a href="/#FAQs">
@@ -213,7 +231,7 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
             onClick={() => handleShowNav()}
             className="border-b-[1px] border-white px-1 py-1"
           >
-            FAQs
+            {data.navbar.faqs}
           </p>
         </a>
         <a
@@ -221,14 +239,16 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
           target="_blank"
           rel="noreferrer"
         >
-          <p className="border-b-[1px] border-white px-1 py-1">WHITEPAPER</p>
+          <p className="border-b-[1px] border-white px-1 py-1">
+            {data.navbar.whitepaper}
+          </p>
         </a>
         <a href="/">
           <p
             onClick={() => handleShowNav()}
             className="border-b-[1px] border-white px-1 py-1"
           >
-            AUDIT
+            {data.navbar.audit}
           </p>
         </a>
         <a href="/#buy">
@@ -236,24 +256,24 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
             onClick={() => handleShowNav()}
             className="border-b-[1px] border-white px-1 py-1"
           >
-            HOW TO BUY
+            {data.navbar.howtobuy}
           </p>
         </a>
 
         <div className="h-[50px]"></div>
 
         <div className="absolute left-[30px] top-[477px]">
-          <div className="gtranslate_wrapper_desktop" id="desktopGTranslate" />
+          <div className="gtranslate_wrapper" />
         </div>
 
         <div className="flex gap-5 items-center">
-          <a href="https://t.me/TheMoonMemesPortal" target="_blank">
-            <img
-              src="./assets/icons/Telegram App.svg"
-              className="w-14 h-14 p-2 border-[1px] rounded-full border-[#FFC700]"
-              alt=""
-            />
-          </a>
+          {/* <a href="https://t.me/TheMoonMemesPortal" target="_blank"> */}
+          <img
+            src="./assets/icons/Telegram App.svg"
+            className="w-14 h-14 p-2 border-[1px] rounded-full border-[#FFC700] cursor-pointer"
+            alt=""
+          />
+          {/* </a> */}
           <a href="https://x.com/The_Moon_Memes" target="_blank">
             <img
               src="./assets/icons/Twitter-X-Icon.png"
@@ -262,6 +282,21 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
             />
           </a>
         </div>
+
+        {!address ? (
+          <a href="/#buynow">
+            <button
+              className="bg-[#FFC700] w-full min-h-[40px] rounded-2xl"
+              onClick={() => {
+                open();
+              }}
+            >
+              {data.navbar.buynow}
+            </button>
+          </a>
+        ) : (
+          <ConnectButton />
+        )}
       </div>
     </section>
   );

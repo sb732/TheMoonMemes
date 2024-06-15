@@ -1,3 +1,5 @@
+import * as data from "@/translation/en.json";
+
 const Footer = () => {
   return (
     <section className="flex flex-col items-center gap-10 w-full text-white pt-[72px] md:pt-[124px]">
@@ -9,7 +11,7 @@ const Footer = () => {
           backgroundSize: "cover",
         }}
       >
-        TheMoonMemes
+        {data.footer.title}
       </p>
       <div className="flex flex-col items-center gap-10 relative w-full">
         <img
@@ -36,69 +38,57 @@ const Footer = () => {
             <div className="flex justify-around underline gap-5 md:gap-10">
               <div>
                 <a href="/#staking">
-                  <p>Home</p>
+                  <p>{data.footer.home}</p>
                 </a>
                 <a href="/#about">
-                  <p>About</p>
+                  <p>{data.footer.about}</p>
                 </a>
                 <a href="/#mission">
-                  <p>Mission & Vision</p>
+                  <p>{data.footer.mission_vision}</p>
                 </a>
                 <a href="/#moonomics">
-                  <p>Moonomics</p>
+                  <p>{data.footer.moonomics}</p>
                 </a>
               </div>
               <div>
                 <a href="/#roadmap">
-                  <p>Roadmap</p>
+                  <p>{data.footer.roadmap}</p>
                 </a>
                 <a href="/#buy">
-                  <p>How to buy</p>
+                  <p>{data.footer.howtobuy}</p>
                 </a>
                 <a href="/privacy">
-                  <p>Privacy & Policy</p>
+                  <p>{data.footer.privacy_policy}</p>
                 </a>
                 <a href="/terms">
-                  <p>Terms & Conditions</p>
+                  <p>{data.footer.terms_conditions}</p>
                 </a>
               </div>
             </div>
           </div>
           <div className="w-full flex flex-col gap-5 md:gap-10 md:flex-row justify-around px-2">
-            <p className="hidden md:block text-xs">
-              DISCLAIMER: cryptocurrency may be unregulated in your
-              jurisdiction.
+            <p className="hidden md:block text-xs max-w-[400px]">
+              {data.footer.disclaimer.section1}
               <br className="hidden md:block" />
-              The value of cryptocurrency may go down as well as up. Profits may
-              be
-              <br className="hidden md:block" />
-              subject to capital gains or other taxes applicable in your
-              jurisdiction.
+              {data.footer.disclaimer.section2}
             </p>
             <p className="text-xs">
-              The Moon Memes Office <br />
-              Tower Financial Center, Cl, Calle 50 Y <br />
-              Panamá, Provincia de Panamá, Panama <br />
+              {data.footer.contact.title} <br />
+              {data.footer.contact.street} <br />
+              {data.footer.contact.address} <br />
               <a href="mailto:cs@themoonmemes.space" className="underline">
-                CS@themoonmemes.space
+                {data.footer.contact.email}
               </a>
             </p>
           </div>
           <div className="w-full md:w-auto px-2">
-            <p className="text-xs md:my-10">
-              Copyrights 2024. The Moon Memes Token. All rights reserved.
-            </p>
+            <p className="text-xs md:my-10">{data.footer.copyright}</p>
           </div>
           <div className="block md:hidden w-full mb-5 px-2">
             <p className="text-xs">
-              DISCLAIMER: cryptocurrency may be unregulated in your
-              jurisdiction.
+              {data.footer.disclaimer.section1}
               <br className="hidden md:block" />
-              The value of cryptocurrency may go down as well as up. Profits may
-              be
-              <br className="hidden md:block" />
-              subject to capital gains or other taxes applicable in your
-              jurisdiction.
+              {data.footer.disclaimer.section2}
             </p>
           </div>
         </div>

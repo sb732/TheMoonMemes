@@ -17,6 +17,7 @@ function App() {
   useEffect(() => {
     window.gtranslateSettings = {
       default_language: "en",
+      // url_structure: "sub_directory",
       languages: [
         "en",
         "ar",
@@ -44,9 +45,10 @@ function App() {
         "tr",
         "vi",
       ],
-      wrapper_selector: ".gtranslate_wrapper_desktop",
+      wrapper_selector: ".gtranslate_wrapper",
       switcher_horizontal_position: "inline",
       float_switcher_open_direction: "bottom",
+      flag_style: "3d",
     };
   }, []);
 
@@ -76,6 +78,7 @@ function App() {
         ></script>
 
         <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/collapse.js"></script>
+        <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
       </Helmet>
     </Web3ModalProvider>
   );
