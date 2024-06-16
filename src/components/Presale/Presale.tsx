@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 
-import {
-  Dialog,
-} from "@material-tailwind/react";
+import { useAccount } from "wagmi";
+import { Address } from "viem";
+
+import { Dialog } from "@material-tailwind/react";
 
 import Countdown from "./Countdown";
 import BuySection from "./BuySection";
@@ -11,13 +12,16 @@ import TimeLeftPanel from "./TimeLeftPanel";
 import * as translation from "@/translation/en.json";
 
 import { IPresaleData } from "../../utils/type";
-import { getPresaleData } from "../../web3/hooks/useAPI";
+import { getPresaleData, getTMMBalance } from "../../web3/hooks/useAPI";
 
 import "./Presale.css";
 
 const Presale = () => {
+  const { address } = useAccount();
+
   const [selectedNetwork, setSelectedNetwork] = useState("ETH");
   const [data, setData] = useState<IPresaleData>();
+  const [balance, setBalance] = useState<number>(0);
 
   const [purchasedOpen, setPurchasedOpen] = useState(false);
   const [stakableOpen, setStakableOpen] = useState(false);
@@ -27,7 +31,13 @@ const Presale = () => {
   useEffect(() => {
     const getData = async () => {
       const _Data: IPresaleData = await getPresaleData();
+      console.log(_Data);
       setData(_Data);
+
+      if (address) {
+        const _balance = await getTMMBalance(address as Address);
+        setBalance(_balance.tmmBalance ?? 0);
+      }
     };
 
     getData();
@@ -80,7 +90,7 @@ const Presale = () => {
                   />
                 </div>
                 <p className="flex text-sm">
-                  {translation.presale.stakeable} {translation.presale.tmm}= 0{" "}
+                  {translation.presale.stakeable} {translation.presale.tmm} = 0{" "}
                   <img
                     src="/assets/icons/info-icon.svg"
                     className="ml-2 cursor-pointer"
@@ -116,11 +126,10 @@ const Presale = () => {
                   <Countdown
                     endTime={data?.endTime ? data.endTime : Date.now()}
                   />
-                  <p className="bg-white rounded-lg text-black text-xs px-6 py-1 relative w-full h-6">
+                  <div className="bg-white rounded-lg text-black text-xs px-6 py-1 relative w-full h-6">
                     <p
-                      className={`h-6 bg-[#52BF85] absolute left-0 top-0 rounded-lg w-[${
-                        Number(data?.totalTokensSold) / 150000000
-                      }%]`}
+                      className="h-6 bg-[#52BF85] absolute left-0 top-0 rounded-lg"
+                      style={{ width: `${Number(1500000000) / 150000000}%` }}
                     ></p>
                     <p className="z-[10] absolute w-full text-center left-0">
                       {data?.totalTokensSold
@@ -129,12 +138,40 @@ const Presale = () => {
                       {translation.presale.tmm} / 15,000,000,000{" "}
                       {translation.presale.tmm}
                     </p>
+                  </div>
+                  <p className="text-sm">
+                    {translation.presale.usdtraised} $
+                    {Number(
+                      (Number(data?.totalUSDRaised) / 10 ** 18).toFixed(2)
+                    ).toLocaleString("en-US")}{" "}
+                    / $0
                   </p>
-                  <p className="text-xs">{translation.presale.buybefore}</p>
-                  <p className="text-xs">
-                    {translation.presale.listingprice} $
-                    {Number(data?.currentPrice) / 10 ** 18}
+                  <div className="flex text-sm">
+                    {translation.presale.purchased} {translation.presale.tmm} ={" "}
+                    {Number(balance) / 10 ** 18}
+                    <img
+                      src="/assets/icons/info-icon.svg"
+                      className="ml-2 cursor-pointer"
+                      onClick={handlePurchasedOpen}
+                    />
+                  </div>
+                  <p className="flex text-sm">
+                    {translation.presale.stakeable} {translation.presale.tmm} ={" "}
+                    {Number(balance) / 10 ** 18}
+                    <img
+                      src="/assets/icons/info-icon.svg"
+                      className="ml-2 cursor-pointer"
+                      onClick={handleStakableOpen}
+                    />
                   </p>
+                  <div className="w-full flex items-center justify-between">
+                    <div className="min-w-[100px] border-[1px] border-white h-0"></div>
+                    <p className="text-xs !w-full text-center">
+                      1 {translation.presale.tmm} = $
+                      {Number(data?.currentPrice) / 10 ** 18}
+                    </p>
+                    <div className="min-w-[100px] border-[1px] border-white h-0"></div>
+                  </div>
                   <BuySection
                     disabled={false}
                     selectedNetwork={selectedNetwork}

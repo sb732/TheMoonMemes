@@ -50,6 +50,31 @@ const abi = [
     anonymous: false,
     inputs: [
       {
+        indexed: false,
+        internalType: "uint256",
+        name: "prevValue",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "newValue",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "timestamp",
+        type: "uint256",
+      },
+    ],
+    name: "CurrentStageUpdated",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
         indexed: true,
         internalType: "address",
         name: "previousOwner",
@@ -165,18 +190,6 @@ const abi = [
         type: "uint256",
       },
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "bonusTokens",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "totalTokens",
-        type: "uint256",
-      },
-      {
         indexed: true,
         internalType: "address",
         name: "purchaseToken",
@@ -239,13 +252,6 @@ const abi = [
   },
   {
     inputs: [],
-    name: "USDCInterface",
-    outputs: [{ internalType: "contract IERC20", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "USDTInterface",
     outputs: [{ internalType: "contract IERC20", name: "", type: "address" }],
     stateMutability: "view",
@@ -260,26 +266,12 @@ const abi = [
   },
   {
     inputs: [
-      { internalType: "uint256", name: "", type: "uint256" },
-      { internalType: "uint256", name: "", type: "uint256" },
+      { internalType: "uint256", name: "amount", type: "uint256" },
+      { internalType: "uint256", name: "slippage", type: "uint256" },
     ],
-    name: "bonuses",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "amount", type: "uint256" }],
     name: "buyWithEth",
     outputs: [{ internalType: "bool", name: "", type: "bool" }],
     stateMutability: "payable",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "amount", type: "uint256" }],
-    name: "buyWithUSDC",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -290,11 +282,8 @@ const abi = [
     type: "function",
   },
   {
-    inputs: [
-      { internalType: "uint256", name: "_amount", type: "uint256" },
-      { internalType: "uint256", name: "_usdAmount", type: "uint256" },
-    ],
-    name: "calculateBonus",
+    inputs: [{ internalType: "uint256", name: "ethAmount", type: "uint256" }],
+    name: "calculateAmount",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",
@@ -314,18 +303,27 @@ const abi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "uint256", name: "_claimStart", type: "uint256" }],
+    name: "changeClaimStartTime",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [
-      { internalType: "uint256[][2]", name: "_bonuses", type: "uint256[][2]" },
+      { internalType: "uint256", name: "_currentStage", type: "uint256" },
     ],
-    name: "changeBonuses",
+    name: "changeCurrentStage",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "_claimStart", type: "uint256" }],
-    name: "changeClaimStartTime",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    inputs: [
+      { internalType: "uint256", name: "_maxSlippageAmount", type: "uint256" },
+    ],
+    name: "changeMaxSlippageAmount",
+    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
@@ -362,13 +360,6 @@ const abi = [
       { internalType: "uint256[][3]", name: "_stages", type: "uint256[][3]" },
     ],
     name: "changeStages",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "address", name: "_address", type: "address" }],
-    name: "changeUSDCInterface",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -417,13 +408,6 @@ const abi = [
   },
   {
     inputs: [],
-    name: "getBonuses",
-    outputs: [{ internalType: "uint256[][2]", name: "", type: "uint256[][2]" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "getLatestPrice",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
@@ -444,13 +428,6 @@ const abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "incrementCurrentStage",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       { internalType: "address", name: "_to", type: "address" },
       { internalType: "uint256", name: "amount", type: "uint256" },
@@ -458,6 +435,13 @@ const abi = [
     name: "manualBuy",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "maxSlippageAmount",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -546,13 +530,6 @@ const abi = [
   },
   {
     inputs: [],
-    name: "totalTokensSoldWithBonus",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "totalUsdRaised",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
@@ -575,13 +552,6 @@ const abi = [
   {
     inputs: [{ internalType: "address", name: "", type: "address" }],
     name: "userDeposits",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
-    name: "userStage",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
     type: "function",

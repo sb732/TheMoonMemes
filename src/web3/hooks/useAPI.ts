@@ -1,5 +1,5 @@
 import { readContract, simulateContract, writeContract } from "@wagmi/core";
-import { mainnet, sepolia, bscTestnet } from "wagmi/chains";
+import { mainnet, bsc, sepolia, bscTestnet } from "wagmi/chains";
 import { Address, parseUnits } from "viem";
 
 import { config } from "@/provider/config";
@@ -9,8 +9,8 @@ import BSCPresaleABI from "../abis/BSCPresale";
 import ETHUSDTABI from "../abis/ETHUSDT";
 import BSCUSDTABI from "../abis/BSCUSDT";
 
-const ETHPresaleContract = "0x129185387548Fa43344BA70B353CeC3485b5Ca34";
-const BSCPresaleContract = "0x588c6eF92983dD38a30ceD7aA0De31E320e1A365";
+const ETHPresaleContract = "0xa80F92CF38174CD35fB33fc3C4a7afBe6DD8bF1F";
+const BSCPresaleContract = "0xEA6aA071f84C9C6903223007BF473c20ea6bb230";
 const ETHUSDTContract = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
 const BSCUSDTContract = "0x55d398326f99059fF775485246999027B3197955";
 
@@ -140,7 +140,7 @@ export const getCalcBoardData = async (address: Address) => {
         abi: BSCUSDTABI,
         functionName: "balanceOf",
         args: [address],
-        chainId: bscTestnet.id,
+        chainId: bsc.id,
       })
     : 0;
 
@@ -151,6 +151,28 @@ export const getCalcBoardData = async (address: Address) => {
     ethUsdtBalance: ethUsdtBalance as number,
     bscUsdtBalance: bscUsdtBalance as number,
     minAmt: minAmt as number,
+  };
+};
+
+export const getTMMBalance = async (address: Address) => {
+  const tmmBalance1 = await readContract(config, {
+    address: BSCPresaleContract,
+    abi: BSCPresaleABI,
+    functionName: "userDeposits",
+    args: [address],
+    chainId: bscTestnet.id,
+  });
+
+  const tmmBalance2 = await readContract(config, {
+    address: ETHPresaleContract,
+    abi: ETHPresaleABI,
+    functionName: "userDeposits",
+    args: [address],
+    chainId: sepolia.id,
+  });
+
+  return {
+    tmmBalance: (tmmBalance1 as number) + (tmmBalance2 as number),
   };
 };
 
@@ -217,6 +239,7 @@ export const buyWithUSDT = async (
     const presaleChain = network === "ETH" ? sepolia.id : bscTestnet.id;
     const usdtContract = network === "ETH" ? ETHUSDTContract : BSCUSDTContract;
     const usdtABI = network === "ETH" ? ETHUSDTABI : BSCUSDTABI;
+    const parseUnit = network === "ETH" ? 6 : 18;
 
     const allowance = await readContract(config, {
       address: usdtContract,
@@ -226,12 +249,12 @@ export const buyWithUSDT = async (
       chainId: presaleChain,
     });
 
-    if (Number(allowance) / 10 ** 18 < Number(usdt)) {
+    if (Number(allowance) / 10 ** parseUnit < Number(usdt)) {
       const { request } = await simulateContract(config, {
         address: usdtContract,
         abi: usdtABI,
         functionName: "approve",
-        args: [presaleContract, parseUnits(usdt, 18)],
+        args: [presaleContract, parseUnits(usdt, parseUnit)],
         chainId: presaleChain,
         connector,
       });
