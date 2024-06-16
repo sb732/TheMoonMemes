@@ -57,6 +57,10 @@ const BuySection = ({
   const selectedCoinRef = useRef(selectedCoin);
   const inputAmountRef = useRef(inputAmount);
 
+  const formatNumber = (number: string) => {
+    return number.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+  };
+
   useEffect(() => {
     selectedCoinRef.current = selectedCoin;
   }, [selectedCoin]);
@@ -224,9 +228,8 @@ const BuySection = ({
           </p>
           <div className="flex items-center border-[1px] border-white rounded-lg">
             <input
-              type="number"
               className="bg-transparent w-[250px] md:w-[120px] p-2"
-              value={disabled ? 0 : outputAmount}
+              value={disabled ? 0 : formatNumber(outputAmount.toString())}
               disabled
             />
             <img

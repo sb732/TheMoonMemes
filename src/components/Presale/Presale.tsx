@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { useAccount } from "wagmi";
 import { Address } from "viem";
@@ -28,14 +28,20 @@ const Presale = () => {
   const handlePurchasedOpen = () => setPurchasedOpen(!purchasedOpen);
   const handleStakableOpen = () => setStakableOpen(!stakableOpen);
 
+  const addressRef = useRef(address);
+
+  useEffect(() => {
+    addressRef.current = address;
+  }, [address]);
+
   useEffect(() => {
     const getData = async () => {
       const _Data: IPresaleData = await getPresaleData();
       console.log(_Data);
       setData(_Data);
 
-      if (address) {
-        const _balance = await getTMMBalance(address as Address);
+      if (addressRef.current) {
+        const _balance = await getTMMBalance(addressRef.current as Address);
         setBalance(_balance.tmmBalance ?? 0);
       }
     };
@@ -48,6 +54,10 @@ const Presale = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  const formatNumber = (number: string) => {
+    return number.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+  };
 
   return (
     <div
@@ -132,9 +142,7 @@ const Presale = () => {
                       style={{ width: `${Number(1500000000) / 150000000}%` }}
                     ></p>
                     <p className="z-[10] absolute w-full text-center left-0">
-                      {data?.totalTokensSold
-                        .toString()
-                        .replace(/(\d)(?=(\d{3})+$)/g, "$1,")}{" "}
+                      {formatNumber(data?.totalTokensSold.toString())}{" "}
                       {translation.presale.tmm} / 15,000,000,000{" "}
                       {translation.presale.tmm}
                     </p>
@@ -148,7 +156,7 @@ const Presale = () => {
                   </p>
                   <div className="flex text-sm">
                     {translation.presale.purchased} {translation.presale.tmm} ={" "}
-                    {Number(balance) / 10 ** 18}
+                    {formatNumber((Number(balance) / 10 ** 18).toFixed(0))}
                     <img
                       src="/assets/icons/info-icon.svg"
                       className="ml-2 cursor-pointer"
@@ -157,7 +165,7 @@ const Presale = () => {
                   </div>
                   <p className="flex text-sm">
                     {translation.presale.stakeable} {translation.presale.tmm} ={" "}
-                    {Number(balance) / 10 ** 18}
+                    {formatNumber((Number(balance) / 10 ** 18).toFixed(0))}
                     <img
                       src="/assets/icons/info-icon.svg"
                       className="ml-2 cursor-pointer"
