@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useAccount, useBalance } from "wagmi";
 import { switchChain } from "@wagmi/core";
-import { bsc, sepolia, bscTestnet } from "@wagmi/core/chains";
+import { sepolia, bscTestnet } from "@wagmi/core/chains";
 import { Address } from "viem";
 
 import { config } from "@/provider/config";
