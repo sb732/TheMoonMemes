@@ -1,6 +1,6 @@
 .flip-countdown {
   font-family: "Knewave", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif !important;
 }
 
 .flip-countdown
@@ -23,16 +23,16 @@
   .flip-countdown-card
   .flip-countdown-card-sec
   .card__back::after {
-  color: black;
+  color: black !important;
 }
 
 .flip-countdown.size-small
   .flip-countdown-piece
   .flip-countdown-card
   .flip-countdown-card-sec {
-  font-size: 1.25rem;
+  font-size: 1.25rem !important;
 }
 
 .flip-countdown.size-small .flip-countdown-piece .flip-countdown-title {
-  font-size: 7px;
+  font-size: 7px !important;
 }
