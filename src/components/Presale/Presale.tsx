@@ -37,12 +37,13 @@ const Presale = () => {
   useEffect(() => {
     const getData = async () => {
       const _Data: IPresaleData = await getPresaleData();
-      console.log(_Data);
       setData(_Data);
 
       if (addressRef.current) {
         const _balance = await getTMMBalance(addressRef.current as Address);
         setBalance(_balance.tmmBalance ?? 0);
+      } else {
+        setBalance(0);
       }
     };
 
@@ -85,7 +86,7 @@ const Presale = () => {
                   endTime={data?.startTime ? data.startTime : Date.now()}
                 /> */}
                 <p className="bg-white rounded-lg text-black text-xs px-6 py-1">
-                  0 {translation.presale.tmm} / 15,000,000,000{" "}
+                  0 {translation.presale.tmm} / 15,000,000{" "}
                   {translation.presale.tmm}
                 </p>
                 <p className="text-sm">
@@ -139,11 +140,13 @@ const Presale = () => {
                   <div className="bg-white rounded-lg text-black text-xs px-6 py-1 relative w-full h-6">
                     <p
                       className="h-6 bg-[#52BF85] absolute left-0 top-0 rounded-lg"
-                      style={{ width: `${Number(1500000000) / 150000000}%` }}
+                      style={{
+                        width: `${Number(data?.totalTokensSold) / 150000}%`,
+                      }}
                     ></p>
                     <p className="z-[10] absolute w-full text-center left-0">
                       {formatNumber(data?.totalTokensSold.toString())}{" "}
-                      {translation.presale.tmm} / 15,000,000,000{" "}
+                      {translation.presale.tmm} / 15,000,000{" "}
                       {translation.presale.tmm}
                     </p>
                   </div>

@@ -1,8 +1,11 @@
 import { useEffect, useState, useRef } from "react";
+
 import { useAccount, useBalance } from "wagmi";
 import { switchChain } from "@wagmi/core";
-import { sepolia, bscTestnet } from "@wagmi/core/chains";
+import { bsc, sepolia } from "@wagmi/core/chains";
 import { Address } from "viem";
+
+import { ToastContainer, toast } from "react-toastify";
 
 import { config } from "@/provider/config";
 import ConnectButton from "@/provider/ConnectButton";
@@ -16,6 +19,8 @@ import {
 } from "../../web3/hooks/useAPI";
 
 import * as translation from "@/translation/en.json";
+
+import "./ReactToastify.css";
 
 const coins: CoinData[] = [
   {
@@ -53,9 +58,13 @@ const BuySection = ({
   const [inputAmount, setInputAmt] = useState(0);
   const [inputUSDAmount, setInputUSDAmount] = useState(0);
   const [outputAmount, setOutputAmt] = useState(0);
+  const [flag, setFlag] = useState(true);
 
   const selectedCoinRef = useRef(selectedCoin);
   const inputAmountRef = useRef(inputAmount);
+  const flagRef = useRef(flag);
+
+  const notify = (message: string) => toast(message);
 
   const formatNumber = (number: string) => {
     return number.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
@@ -70,10 +79,16 @@ const BuySection = ({
   }, [inputAmount]);
 
   useEffect(() => {
+    flagRef.current = flag;
+  }, [flag]);
+
+  useEffect(() => {
     const getData = async () => {
-      const _data: IData = await getCalcBoardData(address as Address);
-      setData(_data);
-      handleChange(inputAmountRef.current, _data, false);
+      if (flagRef.current) {
+        const _data: IData = await getCalcBoardData(address as Address);
+        setData(_data);
+        handleChange(inputAmountRef.current, _data, false);
+      }
     };
 
     getData();
@@ -89,7 +104,7 @@ const BuySection = ({
     if (chainId === 11155111 && selectedCoin.name !== "USDT") {
       setSelectedCoin(coins[0]);
       if (selectedNetwork === "BNB") setSelectedNetwork("ETH");
-    } else if (chainId === 97 && selectedCoin.name !== "USDT") {
+    } else if (chainId === 56 && selectedCoin.name !== "USDT") {
       setSelectedCoin(coins[1]);
       if (selectedNetwork === "ETH") setSelectedNetwork("BNB");
     }
@@ -136,7 +151,7 @@ const BuySection = ({
   const changeNetwork = async () => {
     if (selectedNetwork === "ETH") {
       if (address) {
-        const res = await switchChain(config, { chainId: bscTestnet.id });
+        const res = await switchChain(config, { chainId: bsc.id });
         if (res) setSelectedNetwork("BNB");
       } else {
         setSelectedNetwork("BNB");
@@ -151,30 +166,65 @@ const BuySection = ({
     }
   };
 
+  interface resProp {
+    res: boolean;
+    reason?: string;
+    hash?: string;
+  }
+
   const buyTMM = async () => {
+    setFlag(false);
+    let res: resProp = { res: false };
     if (selectedCoin === coins[0]) {
-      const res = await buyWithETH(
+      res = await buyWithETH(
         inputAmount.toString(),
         Number(outputAmount),
         connector
       );
-      console.log(res);
     } else if (selectedCoin === coins[1]) {
-      const res = await buyWithBNB(
+      res = await buyWithBNB(
         inputAmount.toString(),
         Number(outputAmount),
         connector
       );
-      console.log(res);
     } else {
-      const res = await buyWithUSDT(
+      res = await buyWithUSDT(
         inputAmount.toString(),
         Number(outputAmount),
         address as Address,
         connector,
         selectedNetwork
       );
-      console.log(res);
+    }
+    if (res.res && res.hash) {
+      const result = await parseHash(res.hash, selectedNetwork);
+      if (result) {
+        notify("Purchased successfully!");
+      } else {
+        notify("Purchase failed, Slippage exceeded, Try again later!");
+      }
+    } else if (!res.res && res.reason == "metamask rejected")
+      notify("User rejected wallet connection!");
+    else if (!res.res && res.reason == "slippage error")
+      notify("Purchase failed, Slippage exceeded, Try again later!");
+
+    setFlag(true);
+  };
+
+  const parseHash = async (hash: string, network: string) => {
+    await new Promise((r) => setTimeout(r, 30000));
+
+    const fetchString =
+      network === "ETH"
+        ? `https://api.etherscan.io/api?module=transaction&action=getstatus&txhash=${hash}&apikey=9SWQUMC632ZYB3TNSF6A67RCPG3VF3D6YJ`
+        : `https://api.bscscan.com/api?module=transaction&action=getstatus&txhash=${hash}&apikey=22RBV2E92YSHYFJCUTJK8R2E5SDYK64QYD`;
+
+    const res: any = await fetch(fetchString);
+    const rrr = await res.json();
+    if (rrr.result.isError === "0") {
+      return true;
+    } else {
+      return false;
     }
   };
 
@@ -246,10 +296,10 @@ const BuySection = ({
           {inputAmount} {selectedCoin.name} &#8776; ${inputUSDAmount}
         </p>
         {((ETHBalance < inputAmount && selectedCoin != coins[2]) ||
-          (Number(data?.ethUsdtBalance) < inputAmount &&
+          (Number(data?.ethUsdtBalance) / 10 ** 6 < inputAmount &&
             selectedCoin == coins[2] &&
             selectedNetwork === "ETH") ||
-          (Number(data?.bscUsdtBalance) < inputAmount &&
+          (Number(data?.bscUsdtBalance) / 10 ** 18 < inputAmount &&
             selectedCoin == coins[2] &&
             selectedNetwork === "BNB")) && (
           <div className="flex gap-3">
@@ -279,10 +329,10 @@ const BuySection = ({
               disabled ||
               inputUSDAmount < Number(data?.minAmt) / 10 ** 18 ||
               (ETHBalance < inputAmount && selectedCoin != coins[2]) ||
-              (Number(data?.ethUsdtBalance) < inputAmount &&
+              (Number(data?.ethUsdtBalance) / 10 ** 6 < inputAmount &&
                 selectedCoin == coins[2] &&
                 selectedNetwork === "ETH") ||
-              (Number(data?.bscUsdtBalance) < inputAmount &&
+              (Number(data?.bscUsdtBalance) / 10 ** 18 < inputAmount &&
                 selectedCoin == coins[2] &&
                 selectedNetwork === "BNB")
             }
@@ -301,6 +351,19 @@ const BuySection = ({
             : translation.presale.buysection.buywitheth}
         </button>
       </div>
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </>
   );
 };

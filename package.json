@@ -20,6 +20,7 @@
     "react-helmet": "^6.1.0",
     "react-responsive": "^10.0.0",
     "react-router-dom": "^6.23.1",
+    "react-toastify": "^10.0.5",
     "viem": "^2.13.6",
     "vite-tsconfig-paths": "^4.3.2",
     "wagmi": "^2.9.8"

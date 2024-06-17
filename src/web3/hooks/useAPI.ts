@@ -9,15 +9,15 @@ import BSCPresaleABI from "../abis/BSCPresale";
 import ETHUSDTABI from "../abis/ETHUSDT";
 import BSCUSDTABI from "../abis/BSCUSDT";
 
-const ETHPresaleContract = "0xa80F92CF38174CD35fB33fc3C4a7afBe6DD8bF1F";
-const BSCPresaleContract = "0xEA6aA071f84C9C6903223007BF473c20ea6bb230";
+const ETHPresaleContract = "0x2D9a6fb1707DdCdA033083bFb5313D83946824B8";
+const BSCPresaleContract = "0x5504328C7194aE0b06414a13ddE615DC607Ca22d";
 const ETHUSDTContract = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
 const BSCUSDTContract = "0x55d398326f99059fF775485246999027B3197955";
 
 export const getPresaleData = async () => {
   const presaleContract = BSCPresaleContract;
   const presaleABI = BSCPresaleABI;
-  const presaleChain = bscTestnet.id;
+  const presaleChain = bsc.id;
 
   const currentStage = await readContract(config, {
     address: presaleContract,
@@ -86,7 +86,7 @@ export const getPresaleData = async () => {
 export const getCalcBoardData = async (address: Address) => {
   const presaleContract = BSCPresaleContract;
   const presaleABI = BSCPresaleABI;
-  const presaleChain = bscTestnet.id;
+  const presaleChain = bsc.id;
 
   const ethPrice = await readContract(config, {
     address: ETHPresaleContract,
@@ -160,7 +160,7 @@ export const getTMMBalance = async (address: Address) => {
     abi: BSCPresaleABI,
     functionName: "userDeposits",
     args: [address],
-    chainId: bscTestnet.id,
+    chainId: bsc.id,
   });
 
   const tmmBalance2 = await readContract(config, {
@@ -193,10 +193,14 @@ export const buyWithETH = async (
     });
 
     const hash = await writeContract(config, request);
-    console.log(hash);
-  } catch (error) {
-    console.log("Error: >>>>>>>>>>>>>>>", error);
-    return false;
+
+    return { res: true, hash: hash };
+  } catch (error: any) {
+    if (String(error.message).includes("User rejected the request.")) {
+      return { res: false, reason: "metamask rejected" };
+    } else {
+      return { res: false, reason: "slippage error" };
+    }
   }
 };
 
@@ -212,16 +216,19 @@ export const buyWithBNB = async (
       functionName: "buyWithEth",
       args: [amount, 5],
       value: parseUnits(eth, 18),
-      chainId: bscTestnet.id,
+      chainId: bsc.id,
       connector,
     });
-    console.log(request);
 
     const hash = await writeContract(config, request);
-    console.log(hash);
-  } catch (error) {
-    console.log("Error: >>>>>>>>>>>>>>>", error);
-    return false;
+
+    return { res: true, hash: hash };
+  } catch (error: any) {
+    if (String(error.message).includes("User rejected the request.")) {
+      return { res: false, reason: "metamask rejected" };
+    } else {
+      return { res: false, reason: "slippage error" };
+    }
   }
 };
 
@@ -236,7 +243,7 @@ export const buyWithUSDT = async (
     const presaleContract =
       network === "ETH" ? ETHPresaleContract : BSCPresaleContract;
     const presaleABI = network === "ETH" ? ETHPresaleABI : BSCPresaleABI;
-    const presaleChain = network === "ETH" ? sepolia.id : bscTestnet.id;
+    const presaleChain = network === "ETH" ? sepolia.id : bsc.id;
     const usdtContract = network === "ETH" ? ETHUSDTContract : BSCUSDTContract;
     const usdtABI = network === "ETH" ? ETHUSDTABI : BSCUSDTABI;
     const parseUnit = network === "ETH" ? 6 : 18;
@@ -261,7 +268,7 @@ export const buyWithUSDT = async (
 
       await writeContract(config, request);
 
-      await new Promise((r) => setTimeout(r, 2000));
+      await new Promise((r) => setTimeout(r, 5000));
     }
 
     const { request } = await simulateContract(config, {
@@ -274,8 +281,13 @@ export const buyWithUSDT = async (
     });
 
     const hash = await writeContract(config, request);
-    console.log(hash);
-  } catch (error) {
-    console.log("Error: >>>>>>>>>>>>>>>", error);
+
+    return { res: true, hash:hash };
+  } catch (error: any) {
+    if (String(error.message).includes("User rejected the request.")) {
+      return { res: false, reason: "metamask rejected" };
+    } else {
+      return { res: false, reason: "slippage error" };
+    }
   }
 };
