@@ -155,7 +155,7 @@ const Presale = () => {
                     {Number(
                       (Number(data?.totalUSDRaised) / 10 ** 18).toFixed(2)
                     ).toLocaleString("en-US")}{" "}
-                    / $0
+                    / $1,293
                   </p>
                   <div className="flex text-sm">
                     {translation.presale.purchased} {translation.presale.tmm} ={" "}

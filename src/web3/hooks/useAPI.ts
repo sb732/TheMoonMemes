@@ -1,5 +1,5 @@
 import { readContract, simulateContract, writeContract } from "@wagmi/core";
-import { mainnet, bsc, sepolia, bscTestnet } from "wagmi/chains";
+import { mainnet, bsc, sepolia } from "wagmi/chains";
 import { Address, parseUnits } from "viem";
 
 import { config } from "@/provider/config";
