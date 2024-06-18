@@ -26,13 +26,13 @@
   color: black !important;
 }
 
-.flip-countdown.size-small
+.flip-countdown.size-medium
   .flip-countdown-piece
   .flip-countdown-card
   .flip-countdown-card-sec {
-  font-size: 1.25rem !important;
+  font-size: 2.5rem !important;  
 }
 
-.flip-countdown.size-small .flip-countdown-piece .flip-countdown-title {
-  font-size: 7px !important;
+.flip-countdown.size-medium .flip-countdown-piece .flip-countdown-title {
+  font-size: 15px !important;
 }

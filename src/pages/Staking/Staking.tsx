@@ -4,9 +4,18 @@ const Staking = () => {
   return (
     <div className="flex justify-center mx-5 pt-5">
       <div className="text-white max-w-[1040px] flex flex-col gap-12">
-        <div className="w-full md:w-2/3">
-          <p className="text-5xl leading-[75px]">{translation.staking.title}</p>
-          <p>{translation.staking.content}</p>
+        <div className="flex flex-col md:flex-row items-center gap-5">
+          <div className="w-full md:w-2/3">
+            <p className="text-5xl leading-[75px]">
+              {translation.staking.title}
+            </p>
+            <p>{translation.staking.content}</p>
+          </div>
+          <div>
+            <button className="bg-[#FFC700] rounded-lg py-2 px-10 text-xl">
+              {translation.staking.withdrawButton}
+            </button>
+          </div>
         </div>
         <div className="flex flex-col md:flex-row gap-6 justify-between">
           <div className="flex gap-6 justify-between w-full md:w-2/5">
@@ -19,7 +28,7 @@ const Staking = () => {
               <p>
                 0 <sup className="text-[8px]">{translation.staking.tmm}</sup>
               </p>
-              <button className="border-[#FFC700] border-[1px] rounded-lg py-1 px-5">
+              <button className="bg-[#FFC700] rounded-lg py-1 px-5">
                 {translation.staking.buy}
               </button>
             </div>
@@ -61,13 +70,19 @@ const Staking = () => {
               <p>
                 0 <sup className="text-[8px]">{translation.staking.tmm}</sup>
               </p>
-              <button className="border-[#FFC700] border-[1px] rounded-lg py-1 px-5">
+              <button className="bg-[#FFC700] rounded-lg py-1 px-5">
                 {translation.staking.claimrewards}
               </button>
             </div>
           </div>
         </div>
-        <img src="/assets/images/staking.png" className="border-[1px] border-white py-[35px] pr-[50px] pl-[10px] rounded-xl" />
+        <div className="border-[1px] border-white rounded-xl p-3 md:py-[35px] md:px-[50px] flex flex-col md:flex-row justify-between items-center gap-2">
+          <img src="/assets/images/staking1.png" />
+          <img
+            src="/assets/images/staking2.png"
+            className="w-full max-w-[340px] max-h-[340px]"
+          />
+        </div>
       </div>
     </div>
   );

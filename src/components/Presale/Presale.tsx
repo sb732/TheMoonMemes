@@ -85,12 +85,12 @@ const Presale = () => {
                 <Countdown
                   endTime={data?.startTime ? data.startTime : Date.now()}
                 /> */}
+                <p className="text-sm">
+                  {translation.presale.usdtraised} $0 / $0
+                </p>
                 <p className="bg-white rounded-lg text-black text-xs px-6 py-1">
                   0 {translation.presale.tmm} / 15,000,000{" "}
                   {translation.presale.tmm}
-                </p>
-                <p className="text-sm">
-                  {translation.presale.usdtraised} $0 / $0
                 </p>
                 <div className="flex text-sm">
                   {translation.presale.purchased} {translation.presale.tmm} = 0
@@ -126,10 +126,6 @@ const Presale = () => {
             {Math.floor(Date.now() / 1000) >= Number(data?.startTime) &&
               Math.floor(Date.now() / 1000) < Number(data?.endTime) && (
                 <>
-                  <div className="w-full flex flex-start items-center gap-2">
-                    <div className="rounded-full w-4 h-4 bg-[#52BF85] animate-blinker"></div>
-                    {translation.presale.presale}
-                  </div>
                   <p>
                     {translation.presale.stage} {Number(data?.currentStage) + 1}{" "}
                     {translation.presale.endin}
@@ -137,6 +133,13 @@ const Presale = () => {
                   <Countdown
                     endTime={data?.endTime ? data.endTime : Date.now()}
                   />
+                  <p className="text-sm">
+                    {translation.presale.usdtraised} $
+                    {Number(
+                      (Number(data?.totalUSDRaised) / 10 ** 18).toFixed(2)
+                    ).toLocaleString("en-US")}{" "}
+                    / $1,293
+                  </p>
                   <div className="bg-white rounded-lg text-black text-xs px-6 py-1 relative w-full h-6">
                     <p
                       className="h-6 bg-[#52BF85] absolute left-0 top-0 rounded-lg"
@@ -150,13 +153,6 @@ const Presale = () => {
                       {translation.presale.tmm}
                     </p>
                   </div>
-                  <p className="text-sm">
-                    {translation.presale.usdtraised} $
-                    {Number(
-                      (Number(data?.totalUSDRaised) / 10 ** 18).toFixed(2)
-                    ).toLocaleString("en-US")}{" "}
-                    / $1,293
-                  </p>
                   <div className="flex text-sm">
                     {translation.presale.purchased} {translation.presale.tmm} ={" "}
                     {formatNumber((Number(balance) / 10 ** 18).toFixed(0))}
@@ -167,8 +163,7 @@ const Presale = () => {
                     />
                   </div>
                   <p className="flex text-sm">
-                    {translation.presale.stakeable} {translation.presale.tmm} ={" "}
-                    {formatNumber((Number(balance) / 10 ** 18).toFixed(0))}
+                    {translation.presale.stakeable} {translation.presale.tmm} = 0
                     <img
                       src="/assets/icons/info-icon.svg"
                       className="ml-2 cursor-pointer"

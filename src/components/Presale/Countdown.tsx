@@ -22,7 +22,7 @@ const FlipClock: React.FC<ICountDown> = ({ endTime }) => {
       secondTitle={translation.presale.countdown.second}
       titlePosition="bottom"
       theme="light"
-      size="small" // Options (Default: medium): large, medium, small, extra-small.
+      size="medium" // Options (Default: medium): large, medium, small, extra-small.
       endAt={endTimeByString} // Date/Time
     />
   );

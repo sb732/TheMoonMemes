@@ -5,6 +5,8 @@ import { switchChain } from "@wagmi/core";
 import { bsc, sepolia } from "@wagmi/core/chains";
 import { Address } from "viem";
 
+import { Dialog } from "@material-tailwind/react";
+
 import { ToastContainer, toast } from "react-toastify";
 
 import { config } from "@/provider/config";
@@ -63,6 +65,9 @@ const BuySection = ({
   const selectedCoinRef = useRef(selectedCoin);
   const inputAmountRef = useRef(inputAmount);
   const flagRef = useRef(flag);
+
+  const [slippageOpen, setSlippageOpen] = useState(false);
+  const handleSlippageOpen = () => setSlippageOpen(!slippageOpen);
 
   const notify = (message: string) => toast(message);
 
@@ -292,9 +297,6 @@ const BuySection = ({
       </div>
 
       <div className="text-[10px]">
-        <p className="text-center">
-          {inputAmount} {selectedCoin.name} &#8776; ${inputUSDAmount}
-        </p>
         {((ETHBalance < inputAmount && selectedCoin != coins[2]) ||
           (Number(data?.ethUsdtBalance) / 10 ** 6 < inputAmount &&
             selectedCoin == coins[2] &&
@@ -323,7 +325,7 @@ const BuySection = ({
           <ConnectButton />
         ) : (
           <button
-            className="bg-[#FFC700] rounded-md text-black text-sm min-w-[124px] sm:min-w-[150px] h-[32px] sm:h-[40px] disabled:bg-[#FFC70055] disabled:cursor-not-allowed uppercase"
+            className="bg-[#FFC700] rounded-md text-black text-sm min-w-[150px] h-[40px] disabled:bg-[#FFC70055] disabled:cursor-not-allowed uppercase"
             onClick={() => buyTMM()}
             disabled={
               disabled ||
@@ -340,17 +342,80 @@ const BuySection = ({
             {translation.presale.buysection.buynow}
           </button>
         )}
-        <button
-          className={`rounded-md text-sm min-w-[124px] sm:min-w-[150px] h-[32px] sm:h-[40px] disabled:bg-[#52BF8555] disabled:cursor-not-allowed uppercase border-[1px] ${
-            selectedNetwork === "ETH" ? "border-[#F0C010]" : "border-[#A9B9DB]"
-          }`}
-          onClick={() => changeNetwork()}
-        >
-          {selectedNetwork === "ETH"
-            ? translation.presale.buysection.buywithbnb
-            : translation.presale.buysection.buywitheth}
-        </button>
+        <div className="group relative">
+          <button className="relative min-w-[150px] h-[40px] border-[1px] rounded-md flex justify-center items-center gap-1 uppercase text-sm disabled:bg-[#52BF8555] disabled:cursor-not-allowed border-[#F0C010]">
+            {selectedNetwork === "ETH" ? (
+              <img
+                src={`/assets/images/coins/ethereum.png`}
+                className="w-6 h-6 mr-1"
+                alt=""
+              />
+            ) : (
+              <img
+                src={`/assets/images/coins/bnb 2.png`}
+                className="w-6 h-6 mr-1"
+                alt=""
+              />
+            )}
+            {selectedNetwork === "ETH"
+              ? translation.presale.buysection.buywitheth
+              : translation.presale.buysection.buywithbnb}
+          </button>
+          <div
+            className="bg-black absolute top-[-50px] left-[-20px] hidden group-hover:flex justify-center items-center min-w-[170px] h-[50px] rounded-xs cursor-pointer hover:bg-[#A9B9DB]"
+            onClick={() => changeNetwork()}
+          >
+            {selectedNetwork !== "ETH" ? (
+              <img
+                src={`/assets/images/coins/ethereum.png`}
+                className="w-6 h-6 mr-1"
+                alt=""
+              />
+            ) : (
+              <img
+                src={`/assets/images/coins/bnb 2.png`}
+                className="w-6 h-6 mr-1"
+                alt=""
+              />
+            )}
+            {selectedNetwork !== "ETH"
+              ? translation.presale.buysection.buywitheth
+              : translation.presale.buysection.buywithbnb}
+          </div>
+        </div>
       </div>
+
+      <div className="flex text-sm">
+        Slippage: 5%
+        <img
+          src="/assets/icons/info-icon.svg"
+          className="ml-2 cursor-pointer"
+          onClick={handleSlippageOpen}
+        />
+      </div>
+
+      <Dialog
+        open={slippageOpen}
+        handler={handleSlippageOpen}
+        size="xs"
+        className="bg-black px-10 py-5 flex flex-col gap-5 items-center font-[Knewave] text-white rounded-3xl"
+      >
+        <p className="text-6xl bg-[#F0C010] w-24 h-24 text-center rounded-full flex flex-col items-center justify-center">
+          !
+        </p>
+        <p className="leading-8 text-xl text-center">
+          {translation.presale.dialog.slippage1}
+        </p>
+        <p className="leading-8 text-center">
+          {translation.presale.dialog.slippage2}
+        </p>
+        <span
+          onClick={handleSlippageOpen}
+          className="bg-green-600 px-10 py-2 rounded-full cursor-pointer"
+        >
+          {translation.presale.dialog.ok}
+        </span>
+      </Dialog>
 
       <ToastContainer
         position="bottom-right"

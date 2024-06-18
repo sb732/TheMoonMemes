@@ -255,7 +255,9 @@ function Home() {
               {translation.home.moonomics.title}
             </p>
             <div className="text-xs md:text-2xl flex flex-col items-center uppercase">
-              <p className="mb-5 text-center max-w-[300px] md:max-w-[600px]">{translation.home.moonomics.content}</p>
+              <p className="mb-5 text-center max-w-[300px] md:max-w-[600px]">
+                {translation.home.moonomics.content}
+              </p>
               <li>{translation.home.moonomics.presale1}</li>
               <li>{translation.home.moonomics.marketing1}</li>
               <li>{translation.home.moonomics.treasury1}</li>
@@ -263,7 +265,11 @@ function Home() {
               <li>{translation.home.moonomics.liquidity1}</li>
               <li>{translation.home.moonomics.reserve1}</li>
             </div>
-            <img src="./assets/images/moonomics.png" alt="" className="my-5 md:my-10" />
+            <img
+              src="./assets/images/moonomics.png"
+              alt=""
+              className="my-5 md:my-10"
+            />
             <div className="uppercase text-base md:text-2xl border-[1px] border-white rounded-xl px-10 py-2">
               <p className="text-center">
                 {translation.home.moonomics.address}
@@ -291,33 +297,27 @@ function Home() {
             <div className="min-w-[200px] grid grid-cols-3 md:grid-cols-6 gap-5 bg-[#D9D9D9] px-14 py-2 text-black text-sm md:text-xl rounded-xl">
               <li className="flex flex-col items-center">
                 <div className="w-5 h-5 rounded-md bg-[#9BB0FF]"></div>
-                {translation.home.moonomics.presale2}{" "}
-                <p>15%</p>
+                {translation.home.moonomics.presale2} <p>15%</p>
               </li>
               <li className="flex flex-col items-center">
                 <div className="w-5 h-5 rounded-md bg-[#FDD64B]"></div>
-                {translation.home.moonomics.marketing2}{" "}
-                <p>10%</p>
+                {translation.home.moonomics.marketing2} <p>10%</p>
               </li>
               <li className="flex flex-col items-center">
                 <div className="w-5 h-5 rounded-md bg-[#9E28FA]"></div>
-                {translation.home.moonomics.treasury2}{" "}
-                <p>25%</p>
+                {translation.home.moonomics.treasury2} <p>25%</p>
               </li>
               <li className="flex flex-col items-center">
                 <div className="w-5 h-5 rounded-md bg-[#8FF929]"></div>
-                {translation.home.moonomics.staking2}{" "}
-                <p>20%</p>
+                {translation.home.moonomics.staking2} <p>20%</p>
               </li>
               <li className="flex flex-col items-center">
                 <div className="w-5 h-5 rounded-md bg-[#F8C9FF]"></div>
-                {translation.home.moonomics.liquidity2}{" "}
-                <p>15%</p>
+                {translation.home.moonomics.liquidity2} <p>15%</p>
               </li>
               <li className="flex flex-col items-center">
                 <div className="w-5 h-5 rounded-md bg-[#5E3967]"></div>
-                {translation.home.moonomics.reserve2}{" "}
-                <p>15%</p>
+                {translation.home.moonomics.reserve2} <p>15%</p>
               </li>
             </div>
           </section>
@@ -358,6 +358,18 @@ function Home() {
                     <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
                     <p>{translation.home.roadmap.phase1.content2}</p>
                   </div>
+                  <div className="flex gap-2">
+                    <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                    <p>{translation.home.roadmap.phase1.content3}</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                    <p>{translation.home.roadmap.phase1.content4}</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                    <p>{translation.home.roadmap.phase1.content5}</p>
+                  </div>
                 </div>
                 <div className="flex md:justify-end">
                   <div className="md:max-w-[385px]">
@@ -371,6 +383,14 @@ function Home() {
                     <div className="flex gap-2">
                       <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
                       <p>{translation.home.roadmap.phase2.content2}</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                      <p>{translation.home.roadmap.phase2.content3}</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                      <p>{translation.home.roadmap.phase2.content4}</p>
                     </div>
                   </div>
                 </div>
@@ -386,6 +406,22 @@ function Home() {
                     <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
                     <p>{translation.home.roadmap.phase3.content2}</p>
                   </div>
+                  <div className="flex gap-2">
+                    <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                    <p>{translation.home.roadmap.phase3.content3}</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                    <p>{translation.home.roadmap.phase3.content4}</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                    <p>{translation.home.roadmap.phase3.content5}</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                    <p>{translation.home.roadmap.phase3.content6}</p>
+                  </div>
                 </div>
                 <div className="flex md:justify-end">
                   <div className="md:max-w-[385px]">
@@ -400,6 +436,43 @@ function Home() {
                       <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
                       <p>{translation.home.roadmap.phase4.content2}</p>
                     </div>
+                    <div className="flex gap-2">
+                      <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                      <p>{translation.home.roadmap.phase4.content3}</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                      <p>{translation.home.roadmap.phase4.content4}</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                      <p>{translation.home.roadmap.phase4.content5}</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                      <p>{translation.home.roadmap.phase4.content6}</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                      <p>{translation.home.roadmap.phase4.content7}</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                      <p>{translation.home.roadmap.phase4.content8}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="md:max-w-[385px]">
+                  <p className="text-center md:text-left">
+                    {translation.home.roadmap.phase5.title}
+                  </p>
+                  <div className="flex gap-2">
+                    <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                    <p>{translation.home.roadmap.phase5.content1}</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <p className="min-w-2 h-2 rounded-full bg-white mt-3"></p>
+                    <p>{translation.home.roadmap.phase5.content2}</p>
                   </div>
                 </div>
               </div>

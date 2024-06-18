@@ -85,24 +85,44 @@
     "roadmap": {
       "title": "Roadmap",
       "phase1": {
-        "title": "Phase 1: Conceptualization and Planning",
-        "content1": "Define Themoonmeme token's purpose and utility.",
-        "content2": "Establish tokenomics and assemble team"
+        "title": "Phase 1: Conceptualization and Planning.",
+        "content1": "Define TheMoonMemes Token's Purpose and Utility.",
+        "content2": "Assemble Fantastic Work Teams.",
+        "content3": "Website Live.",
+        "content4": "Contracts Deployed.",
+        "content5": "Socials Channel Launch."
       },
       "phase2": {
-        "title": "Phase 2: Token Development",
-        "content1": "Create and audit Themoonmeme token smart contract.",
-        "content2": "Develop user interface for token transactions."
+        "title": "Phase 2: Token Development.",
+        "content1": "TheMoonMemes Contract Audit.",
+        "content2": "Develop user interface for token transactions.",
+        "content3": "Pre-sale Begins.",
+        "content4": "Community Building."
       },
       "phase3": {
-        "title": "Phase 3: Community Building and Marketing",
-        "content1": "Launch website and social channels.",
-        "content2": "Conduct pre-sale, engage with community, and execute marketing campaigns."
+        "title": "Phase 3: Initial Growth.",
+        "content1": "Professional Marketing Strategy Begins.",
+        "content2": "DEX Listings.",
+        "content3": "DEXTools Update.",
+        "content4": "CoinMarketCap Listing.",
+        "content5": "CoinGecko Listing.",
+        "content6": "Birdeye Update."
       },
       "phase4": {
-        "title": "Phase 4: Exchange Listings and Continued Development",
-        "content1": "List on exchanges for liquidity.",
-        "content2": "Gather feedback for improvements and explore partnerships."
+        "title": "Phase 4: Expansion and Innovation.",
+        "content1": "Staking Platform: Launch the staking platform and reward system.",
+        "content2": "Staking Rewards.",
+        "content3": "Community Rewards.",
+        "content4": "CEX Listings.",
+        "content5": "Professional Marketing Strategy Continues.",
+        "content6": "NFT Marketplace: Develop and launch the NFT marketplace for meme-inspired creations.",
+        "content7": "Partnerships: Form strategic partnerships with best influencers and other blockchain projects.",
+        "content8": "Feature Enhancements: Continuously improve platform features based on community feedback and technological advancements."
+      },
+      "phase5": {
+        "title": "Phase 5:  Long-Term Vision - Future Development",
+        "content1": "Memeverse Development: Expand the Memeverse with new tools, features, and opportunities for creativity.",
+        "content2": "Global Impact: Promote social impact initiatives and foster a global community of meme enthusiasts and creators."
       }
     },
     "howtobuy": {
@@ -183,12 +203,15 @@
     "dialog": {
       "purchased": "Your total purchased tokens are all tokens purchased using the connected wallet. This includes all staked and unstaked tokens.",
       "stakeable": "Unclaimed $TMM that was bought using ETH or ERC-20 USDT can be staked now. Please note that all early staked tokens can be withdrawn 7 days after token claiming goes live, which will happen after the presale has concluded.",
+      "slippage1": "Before You Proceed with Your Purchase",
+      "slippage2": "When buying tokens during this presale, please be aware that there is a 5% slippage applied to each transaction. This means that the amount of tokens you receive may be slightly less than what you expect due to price fluctuations and transaction execution speed.",
       "ok": "OK"
     }
   },
   "staking": {
-    "title": "WELCOME TO $TMM STAKING",
-    "content": "The distribution of $TMM token rewards will occur at a rate of 6600 $TMM tokens per Ethereum (ETH) block. These rewards will be disbursed over 5 months.",
+    "title": "WELCOME TO THEMOONMEMES STAKING",
+    "content": "TheMoonMemes staking is available on Ethereum Network. Rewards are given in $TMM amd will be paid out to users every single block, with 20% of the token supply distributed over a 3-year period",
+    "withdrawButton": "Withdraw Staked Token",
     "tmm": "$TMM",
     "stakedbalance": "STAKED BALANCE",
     "yourbalance": "YOUR BALANCE",
