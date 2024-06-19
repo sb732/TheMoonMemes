@@ -320,12 +320,12 @@ const BuySection = ({
         )}
       </div>
 
-      <div className="flex w-full justify-center gap-2 items-center h-full">
+      <div className="flex flex-col md:flex-row w-full justify-center gap-2 items-center h-full">
         {!address ? (
           <ConnectButton />
         ) : (
           <button
-            className="bg-[#FFC700] rounded-md text-black text-sm min-w-[150px] h-[40px] disabled:bg-[#FFC70055] disabled:cursor-not-allowed uppercase"
+            className="bg-[#FFC700] rounded-md text-black text-sm w-[280px] md:w-auto md:min-w-[150px] h-[40px] disabled:bg-[#FFC70055] disabled:cursor-not-allowed uppercase"
             onClick={() => buyTMM()}
             disabled={
               disabled ||
@@ -343,7 +343,7 @@ const BuySection = ({
           </button>
         )}
         <div className="group relative">
-          <button className="relative min-w-[150px] h-[40px] border-[1px] rounded-md flex justify-center items-center gap-1 uppercase text-sm disabled:bg-[#52BF8555] disabled:cursor-not-allowed border-[#F0C010]">
+          <button className="relative w-[280px] md:w-auto md:min-w-[150px] h-[40px] border-[1px] rounded-md flex justify-center items-center gap-1 uppercase text-sm disabled:bg-[#52BF8555] disabled:cursor-not-allowed border-[#F0C010]">
             {selectedNetwork === "ETH" ? (
               <img
                 src={`/assets/images/coins/ethereum.png`}
@@ -362,7 +362,7 @@ const BuySection = ({
               : translation.presale.buysection.buywithbnb}
           </button>
           <div
-            className="bg-black absolute top-[-50px] left-[-20px] hidden group-hover:flex justify-center items-center min-w-[170px] h-[50px] rounded-xs cursor-pointer hover:bg-[#A9B9DB]"
+            className="bg-black absolute top-[-50px] right-[0px] hidden group-hover:flex justify-center items-center min-w-[170px] h-[50px] rounded-xs cursor-pointer hover:bg-[#A9B9DB]"
             onClick={() => changeNetwork()}
           >
             {selectedNetwork !== "ETH" ? (
