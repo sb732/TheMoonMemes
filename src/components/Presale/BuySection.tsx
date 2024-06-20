@@ -5,8 +5,6 @@ import { switchChain } from "@wagmi/core";
 import { mainnet, bsc } from "@wagmi/core/chains";
 import { Address } from "viem";
 
-import { Dialog } from "@material-tailwind/react";
-
 import { ToastContainer, toast } from "react-toastify";
 
 import { config } from "@/provider/config";
@@ -65,9 +63,6 @@ const BuySection = ({
   const selectedCoinRef = useRef(selectedCoin);
   const inputAmountRef = useRef(inputAmount);
   const flagRef = useRef(flag);
-
-  const [slippageOpen, setSlippageOpen] = useState(false);
-  const handleSlippageOpen = () => setSlippageOpen(!slippageOpen);
 
   const notify = (message: string) => toast(message);
 
@@ -296,30 +291,6 @@ const BuySection = ({
         </div>
       </div>
 
-      <div className="text-[10px]">
-        {((ETHBalance < inputAmount && selectedCoin != coins[2]) ||
-          (Number(data?.ethUsdtBalance) / 10 ** 6 < inputAmount &&
-            selectedCoin == coins[2] &&
-            selectedNetwork === "ETH") ||
-          (Number(data?.bscUsdtBalance) / 10 ** 18 < inputAmount &&
-            selectedCoin == coins[2] &&
-            selectedNetwork === "BNB")) && (
-          <div className="flex gap-3">
-            <p>{translation.presale.buysection.enoughbalance}</p>
-          </div>
-        )}
-        {!disabled && (
-          <div className="flex gap-3">
-            {inputUSDAmount < Number(data?.minAmt) / 10 ** 18 && (
-              <p>
-                {translation.presale.buysection.minamount}{" "}
-                {Number(data?.minAmt) / 10 ** 18}
-              </p>
-            )}
-          </div>
-        )}
-      </div>
-
       <div className="flex flex-col md:flex-row w-full justify-center gap-2 items-center h-full">
         {!address ? (
           <ConnectButton />
@@ -384,38 +355,6 @@ const BuySection = ({
           </div>
         </div>
       </div>
-
-      <div className="flex text-sm">
-        Slippage: 5%
-        <img
-          src="/assets/icons/info-icon.svg"
-          className="ml-2 cursor-pointer"
-          onClick={handleSlippageOpen}
-        />
-      </div>
-
-      <Dialog
-        open={slippageOpen}
-        handler={handleSlippageOpen}
-        size="xs"
-        className="bg-black px-10 py-5 flex flex-col gap-5 items-center font-[Knewave] text-white rounded-3xl"
-      >
-        <p className="text-6xl bg-[#F0C010] w-24 h-24 text-center rounded-full flex flex-col items-center justify-center">
-          !
-        </p>
-        <p className="leading-8 text-xl text-center">
-          {translation.presale.dialog.slippage1}
-        </p>
-        <p className="leading-8 text-center">
-          {translation.presale.dialog.slippage2}
-        </p>
-        <span
-          onClick={handleSlippageOpen}
-          className="bg-green-600 px-10 py-2 rounded-full cursor-pointer"
-        >
-          {translation.presale.dialog.ok}
-        </span>
-      </Dialog>
 
       <ToastContainer
         position="bottom-right"

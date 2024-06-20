@@ -70,27 +70,53 @@ const Presale = () => {
     >
       {data && (
         <>
-          <h1 className="border-[1px] rounded-xl bg-white text-black text-2xl absolute px-5 py-2 top-[-20px] left-[calc(50%-62px)]">
-            {translation.presale.stage} {Number(data?.currentStage) + 1}
-          </h1>
-
           <div className="flex flex-col gap-4 items-center">
+            {/* <>
+              <p className="text-2xl animate-blinker">
+                {translation.presale.comingsoon}
+              </p>
+              <TimeLeftPanel />
+              <p className="bg-white rounded-lg text-black text-xs px-6 py-1">
+                {translation.presale.untilPriceIncrease}
+              </p>
+              <div className="flex text-sm">
+                {translation.presale.purchased} {translation.presale.tmm} = 0
+                <img
+                  src="/assets/icons/info-icon.svg"
+                  className="ml-2 cursor-pointer"
+                  onClick={handlePurchasedOpen}
+                />
+              </div>
+              <p className="flex text-sm">
+                {translation.presale.stakeable} {translation.presale.tmm} = 0{" "}
+                <img
+                  src="/assets/icons/info-icon.svg"
+                  className="ml-2 cursor-pointer"
+                  onClick={handleStakableOpen}
+                />
+              </p>
+              <div className="w-full flex items-center justify-between">
+                <div className="min-w-[100px] border-[1px] border-white h-0"></div>
+                <p className="text-xs !w-full text-center">
+                  1 {translation.presale.tmm} = $0.000
+                </p>
+                <div className="min-w-[100px] border-[1px] border-white h-0"></div>
+              </div>
+              <BuySection
+                disabled={true}
+                selectedNetwork={selectedNetwork}
+                setSelectedNetwork={setSelectedNetwork}
+              />
+            </> */}
+
             {Math.floor(Date.now() / 1000) < Number(data?.startTime) && (
               <>
-                {/* <p className="text-2xl animate-blinker">
-                  {translation.presale.comingsoon}
-                </p>
-                <TimeLeftPanel /> */}
                 <p>{translation.presale.startsin}</p>
                 <Countdown
                   endTime={data?.startTime ? data.startTime : Date.now()}
                 />
-                <p className="text-sm">
-                  {translation.presale.usdtraised} $0 / $0
-                </p>
                 <p className="bg-white rounded-lg text-black text-xs px-6 py-1">
-                  0 {translation.presale.tmm} / 15,000,000,000{" "}
-                  {translation.presale.tmm}
+                  {translation.presale.untilPriceIncrease}
                 </p>
                 <div className="flex text-sm">
                   {translation.presale.purchased} {translation.presale.tmm} = 0
@@ -126,10 +152,7 @@ const Presale = () => {
             {Math.floor(Date.now() / 1000) >= Number(data?.startTime) &&
               Math.floor(Date.now() / 1000) < Number(data?.endTime) && (
                 <>
-                  <p>
-                    {translation.presale.stage} {Number(data?.currentStage) + 1}{" "}
-                    {translation.presale.endin}
-                  </p>
+                  <p>{translation.presale.nextIncrease}</p>
                   <Countdown
                     endTime={data?.endTime ? data.endTime : Date.now()}
                   />
@@ -140,17 +163,17 @@ const Presale = () => {
                     ).toLocaleString("en-US")}{" "}
                     / $13,350,000
                   </p>
-                  <div className="bg-white rounded-lg text-black text-xs px-6 py-1 relative w-full h-6">
+                  <div className="bg-white rounded-lg text-black text-xs px-6 py-1 relative w-full md:w-4/5 h-6">
                     <p
                       className="h-6 bg-[#52BF85] absolute left-0 top-0 rounded-lg"
                       style={{
-                        width: `${Number(data?.totalTokensSold) / 150000000}%`,
+                        width: `${
+                          Number(data?.totalUSDRaised) / 10 ** 18 / 133500
+                        }%`,
                       }}
                     ></p>
                     <p className="z-[10] absolute w-full text-center left-0">
-                      {formatNumber(data?.totalTokensSold.toString())}{" "}
-                      {translation.presale.tmm} / 15,000,000,000{" "}
-                      {translation.presale.tmm}
+                      {translation.presale.untilPriceIncrease}
                     </p>
                   </div>
                   <div className="flex text-sm">
@@ -163,7 +186,8 @@ const Presale = () => {
                     />
                   </div>
                   <p className="flex text-sm">
-                    {translation.presale.stakeable} {translation.presale.tmm} = 0
+                    {translation.presale.stakeable} {translation.presale.tmm} =
+                    0
                     <img
                       src="/assets/icons/info-icon.svg"
                       className="ml-2 cursor-pointer"
@@ -190,7 +214,7 @@ const Presale = () => {
               <>
                 <p>{translation.presale.endat}</p>
                 <Countdown
-                  endTime={data?.startTime ? data.startTime : Date.now()}
+                  endTime={data?.endTime ? data.endTime : Date.now()}
                 />
               </>
             )}
