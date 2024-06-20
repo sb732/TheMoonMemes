@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 
 import { useAccount, useBalance } from "wagmi";
 import { switchChain } from "@wagmi/core";
-import { bsc, sepolia } from "@wagmi/core/chains";
+import { mainnet, bsc } from "@wagmi/core/chains";
 import { Address } from "viem";
 
 import { Dialog } from "@material-tailwind/react";
@@ -106,7 +106,7 @@ const BuySection = ({
   }, []);
 
   useEffect(() => {
-    if (chainId === 11155111 && selectedCoin.name !== "USDT") {
+    if (chainId === 1 && selectedCoin.name !== "USDT") {
       setSelectedCoin(coins[0]);
       if (selectedNetwork === "BNB") setSelectedNetwork("ETH");
     } else if (chainId === 56 && selectedCoin.name !== "USDT") {
@@ -163,7 +163,7 @@ const BuySection = ({
       }
     } else if (selectedNetwork === "BNB") {
       if (address) {
-        const res = await switchChain(config, { chainId: sepolia.id });
+        const res = await switchChain(config, { chainId: mainnet.id });
         if (res) setSelectedNetwork("ETH");
       } else {
         setSelectedNetwork("ETH");

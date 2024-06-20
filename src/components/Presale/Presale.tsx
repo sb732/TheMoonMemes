@@ -7,7 +7,7 @@ import { Dialog } from "@material-tailwind/react";
 
 import Countdown from "./Countdown";
 import BuySection from "./BuySection";
-import TimeLeftPanel from "./TimeLeftPanel";
+// import TimeLeftPanel from "./TimeLeftPanel";
 
 import * as translation from "@/translation/en.json";
 
@@ -77,19 +77,19 @@ const Presale = () => {
           <div className="flex flex-col gap-4 items-center">
             {Math.floor(Date.now() / 1000) < Number(data?.startTime) && (
               <>
-                <p className="text-2xl animate-blinker">
+                {/* <p className="text-2xl animate-blinker">
                   {translation.presale.comingsoon}
                 </p>
-                <TimeLeftPanel />
-                {/* <p>{translation.presale.startsin}</p>
+                <TimeLeftPanel /> */}
+                <p>{translation.presale.startsin}</p>
                 <Countdown
                   endTime={data?.startTime ? data.startTime : Date.now()}
-                /> */}
+                />
                 <p className="text-sm">
                   {translation.presale.usdtraised} $0 / $0
                 </p>
                 <p className="bg-white rounded-lg text-black text-xs px-6 py-1">
-                  0 {translation.presale.tmm} / 15,000,000{" "}
+                  0 {translation.presale.tmm} / 15,000,000,000{" "}
                   {translation.presale.tmm}
                 </p>
                 <div className="flex text-sm">
@@ -138,18 +138,18 @@ const Presale = () => {
                     {Number(
                       (Number(data?.totalUSDRaised) / 10 ** 18).toFixed(2)
                     ).toLocaleString("en-US")}{" "}
-                    / $1,293
+                    / $13,350,000
                   </p>
                   <div className="bg-white rounded-lg text-black text-xs px-6 py-1 relative w-full h-6">
                     <p
                       className="h-6 bg-[#52BF85] absolute left-0 top-0 rounded-lg"
                       style={{
-                        width: `${Number(data?.totalTokensSold) / 150000}%`,
+                        width: `${Number(data?.totalTokensSold) / 150000000}%`,
                       }}
                     ></p>
                     <p className="z-[10] absolute w-full text-center left-0">
                       {formatNumber(data?.totalTokensSold.toString())}{" "}
-                      {translation.presale.tmm} / 15,000,000{" "}
+                      {translation.presale.tmm} / 15,000,000,000{" "}
                       {translation.presale.tmm}
                     </p>
                   </div>

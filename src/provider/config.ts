@@ -1,6 +1,6 @@
 import { http } from "@wagmi/core";
 import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
-import { mainnet, bsc, sepolia, bscTestnet } from "wagmi/chains";
+import { mainnet, bsc } from "wagmi/chains";
 
 // 1. Get projectId at https://cloud.walletconnect.com
 export const projectId = "c12e0b5dc354ac1b746cec01d47b5b6a";
@@ -13,7 +13,7 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
-const chains = [mainnet, bsc, sepolia, bscTestnet] as const;
+const chains = [mainnet, bsc] as const;
 export const config = defaultWagmiConfig({
   chains,
   projectId,
@@ -21,7 +21,5 @@ export const config = defaultWagmiConfig({
   transports: {
     [mainnet.id]: http(),
     [bsc.id]: http(),
-    [sepolia.id]: http(),
-    [bscTestnet.id]: http(),
   },
 });

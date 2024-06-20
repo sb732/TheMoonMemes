@@ -1,5 +1,5 @@
 import { readContract, simulateContract, writeContract } from "@wagmi/core";
-import { mainnet, bsc, sepolia } from "wagmi/chains";
+import { mainnet, bsc } from "wagmi/chains";
 import { Address, parseUnits } from "viem";
 
 import { config } from "@/provider/config";
@@ -9,8 +9,8 @@ import BSCPresaleABI from "../abis/BSCPresale";
 import ETHUSDTABI from "../abis/ETHUSDT";
 import BSCUSDTABI from "../abis/BSCUSDT";
 
-const ETHPresaleContract = "0x2D9a6fb1707DdCdA033083bFb5313D83946824B8";
-const BSCPresaleContract = "0x5504328C7194aE0b06414a13ddE615DC607Ca22d";
+const ETHPresaleContract = "0xD9A40E63C91E43436069CbEdbEd6D8f9DBA88e3c";
+const BSCPresaleContract = "0xbbb030Aa1B18DC1b2324aB22618f3B14d14B54bf";
 const ETHUSDTContract = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
 const BSCUSDTContract = "0x55d398326f99059fF775485246999027B3197955";
 
@@ -49,7 +49,7 @@ export const getPresaleData = async () => {
     address: ETHPresaleContract,
     abi: ETHPresaleABI,
     functionName: "totalUsdRaised",
-    chainId: sepolia.id,
+    chainId: mainnet.id,
   });
 
   const BSCTotalUSDRaised = await readContract(config, {
@@ -62,7 +62,7 @@ export const getPresaleData = async () => {
     address: ETHPresaleContract,
     abi: ETHPresaleABI,
     functionName: "totalTokensSold",
-    chainId: sepolia.id,
+    chainId: mainnet.id,
   });
   const BSCTotalTokensSold = await readContract(config, {
     address: presaleContract,
@@ -92,7 +92,7 @@ export const getCalcBoardData = async (address: Address) => {
     address: ETHPresaleContract,
     abi: ETHPresaleABI,
     functionName: "getLatestPrice",
-    chainId: sepolia.id,
+    chainId: mainnet.id,
   });
 
   const bnbPrice = await readContract(config, {
@@ -168,7 +168,7 @@ export const getTMMBalance = async (address: Address) => {
     abi: ETHPresaleABI,
     functionName: "userDeposits",
     args: [address],
-    chainId: sepolia.id,
+    chainId: mainnet.id,
   });
 
   return {
@@ -188,7 +188,7 @@ export const buyWithETH = async (
       functionName: "buyWithEth",
       args: [amount, 5],
       value: parseUnits(eth, 18),
-      chainId: sepolia.id,
+      chainId: mainnet.id,
       connector,
     });
 
@@ -243,7 +243,7 @@ export const buyWithUSDT = async (
     const presaleContract =
       network === "ETH" ? ETHPresaleContract : BSCPresaleContract;
     const presaleABI = network === "ETH" ? ETHPresaleABI : BSCPresaleABI;
-    const presaleChain = network === "ETH" ? sepolia.id : bsc.id;
+    const presaleChain = network === "ETH" ? mainnet.id : bsc.id;
     const usdtContract = network === "ETH" ? ETHUSDTContract : BSCUSDTContract;
     const usdtABI = network === "ETH" ? ETHUSDTABI : BSCUSDTABI;
     const parseUnit = network === "ETH" ? 6 : 18;
