@@ -21,6 +21,7 @@ import {
 import * as translation from "@/translation/en.json";
 
 import "./ReactToastify.css";
+import BNBWarningModal from "../modal/bnbWarningModal";
 
 const coins: CoinData[] = [
   {
@@ -59,6 +60,9 @@ const BuySection = ({
   const [inputUSDAmount, setInputUSDAmount] = useState(0);
   const [outputAmount, setOutputAmt] = useState(0);
   const [flag, setFlag] = useState(true);
+
+  const [bnbWarningOpen, setBNBWarningOpen] = useState(false);
+  const handleBNBWarningOpen = () => setBNBWarningOpen(!bnbWarningOpen);
 
   const selectedCoinRef = useRef(selectedCoin);
   const inputAmountRef = useRef(inputAmount);
@@ -230,7 +234,7 @@ const BuySection = ({
 
   return (
     <>
-      <div className="flex gap-1 md:gap-2">
+      <div className="flex gap-4">
         {selectedNetwork === "ETH" && (
           <CoinButtons
             coin={coins[0]}
@@ -252,6 +256,24 @@ const BuySection = ({
         />
       </div>
 
+      {address && (
+        <div className="w-full flex items-center justify-between">
+          <div className="min-w-[100px] border-[1px] border-white h-0"></div>
+          <p className="text-xs !w-full text-center">
+            {selectedCoin === coins[0] &&
+              translation.presale.buysection.ethBalance + ETHBalance.toFixed(4)}
+            {selectedCoin === coins[1] &&
+              translation.presale.buysection.bnbBalance + ETHBalance.toFixed(4)}
+            {selectedCoin === coins[2] &&
+              translation.presale.buysection.usdtBalance +
+                (selectedNetwork === "ETH"
+                  ? (Number(data?.ethUsdtBalance) / 10 ** 6).toFixed(4)
+                  : (Number(data?.bscUsdtBalance) / 10 ** 18).toFixed(4))}
+          </p>
+          <div className="min-w-[100px] border-[1px] border-white h-0"></div>
+        </div>
+      )}
+
       <div className="flex flex-col md:flex-row gap-2">
         <div>
           <p className="text-xs text-left">
@@ -260,7 +282,7 @@ const BuySection = ({
           <div className="flex items-center border-[1px] border-white rounded-lg">
             <input
               type="number"
-              className="bg-transparent w-[250px] md:w-[120px] p-2 focus:border-none focus:shadow-none focus:outline-none"
+              className="bg-transparent w-[270px] md:w-[120px] p-2 focus:border-none focus:shadow-none focus:outline-none"
               onChange={(e) => handleChange(e.target.value)}
               value={inputAmount}
             />
@@ -278,7 +300,7 @@ const BuySection = ({
           </p>
           <div className="flex items-center border-[1px] border-white rounded-lg">
             <input
-              className="bg-transparent w-[250px] md:w-[120px] p-2"
+              className="bg-transparent w-[270px] md:w-[120px] p-2"
               value={disabled ? 0 : formatNumber(outputAmount.toString())}
               disabled
             />
@@ -291,12 +313,34 @@ const BuySection = ({
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row w-full justify-center gap-2 items-center h-full">
+      {address && selectedNetwork === "ETH" && (
+        <button
+          className="bg-[#FFC700] rounded-md text-black text-sm w-[300px] md:w-[310px] h-[40px] disabled:bg-[#FFC70055] disabled:cursor-not-allowed uppercase"
+          onClick={() => buyTMM()}
+          disabled={
+            disabled ||
+            inputUSDAmount < Number(data?.minAmt) / 10 ** 18 ||
+            (ETHBalance < inputAmount && selectedCoin != coins[2]) ||
+            (Number(data?.ethUsdtBalance) / 10 ** 6 < inputAmount &&
+              selectedCoin == coins[2] &&
+              selectedNetwork === "ETH")
+          }
+        >
+          {translation.presale.buysection.buyAndStake}
+        </button>
+      )}
+
+      <div
+        className={
+          "flex md:flex-row justify-center items-center gap-4 md:gap-2 w-full h-full " +
+          (address ? "flex-col" : "flex-row")
+        }
+      >
         {!address ? (
           <ConnectButton />
         ) : (
           <button
-            className="bg-[#FFC700] rounded-md text-black text-sm w-[280px] md:w-auto md:min-w-[150px] h-[40px] disabled:bg-[#FFC70055] disabled:cursor-not-allowed uppercase"
+            className="bg-[#FFC700] rounded-md text-black text-sm w-[300px] md:w-auto md:min-w-[150px] h-[40px] disabled:bg-[#FFC70055] disabled:cursor-not-allowed uppercase"
             onClick={() => buyTMM()}
             disabled={
               disabled ||
@@ -313,8 +357,16 @@ const BuySection = ({
             {translation.presale.buysection.buynow}
           </button>
         )}
-        <div className="group relative">
-          <button className="relative w-[280px] md:w-auto md:min-w-[150px] h-[40px] border-[1px] rounded-md flex justify-center items-center gap-1 uppercase text-sm disabled:bg-[#52BF8555] disabled:cursor-not-allowed border-[#F0C010]">
+        <div className="relative group">
+          <button
+            className={
+              "relative md:w-auto md:min-w-[150px] h-[40px] border-[1px] rounded-md flex justify-center items-center gap-1 uppercase text-sm disabled:bg-[#52BF8555] disabled:cursor-not-allowed border-[#F0C010] " +
+              (address ? "w-[300px]" : "w-[150px]")
+            }
+            onClick={() => {
+              !address ? changeNetwork() : null;
+            }}
+          >
             {selectedNetwork === "ETH" ? (
               <img
                 src={`/assets/images/coins/ethereum.png`}
@@ -332,29 +384,44 @@ const BuySection = ({
               ? translation.presale.buysection.buywitheth
               : translation.presale.buysection.buywithbnb}
           </button>
-          <div
-            className="bg-black absolute top-[-50px] right-[0px] hidden group-hover:flex justify-center items-center min-w-[170px] h-[50px] rounded-xs cursor-pointer hover:bg-[#A9B9DB]"
-            onClick={() => changeNetwork()}
-          >
-            {selectedNetwork !== "ETH" ? (
-              <img
-                src={`/assets/images/coins/ethereum.png`}
-                className="w-6 h-6 mr-1"
-                alt=""
-              />
-            ) : (
-              <img
-                src={`/assets/images/coins/bnb 2.png`}
-                className="w-6 h-6 mr-1"
-                alt=""
-              />
-            )}
-            {selectedNetwork !== "ETH"
-              ? translation.presale.buysection.buywitheth
-              : translation.presale.buysection.buywithbnb}
-          </div>
+          {address && (
+            <div
+              className="bg-black absolute top-[-50px] right-[0px] hidden group-hover:flex items-center min-w-[200px] h-[50px] rounded-md cursor-pointer px-4 text-[#F0C010] hover:text-white"
+              onClick={() => {
+                selectedNetwork !== "ETH"
+                  ? changeNetwork()
+                  : handleBNBWarningOpen();
+              }}
+            >
+              {selectedNetwork !== "ETH" ? (
+                <>
+                  <img
+                    src={`/assets/images/coins/ethereum.png`}
+                    className="w-6 h-6 mr-3"
+                    alt=""
+                  />
+                  {translation.presale.buysection.buywitheth}
+                </>
+              ) : (
+                <>
+                  <img
+                    src={`/assets/images/coins/bnb 2.png`}
+                    className="w-6 h-6 mr-3"
+                    alt=""
+                  />
+                  {translation.presale.buysection.buywithbnb}
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
+
+      <BNBWarningModal
+        bnbWarningOpen={bnbWarningOpen}
+        handleBNBWarningOpen={handleBNBWarningOpen}
+        changeNetwork={changeNetwork}
+      />
 
       <ToastContainer
         position="bottom-right"

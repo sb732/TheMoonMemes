@@ -20,7 +20,7 @@ const CoinButtons = ({
     >
       <img
         src={`/assets/images/coins/${coin.symbol}`}
-        className="w-6 h-6 mr-1"
+        className="w-6 h-6 mr-3"
         alt=""
       />
       {coin.name}

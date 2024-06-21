@@ -15,6 +15,8 @@ export default function ConnectButton() {
       if (button) {
         button.style.borderRadius = "10px";
         button.style.background = "#FFC700";
+        button.style.width = "150px";
+        button.style.height = "40px";
 
         const textSlot = button
           ?.querySelector("wui-text")
