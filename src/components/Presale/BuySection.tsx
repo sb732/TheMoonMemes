@@ -329,7 +329,7 @@ const BuySection = ({
           {inputAmount > 0 && (
             <p className="text-[#DB443B]">
               {translation.presale.buysection.makeSure}
-              0.015{" "}
+              {selectedNetwork == "ETH" ? "0.015 " : "0.0025 "}
               {selectedNetwork == "ETH"
                 ? translation.presale.buysection.eth
                 : translation.presale.buysection.bnb}
