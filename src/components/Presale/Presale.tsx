@@ -60,6 +60,16 @@ const Presale = () => {
     return number.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
   };
 
+  const calcStageTarget = (stage: number) => {
+    let startPrice = 0.0006,
+      totalPrice = 0;
+    for (let i = 0; i <= stage; i++) {
+      totalPrice += startPrice;
+      startPrice += 0.00002;
+    }
+    return formatNumber(Number(totalPrice * 500000000).toFixed(0));
+  };
+
   return (
     <div
       className="text-white min-w-[calc(100%-20px)] md:min-w-[400px] relative px-[15px] py-[35px] border-[1px] border-white rounded-lg uppercase"
@@ -157,11 +167,12 @@ const Presale = () => {
                     endTime={data?.endTime ? data.endTime : Date.now()}
                   />
                   <p className="text-sm">
+                    {translation.presale.stage} {Number(data?.currentStage) + 1}{" "}
                     {translation.presale.usdtraised} $
                     {Number(
                       (Number(data?.totalUSDRaised) / 10 ** 18).toFixed(2)
                     ).toLocaleString("en-US")}{" "}
-                    / $13,350,000
+                    / ${calcStageTarget(Number(data?.currentStage))}
                   </p>
                   <div className="bg-white rounded-lg text-black text-xs px-6 py-1 relative w-full md:w-4/5 h-6">
                     <p

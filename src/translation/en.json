@@ -181,7 +181,7 @@
     "endin": "ENDS IN",
     "sold": "sold",
     "endat": "PRESALE ENDED AT",
-    "usdtraised": "USDT RAISED:",
+    "usdtraised": "FOR 4 DAYS:",
     "purchased": "YOUR PURCHASED",
     "stakeable": "YOUR STAKEABLE",
     "countdown": {
@@ -204,7 +204,10 @@
       "buyAndStake": "Buy and Stake for 166% Rewards",
       "ethBalance": "ETH balances ",
       "bnbBalance": "BNB balances ",
-      "usdtBalance": "USDT balances "
+      "usdtBalance": "USDT balances ",
+      "makeSure": "Make sure you have ",
+      "gasAnd": " for gas and ",
+      "tokenExchange": " for the token exchange"
     },
     "dialog": {
       "purchased": "Your total purchased tokens are all tokens purchased using the connected wallet. This includes all staked and unstaked tokens.",
