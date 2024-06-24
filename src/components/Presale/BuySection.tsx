@@ -185,7 +185,7 @@ const BuySection = ({
     if (stakingFlag && address) {
       const _balance = await getTMMBalance(address);
       previousBalance = _balance.tmmBalance
-        ? Number(_balance.tmmBalance) / 10 ** 18
+        ? Number((Number(_balance.tmmBalance) / 10 ** 18).toFixed(0))
         : 0;
     }
 
@@ -226,7 +226,7 @@ const BuySection = ({
     if (stakingFlag && address) {
       const _balance = await getTMMBalance(address);
       afterBalance = _balance.tmmBalance
-        ? Number(_balance.tmmBalance) / 10 ** 18
+        ? Number((Number(_balance.tmmBalance) / 10 ** 18).toFixed(0))
         : 0;
 
       await addStakedBalance(address, afterBalance - previousBalance);

@@ -16,12 +16,15 @@ import "./Presale.css";
 import PurchasedModal from "../modal/purchasedModal";
 import StakableModal from "../modal/stakableModal";
 
+import { getStakedBalance } from "@/APIs/useAPI";
+
 const Presale = () => {
   const { address } = useAccount();
 
   const [selectedNetwork, setSelectedNetwork] = useState("ETH");
   const [data, setData] = useState<IPresaleData>();
   const [balance, setBalance] = useState<number>(0);
+  const [stakedBalance, setStakedBalance] = useState(0);
 
   const [purchasedOpen, setPurchasedOpen] = useState(false);
   const [stakableOpen, setStakableOpen] = useState(false);
@@ -42,6 +45,11 @@ const Presale = () => {
       if (addressRef.current) {
         const _balance = await getTMMBalance(addressRef.current as Address);
         setBalance(_balance.tmmBalance ?? 0);
+
+        const _stakedBalance = await getStakedBalance(
+          addressRef.current as Address
+        );
+        setStakedBalance(_stakedBalance);
       } else {
         setBalance(0);
       }
@@ -198,7 +206,7 @@ const Presale = () => {
                   </div>
                   <p className="flex text-sm">
                     {translation.presale.stakeable} {translation.presale.tmm} =
-                    0
+                    {formatNumber(stakedBalance.toFixed(0))}
                     <img
                       src="/assets/icons/info-icon.svg"
                       className="ml-2 cursor-pointer"
