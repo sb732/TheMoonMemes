@@ -13,8 +13,8 @@ import { IPresaleData } from "../../utils/type";
 import { getPresaleData, getTMMBalance } from "../../web3/hooks/useAPI";
 
 import "./Presale.css";
-import PurchasedModal from "../Modal/purchasedModal";
-import StakableModal from "../Modal/stakableModal";
+import PurchasedModal from "../modal/purchasedModal";
+import StakableModal from "../modal/stakableModal";
 
 const Presale = () => {
   const { address } = useAccount();

@@ -22,7 +22,7 @@ import {
 import * as translation from "@/translation/en.json";
 
 import "./ReactToastify.css";
-import BNBWarningModal from "../Modal/bnbWarningModal";
+import BNBWarningModal from "../modal/bnbWarningModal";
 import { addStakedBalance } from "@/APIs/useAPI";
 
 const coins: CoinData[] = [
