@@ -205,7 +205,7 @@ const Presale = () => {
                     />
                   </div>
                   <p className="flex text-sm">
-                    {translation.presale.stakeable} {translation.presale.tmm} =
+                    {translation.presale.stakeable} {translation.presale.tmm} ={" "}
                     {formatNumber(stakedBalance.toFixed(0))}
                     <img
                       src="/assets/icons/info-icon.svg"
