@@ -16,12 +16,14 @@ import {
   buyWithETH,
   buyWithBNB,
   buyWithUSDT,
+  getTMMBalance,
 } from "../../web3/hooks/useAPI";
 
 import * as translation from "@/translation/en.json";
 
 import "./ReactToastify.css";
-import BNBWarningModal from "../modal/bnbWarningModal";
+import BNBWarningModal from "../Modal/bnbWarningModal";
+import { addStakedBalance } from "@/APIs/useAPI";
 
 const coins: CoinData[] = [
   {
@@ -176,8 +178,15 @@ const BuySection = ({
     hash?: string;
   }
 
-  const buyTMM = async () => {
+  const buyTMM = async (stakingFlag: boolean) => {
     setFlag(false);
+    let previousBalance = 0,
+      afterBalance = 0;
+    if (stakingFlag && address) {
+      const _balance = await getTMMBalance(address);
+      previousBalance = _balance.tmmBalance ?? 0;
+    }
+
     let res: resProp = { res: false };
     if (selectedCoin === coins[0]) {
       res = await buyWithETH(
@@ -211,6 +220,13 @@ const BuySection = ({
       notify("User rejected wallet connection!");
     else if (!res.res && res.reason == "slippage error")
       notify("Purchase failed, Slippage exceeded, Try again later!");
+
+    if (stakingFlag && address) {
+      const _balance = await getTMMBalance(address);
+      afterBalance = _balance.tmmBalance ?? 0;
+
+      await addStakedBalance(address, afterBalance - previousBalance);
+    }
 
     setFlag(true);
   };
@@ -348,7 +364,7 @@ const BuySection = ({
       {address && selectedNetwork === "ETH" && (
         <button
           className="bg-[#FFC700] rounded-md text-black text-sm w-[300px] md:w-[310px] h-[40px] disabled:bg-[#FFC70055] disabled:cursor-not-allowed uppercase"
-          onClick={() => buyTMM()}
+          onClick={() => buyTMM(true)}
           disabled={
             disabled ||
             inputUSDAmount < Number(data?.minAmt) / 10 ** 18 ||
@@ -373,7 +389,7 @@ const BuySection = ({
         ) : (
           <button
             className="bg-[#FFC700] rounded-md text-black text-sm w-[300px] md:w-auto md:min-w-[150px] h-[40px] disabled:bg-[#FFC70055] disabled:cursor-not-allowed uppercase"
-            onClick={() => buyTMM()}
+            onClick={() => buyTMM(false)}
             disabled={
               disabled ||
               inputUSDAmount < Number(data?.minAmt) / 10 ** 18 ||

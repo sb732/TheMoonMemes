@@ -1,6 +1,66 @@
+import { useEffect, useState } from "react";
+
+import { useAccount } from "wagmi";
+
+import {
+  addStakedBalance,
+  getCurrentRewards,
+  getEstimatedRewards,
+  getPoolPercent,
+  getStakedBalance,
+  getTotalRewards,
+  getTotalStakedBalance,
+} from "@/APIs/useAPI";
+import { getTMMBalance } from "@/web3/hooks/useAPI";
 import * as translation from "@/translation/en.json";
 
 const Staking = () => {
+  const { address } = useAccount();
+
+  const [balance, setBalance] = useState(0);
+  const [stakedBalance, setStakedBalance] = useState(0);
+  const [poolPercent, setPoolPercent] = useState(0);
+  const [totalStakedBalance, setTotalStakedBalance] = useState(0);
+  const [estimatedRewards, setEstimatedRewards] = useState(0);
+  const [currentRewards, setCurrentRewards] = useState(0);
+  const [totalRewards, setTotalRewards] = useState(0);
+
+  async function fetchAPI() {
+    if (address) {
+      const _stakedBalance = await getStakedBalance(address);
+      setStakedBalance(_stakedBalance);
+
+      const _poolPercent = await getPoolPercent(address);
+      setPoolPercent(_poolPercent);
+
+      const _totalRewards = await getTotalRewards(address);
+      setTotalRewards(_totalRewards);
+
+      const _balance = await getTMMBalance(address);
+      setBalance(_balance.tmmBalance ?? 0);
+    }
+
+    const _totalStakedBalance = await getTotalStakedBalance();
+    setTotalStakedBalance(_totalStakedBalance);
+
+    const _estimatedRewards = await getEstimatedRewards();
+    setEstimatedRewards(_estimatedRewards);
+
+    const _currentRewards = await getCurrentRewards();
+    setCurrentRewards(_currentRewards);
+  }
+
+  useEffect(() => {
+    fetchAPI();
+  }, [address]);
+
+  const handleStaking = async (balance: number) => {
+    if (address) {
+      await addStakedBalance(address, balance);
+      fetchAPI();
+    }
+  };
+
   return (
     <div className="flex justify-center mx-5 pt-5">
       <div className="text-white max-w-[1040px] flex flex-col gap-12">
@@ -22,21 +82,37 @@ const Staking = () => {
             <div className="border-white border-[1px] rounded-lg flex flex-col items-center justify-center w-full gap-1 py-2">
               <p>{translation.staking.stakedbalance}</p>
               <p>
-                0 <sup className="text-[8px]">{translation.staking.tmm}</sup>
+                {stakedBalance}{" "}
+                <sup className="text-[8px]">{translation.staking.tmm}</sup>
               </p>
-              <p>{translation.staking.yourbalance}</p>
+              <p>{translation.staking.yourStakeable}</p>
               <p>
-                0 <sup className="text-[8px]">{translation.staking.tmm}</sup>
+                {Number(balance) - Number(stakedBalance)}{" "}
+                <sup className="text-[8px]">{translation.staking.tmm}</sup>
               </p>
-              <button className="bg-[#FFC700] rounded-lg py-1 px-5">
-                {translation.staking.buy}
-              </button>
+              {Number(balance) - Number(stakedBalance) == 0 && (
+                <a href="/#buynow">
+                  <button className="bg-[#FFC700] rounded-lg py-1 px-5">
+                    {translation.staking.buy}
+                  </button>
+                </a>
+              )}
+              {Number(balance) - Number(stakedBalance) > 0 && (
+                <button
+                  className="bg-[#FFC700] rounded-lg py-1 px-5"
+                  onClick={() =>
+                    handleStaking(Number(balance) - Number(stakedBalance))
+                  }
+                >
+                  {translation.staking.stake}
+                </button>
+              )}
             </div>
             <div className="border-white border-[1px] rounded-lg flex flex-col items-center justify-center w-full gap-5 py-2">
-              <p>0{translation.staking.percent}</p>
+              <p>{poolPercent + translation.staking.percent}</p>
               <p>{translation.staking.totalstaked}</p>
               <p>
-                7,162,534{" "}
+                {totalStakedBalance}{" "}
                 <sup className="text-[8px]">{translation.staking.tmm}</sup>
               </p>
             </div>
@@ -45,7 +121,8 @@ const Staking = () => {
             <div className="border-white border-[1px] rounded-lg flex flex-col items-center justify-center w-full gap-5 py-2">
               <p>{translation.staking.estimatedrewards}</p>
               <p>
-                81{translation.staking.percent}{" "}
+                {estimatedRewards}
+                {translation.staking.percent}{" "}
                 <sup className="text-[8px]">{translation.staking.pa}</sup>
               </p>
               <ul className="text-[10px]">
@@ -57,7 +134,7 @@ const Staking = () => {
             <div className="border-white border-[1px] rounded-lg flex flex-col items-center justify-center w-full gap-5 py-2">
               <p>{translation.staking.currentrewards}</p>
               <p>
-                1.6026{" "}
+                {currentRewards}{" "}
                 <sup className="text-[8px]">
                   {translation.staking.perethblock}
                 </sup>
@@ -68,7 +145,8 @@ const Staking = () => {
             <div className="border-white border-[1px] rounded-lg flex flex-col items-center justify-center w-full gap-5 py-2">
               <p>{translation.staking.totalrewards}</p>
               <p>
-                0 <sup className="text-[8px]">{translation.staking.tmm}</sup>
+                {totalRewards}{" "}
+                <sup className="text-[8px]">{translation.staking.tmm}</sup>
               </p>
               <button className="bg-[#FFC700] rounded-lg py-1 px-5">
                 {translation.staking.claimrewards}
