@@ -25,41 +25,41 @@ const Staking = () => {
   const [currentRewards, setCurrentRewards] = useState(0);
   const [totalRewards, setTotalRewards] = useState(0);
 
-  async function fetchAPI() {
-    if (address) {
-      const _stakedBalance = await getStakedBalance(address);
-      setStakedBalance(_stakedBalance);
+  // async function fetchAPI() {
+  //   if (address) {
+  //     const _stakedBalance = await getStakedBalance(address);
+  //     setStakedBalance(_stakedBalance);
 
-      const _poolPercent = await getPoolPercent(address);
-      setPoolPercent(_poolPercent);
+  //     const _poolPercent = await getPoolPercent(address);
+  //     setPoolPercent(_poolPercent);
 
-      const _totalRewards = await getTotalRewards(address);
-      setTotalRewards(_totalRewards);
+  //     const _totalRewards = await getTotalRewards(address);
+  //     setTotalRewards(_totalRewards);
 
-      const _balance = await getTMMBalance(address);
-      setBalance(_balance.tmmBalance ?? 0);
-    }
+  //     const _balance = await getTMMBalance(address);
+  //     setBalance(_balance.tmmBalance ?? 0);
+  //   }
 
-    const _totalStakedBalance = await getTotalStakedBalance();
-    setTotalStakedBalance(_totalStakedBalance);
+  //   const _totalStakedBalance = await getTotalStakedBalance();
+  //   setTotalStakedBalance(_totalStakedBalance);
 
-    const _estimatedRewards = await getEstimatedRewards();
-    setEstimatedRewards(_estimatedRewards);
+  //   const _estimatedRewards = await getEstimatedRewards();
+  //   setEstimatedRewards(_estimatedRewards);
 
-    const _currentRewards = await getCurrentRewards();
-    setCurrentRewards(_currentRewards);
-  }
+  //   const _currentRewards = await getCurrentRewards();
+  //   setCurrentRewards(_currentRewards);
+  // }
 
-  useEffect(() => {
-    fetchAPI();
-  }, [address]);
+  // useEffect(() => {
+  //   fetchAPI();
+  // }, [address]);
 
-  const handleStaking = async (balance: number) => {
-    if (address) {
-      await addStakedBalance(address, balance);
-      fetchAPI();
-    }
-  };
+  // const handleStaking = async (balance: number) => {
+  //   if (address) {
+  //     await addStakedBalance(address, balance);
+  //     fetchAPI();
+  //   }
+  // };
 
   return (
     <div className="flex justify-center mx-5 pt-5">
@@ -100,9 +100,9 @@ const Staking = () => {
               {Number(balance) - Number(stakedBalance) > 0 && (
                 <button
                   className="bg-[#FFC700] rounded-lg py-1 px-5"
-                  onClick={() =>
-                    handleStaking(Number(balance) - Number(stakedBalance))
-                  }
+                  // onClick={() =>
+                  //   handleStaking(Number(balance) - Number(stakedBalance))
+                  // }
                 >
                   {translation.staking.stake}
                 </button>
