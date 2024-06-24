@@ -100,9 +100,9 @@ const Staking = () => {
               {Number(balance) - Number(stakedBalance) > 0 && (
                 <button
                   className="bg-[#FFC700] rounded-lg py-1 px-5"
-                  // onClick={() =>
-                  //   handleStaking(Number(balance) - Number(stakedBalance))
-                  // }
+                  onClick={() =>
+                    handleStaking(Number(balance) - Number(stakedBalance))
+                  }
                 >
                   {translation.staking.stake}
                 </button>
