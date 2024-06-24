@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import MediaQuery from "react-responsive";
 
 import { useAccount } from "wagmi";
@@ -15,6 +17,7 @@ interface HeaderProps {
 const Header = ({ showNav, setShowNav }: HeaderProps) => {
   const { open } = useWeb3Modal();
   const { address } = useAccount();
+  const navigate = useNavigate();
 
   const handleShowNav = () => {
     setShowNav(!showNav);
@@ -34,9 +37,12 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
                 />
               </a>
 
-              <a href="/staking">
-                <p className="hover:text-[#528F85]">{data.navbar.staking}</p>
-              </a>
+              <p
+                className="hover:text-[#528F85] cursor-pointer"
+                onClick={() => navigate("/staking")}
+              >
+                {data.navbar.staking}
+              </p>
 
               <div className="group relative">
                 <p className="cursor-pointer hover:text-[#528F85]">
