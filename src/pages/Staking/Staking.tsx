@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { useAccount } from "wagmi";
+// import { useAccount } from "wagmi";
 
-import {
-  addStakedBalance,
-  getCurrentRewards,
-  getEstimatedRewards,
-  getPoolPercent,
-  getStakedBalance,
-  getTotalRewards,
-  getTotalStakedBalance,
-} from "@/APIs/useAPI";
-import { getTMMBalance } from "@/web3/hooks/useAPI";
+// import {
+//   addStakedBalance,
+//   getCurrentRewards,
+//   getEstimatedRewards,
+//   getPoolPercent,
+//   getStakedBalance,
+//   getTotalRewards,
+//   getTotalStakedBalance,
+// } from "@/APIs/useAPI";
+// import { getTMMBalance } from "@/web3/hooks/useAPI";
 import * as translation from "@/translation/en.json";
 
 const Staking = () => {
-  const { address } = useAccount();
+  // const { address } = useAccount();
 
-  const [balance, setBalance] = useState(0);
-  const [stakedBalance, setStakedBalance] = useState(0);
-  const [poolPercent, setPoolPercent] = useState(0);
-  const [totalStakedBalance, setTotalStakedBalance] = useState(0);
-  const [estimatedRewards, setEstimatedRewards] = useState(0);
-  const [currentRewards, setCurrentRewards] = useState(0);
-  const [totalRewards, setTotalRewards] = useState(0);
+  const [balance,] = useState(0);
+  const [stakedBalance,] = useState(0);
+  const [poolPercent,] = useState(0);
+  const [totalStakedBalance,] = useState(0);
+  const [estimatedRewards,] = useState(0);
+  const [currentRewards,] = useState(0);
+  const [totalRewards,] = useState(0);
 
   // async function fetchAPI() {
   //   if (address) {
