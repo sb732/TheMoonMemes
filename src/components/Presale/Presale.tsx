@@ -10,21 +10,23 @@ import BuySection from "./BuySection";
 import * as translation from "@/translation/en.json";
 
 import { IPresaleData } from "../../utils/type";
-import { getPresaleData, getTMMBalance } from "../../web3/hooks/useAPI";
+import {
+  getPresaleData,
+  getTMMBalance,
+  getTMMETHBalance,
+} from "../../web3/hooks/useAPI";
 
 import "./Presale.css";
 import PurchasedModal from "../modal/purchasedModal";
 import StakableModal from "../modal/stakableModal";
-
-import { getStakedBalance } from "@/APIs/useAPI";
 
 const Presale = () => {
   const { address } = useAccount();
 
   const [selectedNetwork, setSelectedNetwork] = useState("ETH");
   const [data, setData] = useState<IPresaleData>();
-  const [balance, setBalance] = useState<number>(0);
-  const [stakedBalance, setStakedBalance] = useState(0);
+  const [purchasedBalance, setPurchasedBalance] = useState<number>(0);
+  const [stakableBalance, setStakableBalance] = useState(0);
 
   const [purchasedOpen, setPurchasedOpen] = useState(false);
   const [stakableOpen, setStakableOpen] = useState(false);
@@ -44,14 +46,15 @@ const Presale = () => {
 
       if (addressRef.current) {
         const _balance = await getTMMBalance(addressRef.current as Address);
-        setBalance(_balance.tmmBalance ?? 0);
+        setPurchasedBalance(_balance.tmmBalance ?? 0);
 
-        const _stakedBalance = await getStakedBalance(
+        const _ethBalance = await getTMMETHBalance(
           addressRef.current as Address
         );
-        setStakedBalance(_stakedBalance);
+        setStakableBalance(_ethBalance.tmmBalance ?? 0);
       } else {
-        setBalance(0);
+        setPurchasedBalance(0);
+        setStakableBalance(0);
       }
     };
 
@@ -197,7 +200,9 @@ const Presale = () => {
                   </div>
                   <div className="flex text-sm">
                     {translation.presale.purchased} {translation.presale.tmm} ={" "}
-                    {formatNumber((Number(balance) / 10 ** 18).toFixed(0))}
+                    {formatNumber(
+                      (Number(purchasedBalance) / 10 ** 18).toFixed(0)
+                    )}
                     <img
                       src="/assets/icons/info-icon.svg"
                       className="ml-2 cursor-pointer"
@@ -206,7 +211,9 @@ const Presale = () => {
                   </div>
                   <p className="flex text-sm">
                     {translation.presale.stakeable} {translation.presale.tmm} ={" "}
-                    {formatNumber(stakedBalance.toFixed(0))}
+                    {formatNumber(
+                      (Number(stakableBalance) / 10 ** 18).toFixed(0)
+                    )}
                     <img
                       src="/assets/icons/info-icon.svg"
                       className="ml-2 cursor-pointer"

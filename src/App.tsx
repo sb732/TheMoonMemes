@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import Layout from "./components/Layout/Layout";
 
 import Home from "./pages/Home/Home";
-import Staking from "./pages/Staking/Staking";
+// import Staking from "./pages/Staking/Staking";
 import Privacy from "./pages/Privacy/Privacy";
 import Terms from "./pages/Terms/Terms";
 
@@ -63,7 +63,7 @@ function App() {
               element={<Layout showNav={showNav} setShowNav={setShowNav} />}
             >
               <Route path="/" element={<Home />} />
-              <Route path="staking" element={<Staking />} />
+              {/* <Route path="staking" element={<Staking />} /> */}
               <Route path="privacy" element={<Privacy />} />
               <Route path="terms" element={<Terms />} />
             </Route>

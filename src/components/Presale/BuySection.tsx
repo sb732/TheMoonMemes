@@ -365,7 +365,7 @@ const BuySection = ({
         </div>
       )}
 
-      {address && selectedNetwork === "ETH" && (
+      {/* {address && selectedNetwork === "ETH" && (
         <button
           className="bg-[#FFC700] rounded-md text-black text-sm w-[300px] md:w-[310px] h-[40px] disabled:bg-[#FFC70055] disabled:cursor-not-allowed uppercase"
           onClick={() => buyTMM(true)}
@@ -380,7 +380,7 @@ const BuySection = ({
         >
           {translation.presale.buysection.buyAndStake}
         </button>
-      )}
+      )} */}
 
       <div
         className={

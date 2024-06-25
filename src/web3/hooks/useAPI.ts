@@ -154,6 +154,20 @@ export const getCalcBoardData = async (address: Address) => {
   };
 };
 
+export const getTMMETHBalance = async (address: Address) => {
+  const tmmBalance2 = await readContract(config, {
+    address: ETHPresaleContract,
+    abi: ETHPresaleABI,
+    functionName: "userDeposits",
+    args: [address],
+    chainId: mainnet.id,
+  });
+
+  return {
+    tmmBalance: tmmBalance2 as number,
+  };
+};
+
 export const getTMMBalance = async (address: Address) => {
   const tmmBalance1 = await readContract(config, {
     address: BSCPresaleContract,
@@ -282,7 +296,7 @@ export const buyWithUSDT = async (
 
     const hash = await writeContract(config, request);
 
-    return { res: true, hash:hash };
+    return { res: true, hash: hash };
   } catch (error: any) {
     if (String(error.message).includes("User rejected the request.")) {
       return { res: false, reason: "metamask rejected" };

@@ -37,12 +37,16 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
                 />
               </a>
 
-              <p
+              {/* <p
                 className="hover:text-[#528F85] cursor-pointer"
                 onClick={() => navigate("/staking")}
               >
                 {data.navbar.staking}
-              </p>
+              </p> */}
+
+              <a href="/#moonomics">
+                <p className="hover:text-[#528F85]">{data.navbar.moonomics}</p>
+              </a>
 
               <div className="group relative">
                 <p className="cursor-pointer hover:text-[#528F85]">
@@ -51,13 +55,6 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
                 <div>
                   <div className="absolute hidden group-hover:block">
                     <ul className="bg-black rounded-lg px-4 py-2 mt-12 flex flex-col justify-center gap-2 min-w-[180px]">
-                      <li>
-                        <a href="/#moonomics">
-                          <p className="hover:text-[#528F85]">
-                            {data.navbar.moonomics}
-                          </p>
-                        </a>
-                      </li>
                       <li>
                         <a href="/#roadmap">
                           <p className="hover:text-[#528F85]">
@@ -203,11 +200,11 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
             {data.navbar.home}
           </p>
         </a>
-        <a href="/staking">
+        {/* <a href="/staking">
           <p className="border-b-[1px] border-white px-1 py-1">
             {data.navbar.staking}
           </p>
-        </a>
+        </a> */}
         <a href="/#moonomics">
           <p
             onClick={() => handleShowNav()}
