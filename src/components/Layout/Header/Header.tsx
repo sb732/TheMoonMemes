@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import MediaQuery from "react-responsive";
 
@@ -17,7 +17,7 @@ interface HeaderProps {
 const Header = ({ showNav, setShowNav }: HeaderProps) => {
   const { open } = useWeb3Modal();
   const { address } = useAccount();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleShowNav = () => {
     setShowNav(!showNav);
