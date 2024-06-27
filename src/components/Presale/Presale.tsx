@@ -13,12 +13,10 @@ import { IPresaleData } from "../../utils/type";
 import {
   getPresaleData,
   getTMMBalance,
-  getTMMETHBalance,
 } from "../../web3/hooks/useAPI";
 
 import "./Presale.css";
 import PurchasedModal from "../modal/purchasedModal";
-import StakableModal from "../modal/stakableModal";
 
 const Presale = () => {
   const { address } = useAccount();
@@ -26,12 +24,9 @@ const Presale = () => {
   const [selectedNetwork, setSelectedNetwork] = useState("ETH");
   const [data, setData] = useState<IPresaleData>();
   const [purchasedBalance, setPurchasedBalance] = useState<number>(0);
-  const [stakableBalance, setStakableBalance] = useState(0);
 
   const [purchasedOpen, setPurchasedOpen] = useState(false);
-  const [stakableOpen, setStakableOpen] = useState(false);
   const handlePurchasedOpen = () => setPurchasedOpen(!purchasedOpen);
-  const handleStakableOpen = () => setStakableOpen(!stakableOpen);
 
   const addressRef = useRef(address);
 
@@ -47,14 +42,8 @@ const Presale = () => {
       if (addressRef.current) {
         const _balance = await getTMMBalance(addressRef.current as Address);
         setPurchasedBalance(_balance.tmmBalance ?? 0);
-
-        const _ethBalance = await getTMMETHBalance(
-          addressRef.current as Address
-        );
-        setStakableBalance(_ethBalance.tmmBalance ?? 0);
       } else {
         setPurchasedBalance(0);
-        setStakableBalance(0);
       }
     };
 
@@ -97,7 +86,7 @@ const Presale = () => {
                 {translation.presale.comingsoon}
               </p>
               <TimeLeftPanel />
-              <p className="bg-white rounded-lg text-black text-xs px-6 py-1">
+              <p className="bg-white rounded-lg text-black text-xs px-6 py-1 w-full md:w-4/5 h-6 text-center">
                 {translation.presale.untilPriceIncrease}
               </p>
               <div className="flex text-sm">
@@ -108,14 +97,6 @@ const Presale = () => {
                   onClick={handlePurchasedOpen}
                 />
               </div>
-              <p className="flex text-sm">
-                {translation.presale.stakeable} {translation.presale.tmm} = 0{" "}
-                <img
-                  src="/assets/icons/info-icon.svg"
-                  className="ml-2 cursor-pointer"
-                  onClick={handleStakableOpen}
-                />
-              </p>
               <div className="w-full flex items-center justify-between">
                 <div className="min-w-[100px] border-[1px] border-white h-0"></div>
                 <p className="text-xs !w-full text-center">
@@ -147,14 +128,6 @@ const Presale = () => {
                     onClick={handlePurchasedOpen}
                   />
                 </div>
-                <p className="flex text-sm">
-                  {translation.presale.stakeable} {translation.presale.tmm} = 0{" "}
-                  <img
-                    src="/assets/icons/info-icon.svg"
-                    className="ml-2 cursor-pointer"
-                    onClick={handleStakableOpen}
-                  />
-                </p>
                 <div className="w-full flex items-center justify-between">
                   <div className="min-w-[100px] border-[1px] border-white h-0"></div>
                   <p className="text-xs !w-full text-center">
@@ -209,17 +182,6 @@ const Presale = () => {
                       onClick={handlePurchasedOpen}
                     />
                   </div>
-                  <p className="flex text-sm">
-                    {translation.presale.stakeable} {translation.presale.tmm} ={" "}
-                    {formatNumber(
-                      (Number(stakableBalance) / 10 ** 18).toFixed(0)
-                    )}
-                    <img
-                      src="/assets/icons/info-icon.svg"
-                      className="ml-2 cursor-pointer"
-                      onClick={handleStakableOpen}
-                    />
-                  </p>
                   <div className="w-full flex items-center justify-between">
                     <div className="min-w-[100px] border-[1px] border-white h-0"></div>
                     <p className="text-xs !w-full text-center">
@@ -250,10 +212,6 @@ const Presale = () => {
       <PurchasedModal
         purchasedOpen={purchasedOpen}
         handlePurchasedOpen={handlePurchasedOpen}
-      />
-      <StakableModal
-        stakableOpen={stakableOpen}
-        handleStakableOpen={handleStakableOpen}
       />
     </div>
   );

@@ -72,7 +72,7 @@ function Home() {
                 {translation.home.about.content}
               </p>
               <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/2 flex flex-col gap-5">
+                <div className="md:w-1/2 flex flex-col gap-5 md:mt-20">
                   <p className="text-3xl md:text-5xl text-center">
                     {translation.home.about.mission.title}
                   </p>
@@ -528,12 +528,12 @@ function Home() {
                 </p>
                 <p>{translation.home.howtobuy.step3.content}</p>
               </div>
-              <div className="flex flex-col md:flex-row items-center bg-white text-black rounded-lg px-5 py-1">
+              {/* <div className="flex flex-col md:flex-row items-center bg-white text-black rounded-lg px-5 py-1">
                 <p className="text-2xl md:text-3xl min-w-[300px]">
                   {translation.home.howtobuy.step4.title}
                 </p>
                 <p>{translation.home.howtobuy.step4.content}</p>
-              </div>
+              </div> */}
             </div>
           </section>
 

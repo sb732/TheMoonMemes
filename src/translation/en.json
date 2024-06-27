@@ -12,7 +12,7 @@
     "audit": "AUDIT",
     "howtobuy": "HOW TO BUY",
     "buynow": "BUY NOW",
-    "alert": "Buy & Stake $TMM for 48% Annual Rewards!"
+    "alert": "Buy & Stake $TMM for 166% Annual Rewards!"
   },
   "home": {
     "home": {
@@ -129,7 +129,7 @@
       "title": "How to buy",
       "step1": {
         "title": "1. Connect Wallet & Select Network:",
-        "content": "To purchase $TMM Tokens, you need to connect your wallet. Select one of the many supported wallets to connect to the $TTM purchase widget (at the top of this web page)."
+        "content": "To purchase $TMM Tokens, you need to connect your wallet. Select one of the many supported wallets to connect to the $TMM purchase widget (at the top of this web page)."
       },
       "step2": {
         "title": "2. Buy $TMM Tokens:",
@@ -137,7 +137,7 @@
       },
       "step3": {
         "title": "3. Claim $TMM Tokens:",
-        "content": "You will be able to claim your $TTM tokens using the same wallet in the pre-sale widget (at the top of this web page) once the presale is complete."
+        "content": "You will be able to claim your $TMM tokens using the same wallet in the pre-sale widget (at the top of this web page) once the presale is complete."
       },
       "step4": {
         "title": "4. Staking $TMM to Earn Meme Coin:",
@@ -151,12 +151,12 @@
         "content": "TheMoonMemes is an ERC-20 Token built on the Ethereum network, often associated with meme culture. TheMoonMemes ecosystem is designed to support and nurture a thriving community of meme creators, enthusiasts, and crypto aficionados."
       },
       "section2": {
-        "title": "When is the TheMoonMemes $TMM Pre-sale?",
-        "content": "Coming soon. TheMoonMemes pre-sale will available in the $TTM purchase widget (at the top of this web page). The selling price increases with each pre-sale stage, so the best time to buy is now. Everyone will be able to purchase TheMoonMemes $TMM Token at a much cheaper price compared to the launch price."
+        "title": "How do I participate in the presale?",
+        "content": "You can join the presale on Ethereum and BSC Network. Simply link your wallet to the presale widget provided and use ETH, USDT, BNB to swap your $TMM tokens."
       },
       "section3": {
-        "title": "How does TheMoonMemes $TMM staking work?",
-        "content": "During the presale, you can stake your $TMM tokens to earn huge rewards! Once the presale ends and the claim goes live, you can immediately claim your rewards and withdraw your tokens 7 days after the claim goes live. You can also extend the locking period to earn reward multipliers, thus extending your $TMM token withdrawal date."
+        "title": "When do I receive my presale tokens?",
+        "content": "You will be able to claim your $TMM tokens using the same wallet in the pre-sale widget (at the top of this web page) once the presale is complete. We will announce the claim and listing dates on our social media channels."
       },
       "section4": {
         "title": "Is TheMoonMemes $TMM staking a good strategy?",
@@ -210,7 +210,7 @@
       "tokenExchange": " for the token exchange"
     },
     "dialog": {
-      "purchased": "Your total purchased tokens are all tokens purchased using the connected wallet. This includes all staked and unstaked tokens.",
+      "purchased": "Your total purchased tokens are all tokens purchased using the connected wallet.",
       "stakeable": "Unclaimed $TMM that was bought using ETH or ERC-20 USDT can be staked now. Please note that all early staked tokens can be withdrawn 7 days after token claiming goes live, which will happen after the presale has concluded.",
       "slippage1": "Before You Proceed with Your Purchase",
       "slippage2": "When buying tokens during this presale, please be aware that there is a 5% slippage applied to each transaction. This means that the amount of tokens you receive may be slightly less than what you expect due to price fluctuations and transaction execution speed.",

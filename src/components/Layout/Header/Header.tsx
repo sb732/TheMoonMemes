@@ -77,7 +77,7 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
                         </a>
                       </li>
                       <li>
-                        <a href="/">
+                        <a href="/#buy">
                           <p className="hover:text-[#528F85]">
                             {data.navbar.howtobuy}
                           </p>
