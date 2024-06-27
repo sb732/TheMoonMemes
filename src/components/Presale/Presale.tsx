@@ -160,7 +160,7 @@ const Presale = () => {
                   </p>
                   <div className="bg-white rounded-lg text-black text-xs px-6 py-1 relative w-full md:w-4/5 h-6">
                     <p
-                      className="h-6 bg-[#52BF85] absolute left-0 top-0 rounded-lg"
+                      className="h-6 bg-[#FFC700] absolute left-0 top-0 rounded-lg"
                       style={{
                         width: `${
                           Number(data?.totalUSDRaised) / 10 ** 18 / 133500
