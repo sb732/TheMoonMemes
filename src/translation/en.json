@@ -1,7 +1,6 @@
 {
   "navbar": {
     "home": "HOME",
-
     "staking": "STAKING",
     "about": "ABOUT",
     "moonomics": "MOONOMICS",
@@ -164,7 +163,7 @@
       },
       "section5": {
         "title": "How do I Contact the TheMoonMemes Team?",
-        "content": "To contact our support team, please email us at cs@themoonmemes.space Or, you can contact the TheMoonMemes team by joining the Telegram group, where a one of our staff will be more than happy to assist you."
+        "content": "To contact our support team, please email us at contact@moonmemes.space Or, you can contact the TheMoonMemes team by joining the Telegram group, where a one of our staff will be more than happy to assist you."
       }
     }
   },
@@ -175,6 +174,7 @@
     "tmm": "$TMM",
     "nextIncrease": "NEXT PRICE INCREASE IN",
     "untilPriceIncrease": "UNTIL PRICE INCREASE",
+    "raised": "raised",
     "buybefore": "Buy before price increases",
     "listingprice": "LISTING PRICE",
     "presale": "PRESALE",
@@ -356,7 +356,7 @@
       "title": "The Moon Memes Office",
       "street": "Tower Financial Center, Cl, Calle 50 Y",
       "address": "Panamá, Provincia de Panamá, Panama",
-      "email": "CS@themoonmemes.space"
+      "email": "contact@moonmemes.space"
     }
   }
 }

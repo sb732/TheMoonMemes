@@ -83,8 +83,8 @@ const Presale = () => {
                 {translation.presale.comingsoon}
               </p>
               <TimeLeftPanel />
-              <p className="bg-white rounded-lg text-black text-xs px-6 py-1 w-full md:w-4/5 h-6 text-center">
-                {translation.presale.untilPriceIncrease}
+              <p className="bg-white rounded-3xl text-black text-lg px-6 py-2 w-full md:w-4/5 h-12 text-center">
+                $0 {translation.presale.raised}
               </p>
               <div className="flex text-sm">
                 {translation.presale.purchased} {translation.presale.tmm} = 0
@@ -114,8 +114,8 @@ const Presale = () => {
                 <Countdown
                   endTime={data?.startTime ? data.startTime : Date.now()}
                 />
-                <p className="bg-white rounded-lg text-black text-xs px-6 py-1">
-                  {translation.presale.untilPriceIncrease}
+                <p className="bg-white rounded-3xl text-black text-center text-lg px-6 py-2 h-12 w-full md:w-4/5">
+                  $0 {translation.presale.raised}
                 </p>
                 <div className="flex text-sm">
                   {translation.presale.purchased} {translation.presale.tmm} = 0
@@ -147,17 +147,9 @@ const Presale = () => {
                   <Countdown
                     endTime={data?.endTime ? data.endTime : Date.now()}
                   />
-                  <p className="text-sm">
-                    {translation.presale.usdtraised} $
-                    {Number(
-                      (Number(data?.totalUSDRaised) / 10 ** 18).toFixed(2)
-                    ).toLocaleString("en-US")}{" "}
-                    / $
-                    {formatNumber(calcStageTarget(Number(data?.currentStage)))}
-                  </p>
-                  <div className="bg-white rounded-lg text-black text-xs px-6 py-1 relative w-full md:w-4/5 h-6">
+                  <div className="bg-white rounded-3xl text-black text-lg px-6 py-1 relative w-full md:w-4/5 h-12 overflow-hidden">
                     <p
-                      className="h-6 bg-[#FFC700] absolute left-0 top-0 rounded-lg"
+                      className="h-12 bg-[#FFC700] absolute left-0 top-0 rounded-3xl"
                       style={{
                         width: `${
                           (Number(data?.totalUSDRaised) /
@@ -169,8 +161,12 @@ const Presale = () => {
                         }%`,
                       }}
                     ></p>
-                    <p className="z-[10] absolute w-full text-center left-0">
-                      {translation.presale.untilPriceIncrease}
+                    <p className="z-[10] absolute left-0 top-[10px] w-full text-center">
+                      $
+                      {Number(
+                        (Number(data?.totalUSDRaised) / 10 ** 18).toFixed(2)
+                      ).toLocaleString("en-US")}{" "}
+                      {translation.presale.raised}
                     </p>
                   </div>
                   <div className="flex text-sm">

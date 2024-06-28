@@ -76,7 +76,7 @@ const Footer = () => {
               {data.footer.contact.title} <br />
               {data.footer.contact.street} <br />
               {data.footer.contact.address} <br />
-              <a href="mailto:cs@themoonmemes.space" className="underline">
+              <a href="mailto:contact@moonmemes.space" className="underline">
                 {data.footer.contact.email}
               </a>
             </p>
