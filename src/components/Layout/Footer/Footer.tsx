@@ -67,19 +67,19 @@ const Footer = () => {
             </div>
           </div>
           <div className="w-full flex flex-col gap-5 md:gap-10 md:flex-row justify-around px-2">
-            <p className="hidden md:block text-xs max-w-[400px]">
+            <p className="hidden md:block text-md text-center max-w-[550px]">
               {data.footer.disclaimer.section1}
               <br className="hidden md:block" />
               {data.footer.disclaimer.section2}
             </p>
-            <p className="text-xs">
+            {/* <p className="text-xs">
               {data.footer.contact.title} <br />
               {data.footer.contact.street} <br />
               {data.footer.contact.address} <br />
               <a href="mailto:contact@moonmemes.space" className="underline">
                 {data.footer.contact.email}
               </a>
-            </p>
+            </p> */}
           </div>
           <div className="w-full md:w-auto px-2">
             <p className="text-xs md:my-10">{data.footer.copyright}</p>
