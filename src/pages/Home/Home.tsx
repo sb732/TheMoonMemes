@@ -44,7 +44,7 @@ function Home() {
                   {translation.home.home.whitepaper}
                 </p>
               </a>
-              <a href="/">
+              <a href="https://coinsult.net/projects/the-moon-memes/" target="_blank">
                 <p className="text-center py-2 rounded-lg text-4xl mb-10 min-w-[250px] bg-[#FF4747] border border-white cursor-pointer">
                   {translation.home.home.audit}
                 </p>
