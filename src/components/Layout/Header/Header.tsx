@@ -96,7 +96,10 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
                 <p className="hover:text-[#528F85]">{data.navbar.whitepaper}</p>
               </a>
 
-              <a href="/">
+              <a
+                href="https://coinsult.net/projects/the-moon-memes/"
+                target="_blank"
+              >
                 <p className="hover:text-[#528F85]">{data.navbar.audit}</p>
               </a>
 
@@ -114,13 +117,13 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
               )}
 
               <div className="flex gap-10 items-center">
-                {/* <a href="https://t.me/TheMoonMemesPortal" target="_blank"> */}
-                <img
-                  src="./assets/icons/Telegram App.svg"
-                  className="min-w-14 h-14 p-2 border-[1px] rounded-full border-[#FFC700] cursor-pointer"
-                  alt=""
-                />
-                {/* </a> */}
+                <a href="https://t.me/TheMoonMemesPortal" target="_blank">
+                  <img
+                    src="./assets/icons/Telegram App.svg"
+                    className="min-w-14 h-14 p-2 border-[1px] rounded-full border-[#FFC700] cursor-pointer"
+                    alt=""
+                  />
+                </a>
                 <a href="https://x.com/The_Moon_Memes" target="_blank">
                   <img
                     src="./assets/icons/Twitter-X-Icon.png"
@@ -246,7 +249,7 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
             {data.navbar.whitepaper}
           </p>
         </a>
-        <a href="/">
+        <a href="https://coinsult.net/projects/the-moon-memes/" target="_blank">
           <p
             onClick={() => handleShowNav()}
             className="border-b-[1px] border-white px-1 py-1"
@@ -265,18 +268,18 @@ const Header = ({ showNav, setShowNav }: HeaderProps) => {
 
         <div className="h-[50px]"></div>
 
-        <div className="absolute left-[30px] top-[477px]">
+        <div className="absolute left-[30px] top-[427px]">
           <div className="gtranslate_wrapper" />
         </div>
 
         <div className="flex gap-5 items-center">
-          {/* <a href="https://t.me/TheMoonMemesPortal" target="_blank"> */}
-          <img
-            src="./assets/icons/Telegram App.svg"
-            className="w-14 h-14 p-2 border-[1px] rounded-full border-[#FFC700] cursor-pointer"
-            alt=""
-          />
-          {/* </a> */}
+          <a href="https://t.me/TheMoonMemesPortal" target="_blank">
+            <img
+              src="./assets/icons/Telegram App.svg"
+              className="w-14 h-14 p-2 border-[1px] rounded-full border-[#FFC700] cursor-pointer"
+              alt=""
+            />
+          </a>
           <a href="https://x.com/The_Moon_Memes" target="_blank">
             <img
               src="./assets/icons/Twitter-X-Icon.png"
