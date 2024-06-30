@@ -128,7 +128,7 @@ const Presale = () => {
                 <div className="w-full flex items-center justify-between">
                   <div className="min-w-[100px] border-[1px] border-white h-0"></div>
                   <p className="text-xs !w-full text-center">
-                    1 {translation.presale.tmm} = $0.000
+                    1 {translation.presale.tmm} = $0.0006
                   </p>
                   <div className="min-w-[100px] border-[1px] border-white h-0"></div>
                 </div>
