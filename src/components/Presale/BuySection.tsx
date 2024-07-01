@@ -278,8 +278,8 @@ const BuySection = ({
 
       {address && (
         <div className="w-full flex items-center justify-between">
-          <div className="min-w-[100px] border-[1px] border-white h-0"></div>
-          <p className="text-xs !w-full text-center">
+          <div className="min-w-[90px] border-[1px] border-white h-0"></div>
+          <p className="text-xs md:text-base !w-full text-center">
             {selectedCoin === coins[0] &&
               translation.presale.buysection.ethBalance + ETHBalance.toFixed(4)}
             {selectedCoin === coins[1] &&
@@ -290,7 +290,7 @@ const BuySection = ({
                   ? (Number(data?.ethUsdtBalance) / 10 ** 6).toFixed(4)
                   : (Number(data?.bscUsdtBalance) / 10 ** 18).toFixed(4))}
           </p>
-          <div className="min-w-[100px] border-[1px] border-white h-0"></div>
+          <div className="min-w-[90px] border-[1px] border-white h-0"></div>
         </div>
       )}
 
