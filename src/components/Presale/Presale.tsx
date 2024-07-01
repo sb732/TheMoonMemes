@@ -77,7 +77,7 @@ const Presale = () => {
     >
       {data && (
         <>
-          <div className="flex flex-col gap-4 items-center">
+          <div className="flex flex-col gap-6 items-center">
             {/* <>
               <p className="text-2xl animate-blinker">
                 {translation.presale.comingsoon}
@@ -110,7 +110,7 @@ const Presale = () => {
 
             {Math.floor(Date.now() / 1000) < Number(data?.startTime) && (
               <>
-                <p>{translation.presale.startsin}</p>
+                <p className="text-lg">{translation.presale.startsin}</p>
                 <Countdown
                   endTime={data?.startTime ? data.startTime : Date.now()}
                 />
@@ -143,7 +143,7 @@ const Presale = () => {
             {Math.floor(Date.now() / 1000) >= Number(data?.startTime) &&
               Math.floor(Date.now() / 1000) < Number(data?.endTime) && (
                 <>
-                  <p>{translation.presale.nextIncrease}</p>
+                  <p className="text-lg">{translation.presale.nextIncrease}</p>
                   <Countdown
                     endTime={data?.endTime ? data.endTime : Date.now()}
                   />
@@ -198,7 +198,7 @@ const Presale = () => {
 
             {Math.floor(Date.now() / 1000) >= Number(data?.endTime) && (
               <>
-                <p>{translation.presale.endat}</p>
+                <p className="text-lg">{translation.presale.endat}</p>
                 <Countdown
                   endTime={data?.endTime ? data.endTime : Date.now()}
                 />
