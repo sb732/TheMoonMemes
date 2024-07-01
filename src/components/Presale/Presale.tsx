@@ -149,7 +149,7 @@ const Presale = () => {
                   <Countdown
                     endTime={data?.endTime ? data.endTime : Date.now()}
                   />
-                  {/* <p>{translation.presale.untilPriceIncrease}</p> */}
+                  <p>{translation.presale.untilPriceIncrease}</p>
                   <div className="bg-white rounded-[30px] text-black text-lg px-6 py-[10px] relative w-full h-12 overflow-hidden">
                     <p
                       className="h-12 bg-[#FFC700] absolute left-0 top-0 rounded-[30px]"
