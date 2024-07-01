@@ -333,37 +333,35 @@ const BuySection = ({
         </div>
       </div>
 
-      {address && (
-        <div className="text-[10px] text-center flex flex-col gap-1 items-center max-w-[300px]">
-          {((ETHBalance < inputAmount && selectedCoin != coins[2]) ||
-            (Number(data?.ethUsdtBalance) / 10 ** 6 < inputAmount &&
-              selectedCoin == coins[2] &&
-              selectedNetwork === "ETH") ||
-            (Number(data?.bscUsdtBalance) / 10 ** 18 < inputAmount &&
-              selectedCoin == coins[2] &&
-              selectedNetwork === "BNB")) && (
-            <div className="flex gap-3">
-              <p>{translation.presale.buysection.enoughbalance}</p>
-            </div>
-          )}
-          {inputAmount > 0 && (
-            <p className="text-[#DB443B]">
-              {translation.presale.buysection.makeSure}
-              {selectedNetwork == "ETH" ? "0.015 " : "0.0025 "}
-              {selectedNetwork == "ETH"
-                ? translation.presale.buysection.eth
-                : translation.presale.buysection.bnb}
-              {translation.presale.buysection.gasAnd}
-              {selectedCoin === coins[0]
-                ? translation.presale.buysection.eth
-                : selectedCoin === coins[1]
-                ? translation.presale.buysection.bnb
-                : translation.presale.buysection.usdt}
-              {translation.presale.buysection.tokenExchange}
-            </p>
-          )}
-        </div>
-      )}
+      <div className="text-[10px] text-center flex flex-col gap-1 items-center max-w-[300px]">
+        {((ETHBalance < inputAmount && selectedCoin != coins[2]) ||
+          (Number(data?.ethUsdtBalance) / 10 ** 6 < inputAmount &&
+            selectedCoin == coins[2] &&
+            selectedNetwork === "ETH") ||
+          (Number(data?.bscUsdtBalance) / 10 ** 18 < inputAmount &&
+            selectedCoin == coins[2] &&
+            selectedNetwork === "BNB")) && (
+          <div className="flex gap-3">
+            <p>{translation.presale.buysection.enoughbalance}</p>
+          </div>
+        )}
+        {inputAmount > 0 && (
+          <p className="text-[#DB443B]">
+            {translation.presale.buysection.makeSure}
+            {selectedNetwork == "ETH" ? "0.015 " : "0.0025 "}
+            {selectedNetwork == "ETH"
+              ? translation.presale.buysection.eth
+              : translation.presale.buysection.bnb}
+            {translation.presale.buysection.gasAnd}
+            {selectedCoin === coins[0]
+              ? translation.presale.buysection.eth
+              : selectedCoin === coins[1]
+              ? translation.presale.buysection.bnb
+              : translation.presale.buysection.usdt}
+            {translation.presale.buysection.tokenExchange}
+          </p>
+        )}
+      </div>
 
       {/* {address && selectedNetwork === "ETH" && (
         <button

@@ -144,10 +144,12 @@ const Presale = () => {
             {Math.floor(Date.now() / 1000) >= Number(data?.startTime) &&
               Math.floor(Date.now() / 1000) < Number(data?.endTime) && (
                 <>
+                  <p className="text-2xl">{translation.presale.buyTokens}</p>
                   <p className="text-lg">{translation.presale.nextIncrease}</p>
                   <Countdown
                     endTime={data?.endTime ? data.endTime : Date.now()}
                   />
+                  {/* <p>{translation.presale.untilPriceIncrease}</p> */}
                   <div className="bg-white rounded-[30px] text-black text-lg px-6 py-[10px] relative w-full h-12 overflow-hidden">
                     <p
                       className="h-12 bg-[#FFC700] absolute left-0 top-0 rounded-[30px]"
@@ -183,7 +185,7 @@ const Presale = () => {
                   </div>
                   <div className="w-full flex items-center justify-between">
                     <div className="min-w-[90px] border-[1px] border-white h-0"></div>
-                    <p className="text-xs !w-full text-center">
+                    <p className="text-xs md:text-base !w-full text-center">
                       1 {translation.presale.tmm} = $
                       {Number(data?.currentPrice) / 10 ** 18}
                     </p>
