@@ -145,7 +145,6 @@ const Presale = () => {
               Math.floor(Date.now() / 1000) < Number(data?.endTime) && (
                 <>
                   <p className="text-2xl">{translation.presale.buyTokens}</p>
-                  <p className="text-lg">{translation.presale.nextIncrease}</p>
                   <Countdown
                     endTime={data?.endTime ? data.endTime : Date.now()}
                   />
