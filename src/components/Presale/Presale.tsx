@@ -77,7 +77,7 @@ const Presale = () => {
     >
       {data && (
         <>
-          <div className="flex flex-col gap-6 items-center">
+          <div className="flex flex-col gap-4 items-center 2xl:min-h-[620px] justify-between">
             {/* <>
               <p className="text-2xl animate-blinker">
                 {translation.presale.comingsoon}
